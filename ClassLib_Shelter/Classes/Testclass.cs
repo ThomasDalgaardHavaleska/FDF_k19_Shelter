@@ -12,3 +12,4 @@ namespace ClassLib_Shelter.Classes
 	"Ulrik er inde"
 	
 	"Julie er inde"
+	"Lucca er her"
