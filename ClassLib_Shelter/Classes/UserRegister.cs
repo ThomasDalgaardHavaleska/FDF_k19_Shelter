@@ -24,7 +24,7 @@ namespace ClassLib_Shelter.Classes
 		}
 
 		#region Methods
-		public override string ToString();
+		public override string ToString()
 		{
 			string res = " ";
 			foreach (User user in _user)
@@ -34,24 +34,42 @@ namespace ClassLib_Shelter.Classes
 			return res;
 		}
 
-		public UserRegister GetAllUsers(List<User>users);
+		public List<UserRegister> GetAllUsers()
 		{
-			return new List<UserRegister>(users);
+			return new List<UserRegister>(_users);
 		}
 
-		public UserRegister GetUser(int id);
+
+		public void AddUser(User newUser)
 		{
-		UserRegister foundUser = null;
-		foreach (UserRegister user in _user)
+		_user.Add(newUser);
+		}
+
+		public User GetUser(int id)
+		{
+		User foundUser = null;
+		foreach (User user in _user)
 		{
 			if (user.Id == id)
 			{
 			return id;
 			}
-
 		}
 		return foundUser;
 		}
+
+		public User RemoveUser(int id)
+		{
+			_users.Remove(GetUser(id));
+		}
+
+		public User UpdateUser(int id, User updatedUser)
+		{
+			User user = GetUser(user);
+			if (user != null)
+			{
+
+			}
 
 	}
 }
