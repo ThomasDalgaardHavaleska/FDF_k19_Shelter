@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClassLib_Shelter.Classes
 {
-    internal class District
+    public class District
     {
     }
 }
