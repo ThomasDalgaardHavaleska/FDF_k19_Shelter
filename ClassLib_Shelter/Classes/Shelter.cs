@@ -77,8 +77,22 @@ namespace ClassLib_Shelter.Classes
 			return "ShelterId: " +_shelterId + "Name: " + _name + "Geolocation: " +_geolocation + "Place: " + _place + "MaximumCapacity: " + _maximumCapacity;
 			}
 
-		//Get
+		//SKAL DENNE OVERHOVEDET VÆRE HER? DEN ER JO IKKE RELATERET
 
+		/*public Shelter GetBookingFromShelter(int shelterId);
+		{
+		Shelter shelterFound = null;
+		foreach (var shelter in )
+		{
+			if (shelter.ShelterId == shelterId)
+			{
+				shelterFound = shelter;
+				
+			}
+		}
 
+		return shelter;
+		}
+		*/
 	}
 }
