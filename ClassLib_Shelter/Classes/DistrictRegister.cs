@@ -26,8 +26,19 @@ namespace ClassLib_Shelter.Classes
             set { _register = value; } 
         }
         #endregion
+        #region Constructor
+        public DistrictRegister()
+        {
+            _id = 0;
+            _register = new List<District>();
+        }
 
-
+        public DistrictRegister(int id, List<District> register)
+        {
+            _id = id;
+            _register = register; 
+        }
+        #endregion
         #region Methods
         public List<District> GetAllDistricts() 
         { 
