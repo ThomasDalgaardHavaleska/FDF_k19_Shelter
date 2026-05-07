@@ -41,7 +41,7 @@ namespace ClassLib_Shelter.Classes
         }
 
 
-        public District RemoveDistrict(int districtId)
+        public void RemoveDistrict(int districtId)
         {
 
             _register.Remove(GetDistrict(districtId));
@@ -53,7 +53,7 @@ namespace ClassLib_Shelter.Classes
         {
             foreach (District district in _register)
             {
-                if (districtId == District.Id) { return district; }
+                if (districtId == District.DistrictId) { return district; }
             }
             return null;
         }
