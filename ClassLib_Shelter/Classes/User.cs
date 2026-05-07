@@ -24,6 +24,8 @@ namespace ClassLib_Shelter.Classes
         //default konstruktør
 
         public User()
+
+            //Gennemgå klassen med de andre i morgen
         {
             _userId = 0;
             _fullname = "";
@@ -42,6 +44,7 @@ namespace ClassLib_Shelter.Classes
             _role = role;
             _dateOfCreation = dateOfCreation;
             _districtAssociation = DistrictAssocation;
+          
         }
 
 
