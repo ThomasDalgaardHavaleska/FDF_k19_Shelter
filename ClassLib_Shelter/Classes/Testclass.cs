@@ -8,3 +8,4 @@ namespace ClassLib_Shelter.Classes
 	{
 	}
 }
+"Thomas er inde"
