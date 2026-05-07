@@ -8,3 +8,6 @@ namespace ClassLib_Shelter.Classes
 	{
 	}
 }
+"Thomas er inde"
+	"Ulrik er inde"
+	"Julie er inde"
