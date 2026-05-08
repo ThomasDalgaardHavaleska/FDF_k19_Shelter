@@ -9,7 +9,7 @@ namespace ClassLib_Shelter.Classes
 	
 	
 	{
-	//Instancefields
+# region Instancefields
 		private int _bookingId;
 		private int _noUsers;
 		private bool _isReserved;
@@ -17,8 +17,9 @@ namespace ClassLib_Shelter.Classes
 		private DateTime _reservationDate;
 		private DateTime _chekinDate;
 		private DateTime _checkoutDate;
+		#endregion
 
-		//Constructors
+		#region Constructors
 
 		public Booking()
 		{
@@ -41,10 +42,11 @@ namespace ClassLib_Shelter.Classes
 			_chekinDate = chekinDate;
 			_checkoutDate = checkoutDate;
 		}
+		#endregion
 
-	//Properties
+# region Properties
 
-	public int BookingId
+		public int BookingId
 		{
 			get { return _bookingId; }
 			set { _bookingId = value; }
@@ -85,16 +87,17 @@ namespace ClassLib_Shelter.Classes
 			get { return _checkoutDate; }
 			set { _checkoutDate = value; }
 		}
+		#endregion
 
+# region Methods
 
-		//Methods
-
-		//ToString method
+		
 
 		public override string ToString()
 		{
 			return "BookingId: " + _bookingId + "NoUsers: " + _noUsers +  "IsReserved: " + _isReserved + "DistrictOfUser: " + _districtOfUser +  
 					"ReservationDate: " + _reservationDate + "ChekinDate: " + _chekinDate + "CheckoutDate: " + _checkoutDate;
 		}
+		#endregion
 	}
 }

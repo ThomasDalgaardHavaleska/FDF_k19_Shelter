@@ -8,14 +8,15 @@ namespace ClassLib_Shelter.Classes
 	
 	
 	{
-	//instancefields
+# region instancefields
 		private int _shelterId;
 		private string _name;
 		private string _geolocation;
 		private string _place;
 		private int _maximumCapacity;
+#endregion
 
-	//Constructor
+# region Constructor
 
 		public Shelter()
 		{
@@ -36,7 +37,9 @@ namespace ClassLib_Shelter.Classes
 			_maximumCapacity = maximumCapacity;
 		}
 
-		//Properties
+		#endregion
+
+# region Properties
 		public int ShelterId
 		{
 			get { return _shelterId; }
@@ -67,17 +70,18 @@ namespace ClassLib_Shelter.Classes
 			set { _maximumCapacity = value; }
 
 		}
+		#endregion
 
-		//Methods
 
-		//ToString method
+# region Methods
+
 
 		public override string ToString()
 			{
 			return "ShelterId: " +_shelterId + "Name: " + _name + "Geolocation: " +_geolocation + "Place: " + _place + "MaximumCapacity: " + _maximumCapacity;
 			}
 
-		
-		
+		#endregion
+
 	}
 }
