@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClassLib_Shelter.Classes
 {
-    public class District
+    public class Booking
     {
     }
 }
