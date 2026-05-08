@@ -8,14 +8,14 @@ namespace ClassLib_Shelter.Classes
     public class DistrictRegister
     {
         #region Instance fields
-        private List<Booking> _districts;
+        private List<District> _districts;
         #endregion
 
 
 
         #region Properties
 
-        public List<Booking> Districts 
+        public List<District> Districts 
         { 
             get { return _districts; } 
             set { _districts = value; } 
@@ -24,22 +24,22 @@ namespace ClassLib_Shelter.Classes
         #region Constructor
         public DistrictRegister()
         {
-            _districts = new List<Booking>();
+            _districts = new List<District>();
         }
 
-        public DistrictRegister(List<Booking> districts)
+        public DistrictRegister(List<District> districts)
         {
             _districts = districts; 
         }
         #endregion
         #region Methods
-        public List<Booking> GetAllDistricts() 
+        public List<District> GetAllDistricts() 
         { 
             return new List<Booking>(_districts); 
         
         }
 
-        public void AddDistrict(Booking newDistrict)
+        public void AddDistrict(District newDistrict)
         {
             _districts.Add(newDistrict);
         }
@@ -53,18 +53,18 @@ namespace ClassLib_Shelter.Classes
 
         }
 
-        public Booking GetDistrict(int districtId) 
+        public District GetDistrict(int districtId) 
         {
-            foreach (Booking district in _districts)
+            foreach (District district in _districts)
             {
-                if (districtId == Booking.DistrictId) { return district; }
+                if (districtId == District.DistrictId) { return district; }
             }
             return null;
         }
 
-        public Booking UpdateDistrict(int districtId, Booking updatedDistrict)
+        public District UpdateDistrict(int districtId, District updatedDistrict)
         {
-            Booking district = GetDistrict(districtId);
+            District district = GetDistrict(districtId);
 
             if (district != null)
             {
@@ -80,12 +80,12 @@ namespace ClassLib_Shelter.Classes
 
         public override string ToString()
         {
-            string res = " ";
-            foreach (Booking district in _districts)
+            string res = "[";
+            foreach (District district in _districts)
             {
-                res += district;
+                res += district + " ";
             }
-            return res;
+            return res + " ]";
         }
 
         #endregion
