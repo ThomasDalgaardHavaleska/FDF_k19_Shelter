@@ -44,7 +44,7 @@ public string Name(string name)
         {
             _register.Add(newShelter);
         }
-        public Shelter RemoveShelter(int shelterId)
+        public void RemoveShelter(int shelterId)
         {
             _register.Remove(GetShelter(shelterId));
         }
