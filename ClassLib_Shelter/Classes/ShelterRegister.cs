@@ -9,14 +9,6 @@ public class ShelterRegister
 
 
  #region Constructor
-public string Name
-		{
-			_name = "";
-		}
-public string Name(string name)
-		{
-			_name = name;
-		}
  public ShelterRegister() 
         { 
             _name = "";
