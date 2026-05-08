@@ -9,11 +9,11 @@ public class ShelterRegister
 
 
  #region Constructor
-public string Name
-		{
-			_name = "";
-		}
-public string Name(string name)
+ public ShelterRegister() 
+        { 
+            _name = "";
+        } 
+	public ShelterRegister(string name)
 		{
 			_name = name;
 		}
@@ -29,8 +29,8 @@ public string Name(string name)
         }
         public List<Shelter> Register 
         { 
-            get { return _register; } 
-            set { _register = value; } 
+            get { return _shelters; } 
+            set { _shelters = value; } 
         } 
 #endregion
 
@@ -38,20 +38,20 @@ public string Name(string name)
         #region Methods
         public List<Shelter> GetAllShelters() 
         { 
-            return new List<Shelter>(_register); 
+            return new List<Shelter>(_shelters); 
         }
         public void AddShelter(Shelter newShelter)
         {
-            _register.Add(newShelter);
+            _shelters.Add(newShelter);
         }
         public void RemoveShelter(int shelterId)
         {
-            _register.Remove(GetShelter(shelterId));
+            _shelters.Remove(GetShelter(shelterId));
         }
 
         public Shelter GetShelter(int shelterId) 
         {
-            foreach (Shelter shelter in _register)
+            foreach (Shelter shelter in _shelters)
             {
                 if (shelterId == Shelter.Id) { return shelter; }
             }
