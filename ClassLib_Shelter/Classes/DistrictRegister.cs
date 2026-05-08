@@ -9,17 +9,12 @@ namespace ClassLib_Shelter.Classes
     {
         #region Instance fields
         private List<District> _districts;
-        private int _id;
         #endregion
 
 
 
         #region Properties
-        public int Id 
-        { 
-            get { return _id; } 
-            set { _id = value; } 
-        }
+
         public List<District> Districts 
         { 
             get { return _districts; } 
@@ -29,13 +24,11 @@ namespace ClassLib_Shelter.Classes
         #region Constructor
         public DistrictRegister()
         {
-            _id = 0;
             _districts = new List<District>();
         }
 
-        public DistrictRegister(int id, List<District> register)
+        public DistrictRegister(List<District> register)
         {
-            _id = id;
             _districts = register; 
         }
         #endregion
