@@ -50,7 +50,7 @@ namespace ClassLib_Shelter.Classes
 		User foundUser = null;
 			foreach (User user in _users)
 		{
-			if (userId == User.userId)
+			if (userId == User.)
 			{
 			return user;
 			}
@@ -63,14 +63,16 @@ namespace ClassLib_Shelter.Classes
 			_users.Remove(GetUser(userid));
 		}
 
-		public User UpdateUser(int id, User updatedUser)
+		public User UpdateUser(int userId, User updatedUser)
 		{
-			User user = GetUser(user);
+			User user = GetUser(userId);
 			if (user != null)
 			{
-
+			user.FullName = updatedUser.FullName;
+			user.Email = updatedUser.Email;
+			user.Role = updatedUser.Role;
 			}
-
+			return user;
 	}
 }
 }
