@@ -17,6 +17,14 @@ public string Name(string name)
 		{
 			_name = name;
 		}
+ public ShelterRegister() 
+        { 
+            _name = "";
+        } 
+	public ShelterRegister(string name)
+		{
+			_name = name;
+		}
 #endregion
 
             
