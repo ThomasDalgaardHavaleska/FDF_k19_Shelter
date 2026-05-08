@@ -14,7 +14,7 @@ namespace ClassLib_Shelter.Classes
         private string _email;
         private string _role;
         private DateTime _dateOfCreation;
-        private District _districtAssociation;
+        private Booking _districtAssociation;
 
 
 
@@ -36,7 +36,7 @@ namespace ClassLib_Shelter.Classes
 
         }
 
-        public User(int userId, string fullName, string email, string role, DateTime dateOfCreation, District DistrictAssocation)
+        public User(int userId, string fullName, string email, string role, DateTime dateOfCreation, Booking DistrictAssocation)
         {
             _userId = userId;
             _fullName = fullName;
@@ -80,7 +80,7 @@ namespace ClassLib_Shelter.Classes
             set { _dateOfCreation = value; }
         }
 
-        public District DistrictAssociation
+        public Booking DistrictAssociation
         { 
             get { return _districtAssociation; }
             set
