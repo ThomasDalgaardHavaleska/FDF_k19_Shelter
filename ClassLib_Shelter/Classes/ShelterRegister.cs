@@ -29,8 +29,8 @@ public class ShelterRegister
         }
         public List<Shelter> Register 
         { 
-            get { return _register; } 
-            set { _register = value; } 
+            get { return _shelters; } 
+            set { _shelters = value; } 
         } 
 #endregion
 
@@ -42,16 +42,16 @@ public class ShelterRegister
         }
         public void AddShelter(Shelter newShelter)
         {
-            _register.Add(newShelter);
+            _shelters.Add(newShelter);
         }
         public void RemoveShelter(int shelterId)
         {
-            _register.Remove(GetShelter(shelterId));
+            _shelters.Remove(GetShelter(shelterId));
         }
 
         public Shelter GetShelter(int shelterId) 
         {
-            foreach (Shelter shelter in _register)
+            foreach (Shelter shelter in _shelters)
             {
                 if (shelterId == Shelter.Id) { return shelter; }
             }
