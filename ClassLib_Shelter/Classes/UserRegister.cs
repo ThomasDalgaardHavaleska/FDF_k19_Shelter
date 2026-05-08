@@ -27,40 +27,40 @@ namespace ClassLib_Shelter.Classes
 		public override string ToString()
 		{
 			string res = " ";
-			foreach (User user in _user)
+			foreach (User user in _users)
 			{
-				res = res + user + " User= " + user.Name
+				res = res + user + " User= " + user.FullName;
 			}
 			return res;
 		}
 
-		public List<UserRegister> GetAllUsers()
+		public List<User> GetAllUsers()
 		{
-			return new List<UserRegister>(_users);
+			return new List<User>(_users); 
 		}
 
 
 		public void AddUser(User newUser)
 		{
-		_user.Add(newUser);
+		_users.Add(newUser);
 		}
 
-		public User GetUser(int id)
+		public User GetUser(int userId)
 		{
 		User foundUser = null;
-		foreach (User user in _user)
+			foreach (User user in _users)
 		{
-			if (user.Id == id)
+			if (userId == User.userId)
 			{
-			return id;
+			return user;
 			}
 		}
 		return foundUser;
 		}
 
-		public User RemoveUser(int id)
+		public void RemoveUser(int userid)
 		{
-			_users.Remove(GetUser(id));
+			_users.Remove(GetUser(userid));
 		}
 
 		public User UpdateUser(int id, User updatedUser)
