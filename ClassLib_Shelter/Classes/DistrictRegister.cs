@@ -8,52 +8,56 @@ namespace ClassLib_Shelter.Classes
     public class DistrictRegister
     {
         #region Instance fields
-        private List<District> _register;
-        private int _id;
+        private List<District> _districts;
         #endregion
 
 
 
         #region Properties
-        public int Id 
+
+        public List<District> Districts 
         { 
-            get { return _id; } 
-            set { _id = value; } 
-        }
-        public List<District> Register 
-        { 
-            get { return _register; } 
-            set { _register = value; } 
+            get { return _districts; } 
+            set { _districts = value; } 
         }
         #endregion
+        #region Constructor
+        public DistrictRegister()
+        {
+            _districts = new List<District>();
+        }
 
-
+        public DistrictRegister(List<District> register)
+        {
+            _districts = register; 
+        }
+        #endregion
         #region Methods
         public List<District> GetAllDistricts() 
         { 
-            return new List<District>(_register); 
+            return new List<District>(_districts); 
         
         }
 
         public void AddDistrict(District newDistrict)
         {
-            _register.Add(newDistrict);
+            _districts.Add(newDistrict);
         }
 
 
-        public District RemoveDistrict(int districtId)
+        public void RemoveDistrict(int districtId)
         {
 
-            _register.Remove(GetDistrict(districtId));
+            _districts.Remove(GetDistrict(districtId));
 
 
         }
 
         public District GetDistrict(int districtId) 
         {
-            foreach (District district in _register)
+            foreach (District district in _districts)
             {
-                if (districtId == District.Id) { return district; }
+                if (districtId == District.DistrictId) { return district; }
             }
             return null;
         }
