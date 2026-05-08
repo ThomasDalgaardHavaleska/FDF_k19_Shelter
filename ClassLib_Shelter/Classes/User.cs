@@ -13,6 +13,7 @@ namespace ClassLib_Shelter.Classes
         private string _fullName;
         private string _email;
         private string _role;
+        private bool _isAdmin;
         private DateTime _dateOfCreation;
         private District _districtAssociation;
 
@@ -24,26 +25,26 @@ namespace ClassLib_Shelter.Classes
         //default konstruktør
 
         public User()
-
-            //Gennemgå klassen med de andre i morgen
         {
             _userId = 0;
             _fullName = "";
             _email = "";
             _role = "";
+            _isAdmin = false;
             _dateOfCreation = DateTime.Now;
-            _districtAssociation = null; //Vi skal vel have at en bruger skal have en default-kreds fra starten af?
+            _districtAssociation = null; 
 
         }
 
-        public User(int userId, string fullName, string email, string role, DateTime dateOfCreation, District DistrictAssocation)
+        public User(int userId, string fullName, string email, string role, bool isAdmin, DateTime dateOfCreation, District DistrictAssocation)
         {
-            _userId = userId;
-            _fullName = fullName;
-            _email = email;
-            _role = role;
-            _dateOfCreation = dateOfCreation;
-            _districtAssociation = DistrictAssocation;
+            UserId = userId;
+            FullName = fullName;
+            Email = email;
+            Role = role;
+            IsAdmin = isAdmin;
+            DateOfCreation = dateOfCreation;
+            DistrictAssociation = DistrictAssocation;
           
         }
 
@@ -74,6 +75,12 @@ namespace ClassLib_Shelter.Classes
             set { _role = value; }
         }
 
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set { _isAdmin = value; } 
+        }
+
         public DateTime DateOfCreation
         {
             get { return _dateOfCreation;  }
@@ -87,10 +94,11 @@ namespace ClassLib_Shelter.Classes
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException("As a new user, you need to choose a district");
+                    throw new ArgumentNullException("As a new user, you need to choose a district upon creation");
 
-                    _districtAssociation = value;
                 }
+
+                _districtAssociation = value;
             }
                 
         }
@@ -102,11 +110,14 @@ namespace ClassLib_Shelter.Classes
 
         public override string ToString()
         {
-            return 
+            return
+                
                 "User with ID: " + UserId + 
                 ". \n Fullname: " + FullName + 
-                ". \n Email: " + Email
-                + ". \n Role: " + Role + 
+                ". \n Email: " + Email +
+                ". \n Role: " + Role +
+                " . \n Is an Admin?: " + IsAdmin +
+                ".  \n District: " + DistrictAssociation +
                 ". \n User was created: " + DateOfCreation;
         }
 
