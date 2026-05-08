@@ -10,7 +10,7 @@ namespace ClassLib_Shelter.Classes
         //Instansfelter
 
         private int _userId;
-        private string _fullname;
+        private string _fullName;
         private string _email;
         private string _role;
         private DateTime _dateOfCreation;
@@ -28,7 +28,7 @@ namespace ClassLib_Shelter.Classes
             //Gennemgå klassen med de andre i morgen
         {
             _userId = 0;
-            _fullname = "";
+            _fullName = "";
             _email = "";
             _role = "";
             _dateOfCreation = DateTime.Now;
@@ -36,10 +36,10 @@ namespace ClassLib_Shelter.Classes
 
         }
 
-        public User(int userId, string fullname, string email, string role, DateTime dateOfCreation, District DistrictAssocation)
+        public User(int userId, string fullName, string email, string role, DateTime dateOfCreation, District DistrictAssocation)
         {
             _userId = userId;
-            _fullname = fullname;
+            _fullName = fullName;
             _email = email;
             _role = role;
             _dateOfCreation = dateOfCreation;
@@ -56,10 +56,10 @@ namespace ClassLib_Shelter.Classes
             set { _userId = value; }
         }
 
-        public string Fullname
+        public string FullName
         {
-            get { return _fullname; }
-            set { _fullname = value; }
+            get { return _fullName; }
+            set { _fullName = value; }
         }
 
         public string Email
@@ -104,18 +104,13 @@ namespace ClassLib_Shelter.Classes
         {
             return 
                 "User with ID: " + UserId + 
-                ". \n Fullname: " + Fullname + 
+                ". \n Fullname: " + FullName + 
                 ". \n Email: " + Email
                 + ". \n Role: " + Role + 
                 ". \n User was created: " + DateOfCreation;
         }
 
-        //void ChangeDistrict(District newDisctrict) bør ikke være en metode for sig, men gøres under dens property
-        //{
-
-
-
-        //}
+    
 
     }
 }
