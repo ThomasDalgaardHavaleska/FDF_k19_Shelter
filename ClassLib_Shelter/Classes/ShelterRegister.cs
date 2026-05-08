@@ -38,7 +38,7 @@ public class ShelterRegister
         #region Methods
         public List<Shelter> GetAllShelters() 
         { 
-            return new List<Shelter>(_register); 
+            return new List<Shelter>(_shelters); 
         }
         public void AddShelter(Shelter newShelter)
         {
