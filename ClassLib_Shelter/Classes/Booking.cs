@@ -26,9 +26,9 @@ namespace ClassLib_Shelter.Classes
 			_noUsers = 0;
 			_isReserved = false;
 			_districtOfUser = "";
-			_reservationDate = DateTime.MinValue;
-			_chekinDate = DateTime.MinValue;
-			_checkoutDate = DateTime.MinValue;
+			_reservationDate = DateTime.Now;
+			_chekinDate = DateTime.Now;
+			_checkoutDate = DateTime.Now;
 		}
 	public Booking (int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime reservationDate, DateTime chekinDate, DateTime checkoutDate)
 
