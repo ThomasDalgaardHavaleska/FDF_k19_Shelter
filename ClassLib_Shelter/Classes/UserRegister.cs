@@ -26,10 +26,10 @@ namespace ClassLib_Shelter.Classes
 		#region Methods
 		public override string ToString()
 		{
-			string res = " ";
+			string res = " [";
 			foreach (User user in _users)
 			{
-				res = res + user + " User= " + user.FullName;
+				res += user + " ]";
 			}
 			return res;
 		}
@@ -50,7 +50,7 @@ namespace ClassLib_Shelter.Classes
 		User foundUser = null;
 			foreach (User user in _users)
 		{
-			if (userId == User.)
+				if (userId == user.UserId)
 			{
 			return user;
 			}
@@ -81,5 +81,4 @@ namespace ClassLib_Shelter.Classes
 
 		#endregion 
 
-	}
-}
+	
