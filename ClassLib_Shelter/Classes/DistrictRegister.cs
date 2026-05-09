@@ -10,9 +10,6 @@ namespace ClassLib_Shelter.Classes
         #region Instance fields
         private List<District> _districts;
         #endregion
-
-
-
         #region Properties
 
         public List<District> Districts 
@@ -35,7 +32,7 @@ namespace ClassLib_Shelter.Classes
         #region Methods
         public List<District> GetAllDistricts() 
         { 
-            return new List<Booking>(_districts); 
+            return new List<District>(_districts); 
         
         }
 
@@ -89,13 +86,5 @@ namespace ClassLib_Shelter.Classes
         }
 
         #endregion
-
-
     }
-
-
-
-
-
-
 }
