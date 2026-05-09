@@ -3,7 +3,7 @@ namespace ClassLib_Shelter.Classes;
 public class ShelterRegister
 {
 #region Instance fields
-        private List<Shelter> _register;
+        private List<Shelter> _shelters;
         private string _name;
  #endregion
 
@@ -53,7 +53,7 @@ public class ShelterRegister
         {
             foreach (Shelter shelter in _shelters)
             {
-                if (shelterId == Shelter.Id) { return shelter; }
+                if (shelterId == shelter.ShelterId) { return shelter; }
             }
             return null;
         }
