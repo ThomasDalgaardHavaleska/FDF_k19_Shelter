@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="ClassLib_Shelter/ClassLib_Shelter.csproj" />
+  <Project Path="Test_FDF_K19_Shelter/Test_FDF_K19_Shelter.csproj" Id="f34faf2e-b481-4cb2-9b8a-2aee7ac2fce4" />
   <Project Path="WebApplication_FDF_K19_Shelter/WebApplication_FDF_K19_Shelter.csproj" Id="5c6fdaff-6fe6-427c-a019-191dfdde54bf" />
 </Solution>
