@@ -54,7 +54,7 @@ namespace ClassLib_Shelter.Classes
         {
             foreach (District district in _districts)
             {
-                if (districtId == District.DistrictId) { return district; }
+                if (districtId == district.DistrictId) { return district; }
             }
             return null;
         }
@@ -67,10 +67,10 @@ namespace ClassLib_Shelter.Classes
             {
                 district.DistrictId = updatedDistrict.DistrictId;
                 district.Name = updatedDistrict.Name;
-                district.ClassName = updatedDistrict.ClassName;
+                district.AgegGroup = updatedDistrict.AgegGroup;
                 district.Location = updatedDistrict.Location;
                 district.ContactEmail = updatedDistrict.ContactEmail;
-                district.ContactPhone = updatedDistrict.ContactPhone;
+                district.ConactPhone = updatedDistrict.ConactPhone;
             }
             return district;
         }
