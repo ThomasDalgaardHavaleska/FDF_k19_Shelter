@@ -68,6 +68,7 @@ namespace ClassLib_Shelter.Classes
 			User user = GetUser(userId);
 			if (user != null)
 			{
+			user.UserId = userId;
 			user.FullName = updatedUser.FullName;
 			user.Email = updatedUser.Email;
 			user.Role = updatedUser.Role;
