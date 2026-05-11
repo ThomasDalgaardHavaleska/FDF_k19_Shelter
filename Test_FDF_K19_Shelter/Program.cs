@@ -2,7 +2,7 @@
 
 
 
-using ClassLib_Shelter.Classes;
+using ClassLib_Shelter.Registers;
 using ClassLib_Shelter.Model;
 
 DateTime DateNow = DateTime.Now;
