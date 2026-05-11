@@ -10,8 +10,7 @@ namespace ClassLib_Shelter.Registers
         private List<Booking> _bookings;
         private string _name;
 
-
-
+          
         public BookingRegister() 
         { 
             _bookings = new List<Booking>();
