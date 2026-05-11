@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClassLib_Shelter.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClassLib_Shelter.Classes
 {
-    public class BookingRegister
+    public class BookingRegister : IRegister<Booking>
     {
         private List<Booking> _bookings;
         private string _name;
@@ -39,23 +40,26 @@ namespace ClassLib_Shelter.Classes
 
 
         #region methods
+        public List<Booking> GetAll()
+        {
+            return new List<Booking>(_bookings);
+        }
 
-
-        public void AddBooking(Booking newBooking)
+        public void Add(Booking newBooking)
         {
             _bookings.Add(newBooking);
         }
 
 
-        public void RemoveBooking(int bookingId)
+        public void Remove(int bookingId)
         {
 
-            _bookings.Remove(GetBooking(bookingId));
+            _bookings.Remove(GetById(bookingId));
 
 
         }
 
-        public Booking GetBooking(int bookingId)
+        public Booking GetById(int bookingId)
         {
             foreach (Booking booking in _bookings)
             {
@@ -64,9 +68,9 @@ namespace ClassLib_Shelter.Classes
             return null;
         }
 
-        public Booking UpdateDistrict(int bookingId, Booking updatedBooking)
+        public Booking Update(int bookingId, Booking updatedBooking)
         {
-            Booking booking = GetBooking(bookingId);
+            Booking booking = GetById(bookingId);
 
             if (booking != null)
             {

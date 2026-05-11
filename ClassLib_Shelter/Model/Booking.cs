@@ -31,14 +31,14 @@ namespace ClassLib_Shelter.Classes
 			_chekinDate = DateTime.Now;
 			_checkoutDate = DateTime.Now;
 		}
-	public Booking (int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime reservationDate, DateTime chekinDate, DateTime checkoutDate)
+	public Booking (int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime chekinDate, DateTime checkoutDate)
 
 		{
 			_bookingId = bookingId;
 			_noUsers = noUsers;
 			_isReserved = isReserved;
 			_districtOfUser = districtOfUser;
-			_reservationDate = reservationDate;
+			_reservationDate = DateTime.Now;
 			_chekinDate = chekinDate;
 			_checkoutDate = checkoutDate;
 		}
