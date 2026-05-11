@@ -67,7 +67,7 @@ namespace ClassLib_Shelter.Classes
             {
                 district.DistrictId = updatedDistrict.DistrictId;
                 district.Name = updatedDistrict.Name;
-                district.AgegGroup = updatedDistrict.AgegGroup;
+                district.AgeGroup = updatedDistrict.AgeGroup;
                 district.Location = updatedDistrict.Location;
                 district.ContactEmail = updatedDistrict.ContactEmail;
                 district.ConactPhone = updatedDistrict.ConactPhone;
