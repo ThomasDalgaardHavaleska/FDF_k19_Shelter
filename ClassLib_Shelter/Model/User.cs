@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace ClassLib_Shelter.Classes
+namespace ClassLib_Shelter.Model
 {
     public class User
     {

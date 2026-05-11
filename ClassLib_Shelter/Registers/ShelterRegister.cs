@@ -1,6 +1,6 @@
 using ClassLib_Shelter.Model;
 
-namespace ClassLib_Shelter.Classes;
+namespace ClassLib_Shelter.Resigsters;
 
 public class ShelterRegister : IRegister<Shelter>
 {

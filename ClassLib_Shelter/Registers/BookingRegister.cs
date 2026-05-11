@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLib_Shelter.Classes
+namespace ClassLib_Shelter.Registers
 {
     public class BookingRegister : IRegister<Booking>
     {
