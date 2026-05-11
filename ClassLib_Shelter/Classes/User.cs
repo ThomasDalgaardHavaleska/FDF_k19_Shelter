@@ -15,7 +15,7 @@ namespace ClassLib_Shelter.Classes
         private string _role;
         private bool _isAdmin;
         private DateTime _dateOfCreation;
-        private Booking _districtAssociation;
+        private District _districtAssociation;
 
 
 
