@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ClassLib_Shelter.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClassLib_Shelter.Classes
 {
     
-    public class DistrictRegister
+    public class DistrictRegister : IRegister<District>
     {
         #region Instance fields
         private List<District> _districts;
@@ -30,27 +31,27 @@ namespace ClassLib_Shelter.Classes
         }
         #endregion
         #region Methods
-        public List<District> GetAllDistricts() 
+        public List<District> GetAll() 
         { 
             return new List<District>(_districts); 
         
         }
 
-        public void AddDistrict(District newDistrict)
+        public void Add(District newDistrict)
         {
             _districts.Add(newDistrict);
         }
 
 
-        public void RemoveDistrict(int districtId)
+        public void Remove(int districtId)
         {
 
-            _districts.Remove(GetDistrict(districtId));
+            _districts.Remove(GetById(districtId));
 
 
         }
 
-        public District GetDistrict(int districtId) 
+        public District GetById(int districtId) 
         {
             foreach (District district in _districts)
             {
@@ -59,9 +60,9 @@ namespace ClassLib_Shelter.Classes
             return null;
         }
 
-        public District UpdateDistrict(int districtId, District updatedDistrict)
+        public District Update(int districtId, District updatedDistrict)
         {
-            District district = GetDistrict(districtId);
+            District district = GetById(districtId);
 
             if (district != null)
             {

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ClassLib_Shelter.Classes;
+﻿using ClassLib_Shelter.Model;
 
 namespace ClassLib_Shelter.Classes
 {
-	public class UserRegister
+	public class UserRegister : IRegister<User>
 	{
 		private List<User> _users;
 
@@ -24,28 +21,20 @@ namespace ClassLib_Shelter.Classes
 		}
 
 		#region Methods
-		public override string ToString()
-		{
-			string res = " [";
-			foreach (User user in _users)
-			{
-				res += user + " ]";
-			}
-			return res;
-		}
 
-		public List<User> GetAllUsers()
+
+		public List<User> GetAll()
 		{
 			return new List<User>(_users); 
 		}
 
 
-		public void AddUser(User newUser)
+		public void Add(User newUser)
 		{
 		_users.Add(newUser);
 		}
 
-		public User GetUser(int userId)
+		public User GetById(int userId)
 		{
 		User foundUser = null;
 			foreach (User user in _users)
@@ -58,14 +47,14 @@ namespace ClassLib_Shelter.Classes
 		return foundUser;
 		}
 
-		public void RemoveUser(int userid)
+		public void Remove(int userid)
 		{
-			_users.Remove(GetUser(userid));
+			_users.Remove(GetById(userid));
 		}
 
-		public User UpdateUser(int userId, User updatedUser)
+		public User Update(int userId, User updatedUser)
 		{
-			User user = GetUser(userId);
+			User user = GetById(userId);
 			if (user != null)
 			{
 			user.UserId = userId;
@@ -75,7 +64,17 @@ namespace ClassLib_Shelter.Classes
 			}
 			return user;
 	}
-}
+
+        public override string ToString()
+        {
+            string res = " [";
+            foreach (User user in _users)
+            {
+                res += user + " ]";
+            }
+            return res;
+        }
+    }
 }
 
 

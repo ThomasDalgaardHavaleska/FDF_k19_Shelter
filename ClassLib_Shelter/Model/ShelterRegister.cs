@@ -1,6 +1,8 @@
+using ClassLib_Shelter.Model;
+
 namespace ClassLib_Shelter.Classes;
 
-public class ShelterRegister
+public class ShelterRegister : IRegister<Shelter>
 {
 #region Instance fields
         private List<Shelter> _shelters;
@@ -35,21 +37,21 @@ public class ShelterRegister
 #endregion
 
 
-        #region Methods
-        public List<Shelter> GetAllShelters() 
+#region Methods
+        public List<Shelter> GetAll() 
         { 
             return new List<Shelter>(_shelters); 
         }
-        public void AddShelter(Shelter newShelter)
+        public void Add(Shelter newShelter)
         {
             _shelters.Add(newShelter);
         }
-        public void RemoveShelter(int shelterId)
+        public void Remove(int shelterId)
         {
-            _shelters.Remove(GetShelter(shelterId));
+            _shelters.Remove(GetById(shelterId));
         }
 
-        public Shelter GetShelter(int shelterId) 
+        public Shelter GetById(int shelterId) 
         {
             foreach (Shelter shelter in _shelters)
             {
@@ -58,9 +60,9 @@ public class ShelterRegister
             return null;
         }
 
-        public Shelter UpdateShelter(int shelterId, Shelter updatedShelter)
+        public Shelter Update(int shelterId, Shelter updatedShelter)
         {
-            Shelter shelter = GetShelter(shelterId);
+            Shelter shelter = GetById(shelterId);
 
             if (shelter != null)
             {
@@ -73,6 +75,16 @@ public class ShelterRegister
             return shelter;
         }
 
-        #endregion
+    public override string ToString()
+    {
+        string res = "[";
+        foreach (Shelter shelter in _shelters)
+        {
+            res += shelter + " ";
+        }
+        return res + " ]";
+    }
+
+    #endregion
 
 }
