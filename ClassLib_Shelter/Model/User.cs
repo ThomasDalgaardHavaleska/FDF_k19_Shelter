@@ -11,6 +11,7 @@ namespace ClassLib_Shelter.Model
 
         private int _userId;
         private string _fullName;
+        private int _age;
         private string _email;
         private string _role;
         private bool _isAdmin;
@@ -28,6 +29,7 @@ namespace ClassLib_Shelter.Model
         {
             _userId = 0;
             _fullName = "";
+            _age = 0;
             _email = "";
             _role = "";
             _isAdmin = false;
@@ -36,14 +38,15 @@ namespace ClassLib_Shelter.Model
 
         }
 
-        public User(int userId, string fullName, string email, string role, bool isAdmin, DateTime dateOfCreation, District DistrictAssocation)
+        public User(int userId, string fullName, int age, string email, string role, bool isAdmin, District DistrictAssocation)
         {
             UserId = userId;
             FullName = fullName;
+            _age = _age;
             Email = email;
             Role = role;
             IsAdmin = isAdmin;
-            DateOfCreation = dateOfCreation;
+            DateOfCreation = DateTime.Now;
             DistrictAssociation = DistrictAssocation;
           
         }
@@ -57,13 +60,19 @@ namespace ClassLib_Shelter.Model
             set { _userId = value; }
         }
 
-        public string FullName
+        public string FullName //Lav ArgumentationException ift. null og whitespace
         {
             get { return _fullName; }
             set { _fullName = value; }
         }
 
-        public string Email
+        public int Age //Lav ArgumentException ift. alder ikke må være 0 eller minus.
+        {
+            get { return _age; }
+            set { _age = value; }
+        }
+
+        public string Email //Lav ArgumentationException ift. null og whitespace
         {
             get { return _email; }
             set { _email = value; }
