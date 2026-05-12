@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLib_Shelter.Registers;
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -15,34 +16,38 @@ namespace ClassLib_Shelter.Model
 		private bool _isReserved;
 		private string _districtOfUser;
 		private DateTime _reservationDate;
-		private DateTime _chekinDate;
-		private DateTime _checkoutDate;
-		#endregion
+		private DateTime _checkInDate;
+		private DateTime _checkOutDate;
+		private Shelter _shelterToBook;
 
-		#region Constructors
 
-		public Booking()
+        #endregion
+
+        #region Constructors
+
+        public Booking()
 		{
-			_bookingId = 0;
-			_noUsers = 0;
-			_isReserved = false;
-			_districtOfUser = "";
-			_reservationDate = DateTime.Now;
-			_chekinDate = DateTime.Now;
-			_checkoutDate = DateTime.Now;
-		}
-	public Booking (int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime chekinDate, DateTime checkoutDate)
-
+			BookingId = 0;
+			NoUsers = 1;
+			IsReserved = false;
+			DistrictOfUser = "Placeholder";
+			ReservationDate = DateTime.Now;
+			CheckInDate = DateTime.Now;
+			CheckoutDate = DateTime.Now;
+			ShelterToBook = null;
+        }
+		public Booking(int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
 		{
-			_bookingId = bookingId;
-			_noUsers = noUsers;
-			_isReserved = isReserved;
-			_districtOfUser = districtOfUser;
-			_reservationDate = DateTime.Now;
-			_chekinDate = chekinDate;
-			_checkoutDate = checkoutDate;
-		}
-		#endregion
+			BookingId = bookingId;
+			NoUsers = noUsers;
+			IsReserved = isReserved;
+			DistrictOfUser = districtOfUser;
+			ReservationDate = DateTime.Now;
+			CheckInDate = chekinDate;
+			CheckoutDate = checkoutDate;
+			ShelterToBook = shelterToBook;
+        }
+#endregion
 
 # region Properties
 
@@ -55,49 +60,109 @@ namespace ClassLib_Shelter.Model
 	public int NoUsers
 		{
 			get { return _noUsers; }
-			set { _noUsers = value; }
+			set 
+			{ 
+				if (value < 0)
+				{
+					throw new ArgumentException("Number of users cannot be negative.");
+                }
+				if (value > ShelterToBook.MaximumCapacity)
+				{ 
+					throw new ArgumentException("Number of campers cannot exceed shelter capacity.");
+                }
+
+                _noUsers = value; 
+			}
 		}
 
 	public bool IsReserved
 		{
 			get { return _isReserved; }
-			set { _isReserved = value; }
+			set 
+			{
+				_isReserved = value; 
+			}
 		}
 
 	public string DistrictOfUser
 		{
 			get { return _districtOfUser; }
-			set { _districtOfUser = value; }
+			set 
+			{ 
+				if(string.IsNullOrWhiteSpace(value) || value.Length == 0)
+				{
+					throw new ArgumentException("District of user cannot be empty.");
+				}
+				_districtOfUser = value; 
+			
+			}
 		}
 
 	public DateTime ReservationDate
 		{
 			get { return _reservationDate; }
-			set { _reservationDate = value; }
+			set 
+			{
+                if (value < DateTime.Now)
+                {
+                    throw new ArgumentException(
+                        "Reservation date cannot be in the past.");
+                }
+                _reservationDate = value; 
+			}
 		}
 
-	public DateTime ChekinDate
+	public DateTime CheckInDate
 		{
-			get { return _chekinDate; }
-			set { _chekinDate = value; }
+			get { return _checkInDate; }
+			set 
+			{
+                if (value < DateTime.Now)
+                {
+                    throw new ArgumentException("Check-in date cannot be in the past.");
+                }
+                _checkInDate = value; 			
+			}
 		}
 
 	public DateTime CheckoutDate
 		{
-			get { return _checkoutDate; }
-			set { _checkoutDate = value; }
+			get { return _checkOutDate; }
+			set 
+			{
+                if (value < CheckInDate)
+                {
+                    throw new ArgumentException("Check-out date cannot be earlier than check-in date.");
+                }
+                _checkOutDate = value; 
+			
+			}
+
 		}
-		#endregion
 
-# region Methods
+		public Shelter ShelterToBook
+		{
+			get { return _shelterToBook; }
+			set 
+			{
+				if (value == null)
+				{
+					throw new ArgumentException("Shelter cannot be null.");
+				}
+				_shelterToBook = value; 
+			}
+        }
+        #endregion
 
-		
+        #region Methods
 
-		public override string ToString()
+
+
+        public override string ToString()
 		{
 			return "BookingId: " + _bookingId + "NoUsers: " + _noUsers +  "IsReserved: " + _isReserved + "DistrictOfUser: " + _districtOfUser +  
-					"ReservationDate: " + _reservationDate + "ChekinDate: " + _chekinDate + "CheckoutDate: " + _checkoutDate;
+					"ReservationDate: " + _reservationDate + "ChekinDate: " + _checkInDate + "CheckoutDate: " + _checkOutDate;
 		}
-		#endregion
+#endregion
 	}
 }
