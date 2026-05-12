@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Security.Principal;
 using System.Text;
 using ClassLib_Shelter;
 using ClassLib_Shelter.Registers;
@@ -42,7 +43,7 @@ namespace ClassLib_Shelter.Model
 
         }
 
-        public User(int userId, string fullName, int age, string email, string role, bool isAdmin, District DistrictAssocation)
+        public User(int userId, string fullName, int age, string email, string role, bool isAdmin, District districtAssocation)
         {
             UserId = userId;
             FullName = fullName;
@@ -51,7 +52,7 @@ namespace ClassLib_Shelter.Model
             Role = role;
             IsAdmin = isAdmin;
             DateOfCreation = DateTime.Now;
-            DistrictAssociation = DistrictAssocation;
+            DistrictAssociation = districtAssocation;
                      
         }
 
@@ -160,19 +161,17 @@ namespace ClassLib_Shelter.Model
                 ". \n User was created: " + DateOfCreation;
         }
 
-        public void CreateBlogPost(int blogPostId, string title, string content, DateTime datePublished, bool hasVisited)
+        public void CreateBlogPost(string title, string content, DateTime datePublished, bool hasVisited)
         {
-            BlogPost existingBlogPost = BlogPosts.GetById(blogPostId);
+            int newBlogPostId = _blogPosts.GenId();
 
-            if(existingBlogPost == null)
-            { 
-                throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue"); 
-            }
+            BlogPost newBlogPost = new BlogPost(newBlogPostId, title, content, datePublished, hasVisited);
 
-            BlogPost newBlogPost = new BlogPost(blogPostId, title, content, datePublished, hasVisited);
-
+            
             _blogPosts.Add(newBlogPost);
         }
+
+               
 
         public void RemoveBlogPost(int blogPostId)
         {

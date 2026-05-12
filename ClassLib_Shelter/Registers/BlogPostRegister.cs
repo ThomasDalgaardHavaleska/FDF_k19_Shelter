@@ -60,7 +60,7 @@ namespace ClassLib_Shelter.Registers
 			_blogPosts.Add(newBlogPost);
 		}
 
-		private int GenId()
+		public int GenId()
 		{
 			int nextId = 0;
 			foreach (BlogPost blogPost in _blogPosts)
