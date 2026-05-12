@@ -42,13 +42,28 @@ namespace ClassLib_Shelter.Model
         public string Name
         {
             get {return _name; }
-            set {_name = value; }
+            set 
+            {
+                if (_name == null) 
+                { 
+                    throw new ArgumentNullException("Please enter valid name"); 
+                }
+                _name = value;
+            }
+           
         }
 
         public string AgeGroup
         {
             get { return _ageGroup;}
-            set { _ageGroup = value; }
+            set
+            {
+                if (_ageGroup == null)
+                {
+                    throw new ArgumentNullException("Please enter valid age group");
+                }
+                _ageGroup = value;
+            }
         }
 
         public string Location
@@ -68,6 +83,7 @@ namespace ClassLib_Shelter.Model
             get { return _contactPhone; }
             set { _contactPhone = value; }
         }
+
 
         public override string ToString()
         {
