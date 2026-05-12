@@ -89,9 +89,7 @@ namespace ClassLib_Shelter.Registers
 			}
 			throw new ArgumentException("Blogpost not found.");
 		}
-
 	}
-
 		#endregion
 }
 

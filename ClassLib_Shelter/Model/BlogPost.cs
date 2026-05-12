@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -16,8 +17,8 @@ namespace ClassLib_Shelter.Model
 		public List<Comment> _comments;
 	#endregion
 		#region Constrctor
-		public BlogPost() 
-		{ 
+		public BlogPost()
+		{
 			_id = 0;
 			_titel = " ";
 			_content = " ";
@@ -25,7 +26,7 @@ namespace ClassLib_Shelter.Model
 			_hasVisited = false;
 			_comments = new List<Comment>();
 		}
-		public BlogPost (int id, string titel, string content,DateTime datePublished, bool hasVisited)
+		public BlogPost(int id, string titel, string content, DateTime datePublished, bool hasVisited)
 		{
 			Id = id;
 			Titel = titel;
@@ -39,34 +40,40 @@ namespace ClassLib_Shelter.Model
 		public int Id
 		{
 			get { return _id; }
-			set {
-				if( Id == Id ) 
+			set
+			{
+				if (Id == Id)
 				{
 					throw new ArgumentException("That ID already exist");
 				}
-				
-					_id = value; }
+
+				_id = value;
+			}
 		}
 		public string Titel
 		{
 			get { return _titel; }
-			set {
-				if(string.IsNullOrEmpty(value) || value.Length == 0)
+			set
+			{
+				if (string.IsNullOrEmpty(value) || value.Length == 0)
 				{
 					throw new ArgumentException("Titel can not be empty");
 				}
-			_titel= value; }
+				_titel = value;
+			}
 		}
 		public string Content
 		{
 			get { return _content; }
-			set {
+			set
+			{
 				if (string.IsNullOrEmpty(value) || value.Length == 0)
 				{
 					throw new ArgumentException("Content can not be empty");
 				}
-			
-				_content  = value; }
+
+				_content = value;
+			}
 		}
 		public DateTime DatePublished
 		{
@@ -75,13 +82,13 @@ namespace ClassLib_Shelter.Model
 		}
 		public bool HasVisited
 		{
-			get { return _hasVisited; }	
+			get { return _hasVisited; }
 			set { _hasVisited = value; }
 		}
 		public List<Comment> Comments
 		{
 			get { return _comments; }
-			set{ _comments = value; }
+			set { _comments = value; }
 		}
 		#endregion
 		#region Methods
@@ -95,18 +102,47 @@ namespace ClassLib_Shelter.Model
 			_comments.Add(newComment);
 		}
 
-		public void Remove(Comment commentRemove)
+		public Comment GetById(int id)
 		{
-			Comment commentToRemove = null;
+
+			foreach (Comment comment in _comments)
+			{ 
+				if (comment.CommentId == id) 
+						return comment; 
+			}
+			return null;
+		}
+
+
+		public void Remove(int id)
+		{
+			Comment commentFound = GetById(Id);
 			foreach (Comment comment in _comments)
 			{
-
-				if (commentRemove == commentToRemove)
+				if (comment.CommentId == id)
 				{
-					_comments.Remove(commentToRemove);
+					_comments.Remove(comment);
 				}
 			}
 		}
+
+		public void CreateComment(int commentId, string content, User author,DateTime datePublished)
+		{
+			Comment existingComment = Comment.;
+
+			if (existingComment == null)
+			{
+				throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue");
+			}
+
+			Comment newComment = new Comment(commentId,content, author, datePublished);
+
+			_comments.Add(newComment);
+		}
+
+
+
+
 		#endregion
 	}
 }
