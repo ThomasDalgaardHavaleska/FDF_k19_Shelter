@@ -63,7 +63,7 @@ namespace ClassLib_Shelter.Model
             set { _contactEmail = value; }
         }
 
-        public string ConactPhone
+        public string ContactPhone
         {
             get { return _contactPhone; }
             set { _contactPhone = value; }
