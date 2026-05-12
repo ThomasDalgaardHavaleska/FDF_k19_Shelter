@@ -11,7 +11,7 @@ namespace ClassLib_Shelter.Model
 
 		private int _commentId;
 		private string _content;
-		private User _Author;
+		private User _author;
 		private DateTime _datePublished;
 
 		#endregion
@@ -21,7 +21,7 @@ namespace ClassLib_Shelter.Model
 		{
 			_commentId = 0;
 			_content = "";
-			_Author = null;
+			_author = null;
 			_datePublished = DateTime.Now;
 		}
 
@@ -29,7 +29,7 @@ namespace ClassLib_Shelter.Model
 		{
 			_commentId = commentId;
 			_content = content;
-			_Author = author;
+			_author = author;
 		}
 		#endregion
 
@@ -56,7 +56,7 @@ namespace ClassLib_Shelter.Model
 
 		public User Author
 		{
-			get { return _Author; }
+			get { return _author; }
 
 		}
 		#endregion
