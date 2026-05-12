@@ -9,7 +9,7 @@ namespace ClassLib_Shelter.Filters
 	
 	
 	{
-		public List<District> FilterLocation(List<District> districts, string location)
+		public List<District> FilterDistrict(List<District> districts, string location)
 		{
 			List<District> result = new List<District>();
 
