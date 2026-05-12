@@ -67,9 +67,15 @@ namespace ClassLib_Shelter.Model
 			set { _hasVisited = value; }
 		}
 		#endregion
+		#region Methods
 		public override string ToString()
 		{
 			return "Id= " + Id + " Titel= " + Titel + " Content= " + Content + " Author= " + Author + " Date published= " + DatePublished + " Has visited= " + HasVisited;
 		}
+
+
+
+
+		#endregion
 	}
 }
