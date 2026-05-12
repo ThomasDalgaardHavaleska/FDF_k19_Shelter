@@ -128,14 +128,14 @@ namespace ClassLib_Shelter.Model
 
 		public void CreateComment(int commentId, string content, User author,DateTime datePublished)
 		{
-			Comment existingComment = Comment.;
+			Comment existingComment = GetById(commentId);
 
 			if (existingComment == null)
 			{
 				throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue");
 			}
 
-			Comment newComment = new Comment(commentId,content, author, datePublished);
+			Comment newComment = new Comment(commentId);
 
 			_comments.Add(newComment);
 		}
