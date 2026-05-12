@@ -31,10 +31,10 @@ namespace ClassLib_Shelter.Classes
 		public Shelter(int shelterId, string name, string geolocation, string place, int maximumCapacity)
 		{
 			_shelterId = shelterId;
-			_name = name;
+			Name = name;
 			_geolocation = geolocation;
-			_place = place;
-			_maximumCapacity = maximumCapacity;
+			Place = place;
+			MaximumCapacity = maximumCapacity;
 		}
 
 		#endregion
@@ -49,8 +49,15 @@ namespace ClassLib_Shelter.Classes
 		public string Name
 		{
 			get { return _name; }
-			set { _name = value; }
-		}
+			set
+			{
+				if (value == null)
+				{
+					throw new ArgumentNullException ("Name cannot be nothing");
+				}
+				_name = value;
+			}
+				}
 
 		public string Geolocation
 		{ 
@@ -61,13 +68,28 @@ namespace ClassLib_Shelter.Classes
 		public string Place
 		{
 			get { return _place; }
-			set { _place = value; }
+			set 
+			{
+			if (value == null)
+			{
+				throw new ArgumentNullException("Place cannot be nothing");
+			}
+				_place = value;
+						
+			}
 		}
 
 		public int MaximumCapacity
 		{
 			get { return _maximumCapacity; }
-			set { _maximumCapacity = value; }
+			set 
+			{
+			if (value <= 0 || value > 10)
+			{
+				throw new ArgumentException("MaximumCapacity must be between 1 and 10");
+			}
+				_maximumCapacity = value;
+			}
 
 		}
 		#endregion
