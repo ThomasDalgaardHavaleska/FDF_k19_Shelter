@@ -71,7 +71,7 @@ namespace ClassLib_Shelter.Registers
                 district.AgeGroup = updatedDistrict.AgeGroup;
                 district.Location = updatedDistrict.Location;
                 district.ContactEmail = updatedDistrict.ContactEmail;
-                district.ConactPhone = updatedDistrict.ConactPhone;
+                district.ContactPhone = updatedDistrict.ContactPhone;
             }
             return district;
         }

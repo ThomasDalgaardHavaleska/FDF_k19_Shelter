@@ -17,6 +17,7 @@ namespace ClassLib_Shelter.Model
         private bool _isAdmin;
         private DateTime _dateOfCreation;
         private District _districtAssociation;
+        private BlogPost _blogPost;
 
 
 
@@ -34,7 +35,8 @@ namespace ClassLib_Shelter.Model
             _role = "";
             _isAdmin = false;
             _dateOfCreation = DateTime.Now;
-            _districtAssociation = null; 
+            _districtAssociation = null;
+            _blogPost = null;
 
         }
 
@@ -42,13 +44,13 @@ namespace ClassLib_Shelter.Model
         {
             UserId = userId;
             FullName = fullName;
-            _age = _age;
+            Age = _age;
             Email = email;
             Role = role;
             IsAdmin = isAdmin;
             DateOfCreation = DateTime.Now;
             DistrictAssociation = DistrictAssocation;
-          
+                     
         }
 
 
@@ -63,20 +65,39 @@ namespace ClassLib_Shelter.Model
         public string FullName //Lav ArgumentationException ift. null og whitespace
         {
             get { return _fullName; }
-            set { _fullName = value; }
+            set 
+                { if(value == null)
+                    throw new ArgumentNullException("Fullname cannot be empty. Type in your fullname."); 
+                
+                _fullName = value; }
         }
 
-        public int Age //Lav ArgumentException ift. alder ikke må være 0 eller minus.
+        public int Age 
         {
             get { return _age; }
-            set { _age = value; }
+            set
+            {
+                if (value < 16 )
+                {
+                    throw new ArgumentException("Age cannot be negative or less than 16 years");
+                }
+                _age = value;
+            }
         }
 
-        public string Email //Lav ArgumentationException ift. null og whitespace
+        public string Email 
         {
             get { return _email; }
-            set { _email = value; }
+            set
+            {
+
+                if (value == null)
+                    throw new ArgumentNullException("Mail cannot be empty. Type in a valid mail adress.");
+
+                _email = value;
+            }
         }
+        
 
         public string Role
         {
@@ -112,6 +133,12 @@ namespace ClassLib_Shelter.Model
                 
         }
 
+        public BlogPost BlogPost
+        {
+            get { return _blogPost; }
+            set { _blogPost = value; }
+        }
+
 
         //Metoder
 
@@ -130,7 +157,42 @@ namespace ClassLib_Shelter.Model
                 ". \n User was created: " + DateOfCreation;
         }
 
-    
+        public void CreateBlogPost(int blogPostId, string title, string content, User author, DateTime datePublished, bool hasVisited)
+        {
+            BlogPost existingBlogPost = _blogPosts.GetById(blogPostId);
+
+            if(existingBlogPost == null)
+            { throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue"); }
+
+            BlogPost newBlogPost = new BlogPost(blogPostId, title, content, author, datePublished, hasVisited);
+
+            _blogPosts.Add(newBlogPost);
+        }
+
+        public void RemoveBlogPost(int blogPostId)
+        {
+
+            _blogPosts.Remove(GetById(blogPostId));
+
+        }
+
+        public District Update(int districtId, District updatedDistrict)
+        {
+            District currentDistrict = GetById(districtId);
+
+            if (currentDistrict != null)
+            {
+                currentDistrict.DistrictId = updatedDistrict.DistrictId;
+                currentDistrict.Name = updatedDistrict.Name;
+                currentDistrict.AgeGroup = updatedDistrict.AgeGroup;
+                currentDistrict.Location = updatedDistrict.Location;
+                currentDistrict.ContactEmail = updatedDistrict.ContactEmail;
+                currentDistrict.ContactPhone = updatedDistrict.ContactPhone;
+                
+            }
+            return currentDistrict;
+        }
+
 
     }
 }
