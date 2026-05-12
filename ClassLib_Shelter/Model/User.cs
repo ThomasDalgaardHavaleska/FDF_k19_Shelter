@@ -10,7 +10,7 @@ namespace ClassLib_Shelter.Model
 {
     public class User
     {
-        //Instansfelter
+        #region Instancefields
 
         private int _userId;
         private string _fullName;
@@ -21,14 +21,8 @@ namespace ClassLib_Shelter.Model
         private DateTime _dateOfCreation;
         private District _districtAssociation;
         private BlogPostRegister _blogPosts;
-
-
-
-
-        //Konstruktører
-
-        //default konstruktør
-
+        #endregion
+        #region Constructors
         public User()
         {
             _userId = 0;
@@ -55,9 +49,9 @@ namespace ClassLib_Shelter.Model
             DistrictAssociation = districtAssocation;
                      
         }
+        #endregion
 
-
-        //Properties
+        #region properties
 
         public int UserId
         {
@@ -128,7 +122,6 @@ namespace ClassLib_Shelter.Model
                 if (value == null)
                 {
                     throw new ArgumentNullException("As a new user, you need to choose a district upon creation");
-
                 }
 
                 _districtAssociation = value;
@@ -142,10 +135,8 @@ namespace ClassLib_Shelter.Model
             set { _blogPosts = value; }
         }
 
-
-        //Metoder
-
-        //To string-metode
+        #endregion
+        #region Methods
 
         public override string ToString()
         {
@@ -197,7 +188,7 @@ namespace ClassLib_Shelter.Model
             }
             return currentDistrict;
         }
-
+        #endregion
 
     }
 }
