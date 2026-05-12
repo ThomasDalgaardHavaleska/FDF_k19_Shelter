@@ -157,14 +157,16 @@ namespace ClassLib_Shelter.Model
                 ". \n User was created: " + DateOfCreation;
         }
 
-        public void CreateBlogPost(int blogPostId, string title, string content, User author, DateTime datePublished, bool hasVisited)
+        public void CreateBlogPost(int blogPostId, string title, string content, DateTime datePublished, bool hasVisited)
         {
             BlogPost existingBlogPost = _blogPosts.GetById(blogPostId);
 
             if(existingBlogPost == null)
-            { throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue"); }
+            { 
+                throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue"); 
+            }
 
-            BlogPost newBlogPost = new BlogPost(blogPostId, title, content, author, datePublished, hasVisited);
+            BlogPost newBlogPost = new BlogPost(blogPostId, title, content, datePublished, hasVisited);
 
             _blogPosts.Add(newBlogPost);
         }
