@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLib_Shelter.Classes
+namespace ClassLib_Shelter.Model
 {
 	public class Shelter
 	
