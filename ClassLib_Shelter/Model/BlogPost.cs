@@ -11,7 +11,6 @@ namespace ClassLib_Shelter.Model
 		private int _id;
 		private string _titel;
 		private string _content;
-		private string _author;
 		private DateTime _datePublished;
 		private bool _hasVisited;
 	#endregion
@@ -21,16 +20,14 @@ namespace ClassLib_Shelter.Model
 			_id = 0;
 			_titel = " ";
 			_content = " ";
-			_author = " ";
 			_datePublished = DateTime.Now;
 			_hasVisited = false;
 		}
-		public BlogPost (int id, string titel, string content,  string author,  DateTime datePublished, bool hasVisited)
+		public BlogPost (int id, string titel, string content,DateTime datePublished, bool hasVisited)
 		{
 			Id = id;
 			Titel = titel;
 			Content = content;
-			Author = author;
 			DatePublished = datePublished;
 			HasVisited = hasVisited;
 		}
@@ -51,11 +48,6 @@ namespace ClassLib_Shelter.Model
 			get { return _content; }
 			set { _content  = value; }
 		}
-		public string Author
-		{
-			get { return _author; }
-			set { _author = value; }
-		}
 		public DateTime DatePublished
 		{
 			get { return _datePublished; }
@@ -67,9 +59,12 @@ namespace ClassLib_Shelter.Model
 			set { _hasVisited = value; }
 		}
 		#endregion
+		#region Methods
 		public override string ToString()
 		{
-			return "Id= " + Id + " Titel= " + Titel + " Content= " + Content + " Author= " + Author + " Date published= " + DatePublished + " Has visited= " + HasVisited;
+			return "Id= " + Id + " Titel= " + Titel + " Content= " + Content + " Date published= " + DatePublished + " Has visited= " + HasVisited;
 		}
+
+		#endregion
 	}
 }
