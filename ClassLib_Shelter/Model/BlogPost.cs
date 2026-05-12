@@ -13,6 +13,7 @@ namespace ClassLib_Shelter.Model
 		private string _content;
 		private DateTime _datePublished;
 		private bool _hasVisited;
+		public List<Comment> _comments;
 	#endregion
 		#region Constrctor
 		public BlogPost() 
@@ -22,6 +23,7 @@ namespace ClassLib_Shelter.Model
 			_content = " ";
 			_datePublished = DateTime.Now;
 			_hasVisited = false;
+			_comments = new List<Comment>();
 		}
 		public BlogPost (int id, string titel, string content,DateTime datePublished, bool hasVisited)
 		{
@@ -30,6 +32,7 @@ namespace ClassLib_Shelter.Model
 			Content = content;
 			DatePublished = datePublished;
 			HasVisited = hasVisited;
+			_comments = Comments;
 		}
 		#endregion
 		#region Properties
@@ -75,6 +78,11 @@ namespace ClassLib_Shelter.Model
 			get { return _hasVisited; }	
 			set { _hasVisited = value; }
 		}
+		public List<Comment> Comments
+		{
+			get { return _comments; }
+			set{ _comments = value; }
+		}
 		#endregion
 		#region Methods
 		public override string ToString()
@@ -82,6 +90,23 @@ namespace ClassLib_Shelter.Model
 			return "Id= " + Id + " Titel= " + Titel + " Content= " + Content + " Date published= " + DatePublished + " Has visited= " + HasVisited;
 		}
 
+		public void Add(Comment newComment)
+		{
+			_comments.Add(newComment);
+		}
+
+		public void Remove(Comment commentRemove)
+		{
+			Comment commentToRemove = null;
+			foreach (Comment comment in _comments)
+			{
+
+				if (commentRemove == commentToRemove)
+				{
+					_comments.Remove(commentToRemove);
+				}
+			}
+		}
 		#endregion
 	}
 }

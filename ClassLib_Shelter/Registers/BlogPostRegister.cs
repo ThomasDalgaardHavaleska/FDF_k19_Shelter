@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 using System.Text;
 using ClassLib_Shelter.Model;
 
@@ -55,12 +56,21 @@ namespace ClassLib_Shelter.Registers
 		{
 			if (newBlogPost == null)
 				throw new ArgumentException("Item");
+			newBlogPost.Id = GenId();
+			_blogPosts.Add(newBlogPost);
+		}
+
+		private int GenId()
+		{
+			int nextId = 0;
 			foreach (BlogPost blogPost in _blogPosts)
 			{
-				if (blogPost.Id == blogPost.Id)
-					throw new ArgumentException("Blogpost with that ID already exist");
+				if (nextId < blogPost.Id)
+				{
+					nextId = blogPost.Id;
+				}
 			}
-			_blogPosts.Add(newBlogPost);
+			return nextId + 1;
 		}
 
 		public List<BlogPost> GetAll()
