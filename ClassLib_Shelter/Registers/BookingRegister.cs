@@ -47,14 +47,28 @@ namespace ClassLib_Shelter.Registers
 
         public void Add(Booking newBooking)
         {
+            if (newBooking == null)
+                throw new ArgumentNullException("item");
+
+            foreach (Booking booking in _bookings)
+            {
+                if (booking.BookingId == booking.BookingId)
+                {
+                    throw new Exception("Booking with this ID already exists.");
+                }
+            }
             _bookings.Add(newBooking);
         }
 
 
         public void Remove(int bookingId)
         {
-
-            _bookings.Remove(GetById(bookingId));
+            Booking bookingToDelete = GetById(bookingId);
+            if (bookingToDelete == null)
+            {
+                throw new Exception("Booking not found.");
+            }
+            _bookings.Remove(bookingToDelete);
 
 
         }
@@ -80,9 +94,10 @@ namespace ClassLib_Shelter.Registers
                 booking.DistrictOfUser = updatedBooking.DistrictOfUser;
                 booking.ReservationDate = updatedBooking.ReservationDate;
                 booking.CheckoutDate = updatedBooking.CheckoutDate;
-                booking.ChekinDate = updatedBooking.ChekinDate;
+                booking.CheckInDate = updatedBooking.CheckInDate;
+                return booking;
             }
-            return booking;
+            throw new Exception("Booking not found.");
         }
         
         // ChangeBookingDate -> Properties?
