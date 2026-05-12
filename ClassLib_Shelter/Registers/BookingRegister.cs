@@ -89,7 +89,7 @@ namespace ClassLib_Shelter.Registers
             if (booking != null)
             {
                 booking.BookingId = updatedBooking.BookingId;
-                booking.NoUsers = updatedBooking.NoUsers;
+                booking.NoOfCampers = updatedBooking.NoOfCampers;
                 booking.IsReserved = updatedBooking.IsReserved;
                 booking.DistrictOfUser = updatedBooking.DistrictOfUser;
                 booking.ReservationDate = updatedBooking.ReservationDate;

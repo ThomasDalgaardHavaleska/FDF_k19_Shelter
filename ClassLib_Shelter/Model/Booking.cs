@@ -7,8 +7,7 @@ using System.Text;
 namespace ClassLib_Shelter.Model
 {
 	public class Booking
-	
-	
+		
 	{
 # region Instancefields
 		private int _bookingId;
@@ -28,7 +27,7 @@ namespace ClassLib_Shelter.Model
         public Booking()
 		{
 			BookingId = 0;
-			NoUsers = 1;
+			NoOfCampers = 1;
 			IsReserved = false;
 			DistrictOfUser = "Placeholder";
 			ReservationDate = DateTime.Now;
@@ -39,7 +38,7 @@ namespace ClassLib_Shelter.Model
 		public Booking(int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
 		{
 			BookingId = bookingId;
-			NoUsers = noUsers;
+			NoOfCampers = noUsers;
 			IsReserved = isReserved;
 			DistrictOfUser = districtOfUser;
 			ReservationDate = DateTime.Now;
@@ -57,7 +56,7 @@ namespace ClassLib_Shelter.Model
 			set { _bookingId = value; }
 		}
 
-	public int NoUsers
+	public int NoOfCampers
 		{
 			get { return _noUsers; }
 			set 
