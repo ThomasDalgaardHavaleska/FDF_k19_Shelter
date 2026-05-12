@@ -75,7 +75,6 @@ namespace ClassLib_Shelter.Registers
 			{ 
 				blogpost.Titel = updatedBlogpost.Titel;
 				blogpost.Content = updatedBlogpost.Content;
-				blogpost.Author = updatedBlogpost.Author;
 				return blogpost;
 			}
 			throw new ArgumentException("Blogpost not found.");
