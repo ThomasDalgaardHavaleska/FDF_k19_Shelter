@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using ClassLib_Shelter;
+using ClassLib_Shelter.Registers;
 
 namespace ClassLib_Shelter.Model
 {
@@ -17,7 +19,7 @@ namespace ClassLib_Shelter.Model
         private bool _isAdmin;
         private DateTime _dateOfCreation;
         private District _districtAssociation;
-        private BlogPost _blogPost;
+        private BlogPostRegister _blogPosts;
 
 
 
@@ -36,7 +38,7 @@ namespace ClassLib_Shelter.Model
             _isAdmin = false;
             _dateOfCreation = DateTime.Now;
             _districtAssociation = null;
-            _blogPost = null;
+            _blogPosts = null;
 
         }
 
@@ -62,7 +64,7 @@ namespace ClassLib_Shelter.Model
             set { _userId = value; }
         }
 
-        public string FullName //Lav ArgumentationException ift. null og whitespace
+        public string FullName 
         {
             get { return _fullName; }
             set 
@@ -133,10 +135,10 @@ namespace ClassLib_Shelter.Model
                 
         }
 
-        public BlogPost BlogPost
+        public BlogPostRegister BlogPosts
         {
-            get { return _blogPost; }
-            set { _blogPost = value; }
+            get { return _blogPosts; }
+            set { _blogPosts = value; }
         }
 
 
@@ -151,20 +153,23 @@ namespace ClassLib_Shelter.Model
                 "User with ID: " + UserId + 
                 ". \n Fullname: " + FullName + 
                 ". \n Email: " + Email +
+                ". \n Age: " + Age +
                 ". \n Role: " + Role +
-                " . \n Is an Admin?: " + IsAdmin +
-                ".  \n District: " + DistrictAssociation +
+                ". \n Is an Admin?: " + IsAdmin +
+                ". \n District: " + DistrictAssociation +
                 ". \n User was created: " + DateOfCreation;
         }
 
-        public void CreateBlogPost(int blogPostId, string title, string content, User author, DateTime datePublished, bool hasVisited)
+        public void CreateBlogPost(int blogPostId, string title, string content, DateTime datePublished, bool hasVisited)
         {
-            BlogPost existingBlogPost = _blogPosts.GetById(blogPostId);
+            BlogPost existingBlogPost = BlogPosts.GetById(blogPostId);
 
             if(existingBlogPost == null)
-            { throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue"); }
+            { 
+                throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue"); 
+            }
 
-            BlogPost newBlogPost = new BlogPost(blogPostId, title, content, author, datePublished, hasVisited);
+            BlogPost newBlogPost = new BlogPost(blogPostId, title, content, datePublished, hasVisited);
 
             _blogPosts.Add(newBlogPost);
         }
@@ -172,15 +177,16 @@ namespace ClassLib_Shelter.Model
         public void RemoveBlogPost(int blogPostId)
         {
 
-            _blogPosts.Remove(GetById(blogPostId));
+            BlogPosts.Remove(blogPostId);
 
         }
 
-        public District Update(int districtId, District updatedDistrict)
+        public District UpdateDistrict(District updatedDistrict)
         {
-            District currentDistrict = GetById(districtId);
 
-            if (currentDistrict != null)
+            District currentDistrict = DistrictAssociation;
+
+            if (DistrictAssociation != null)
             {
                 currentDistrict.DistrictId = updatedDistrict.DistrictId;
                 currentDistrict.Name = updatedDistrict.Name;
