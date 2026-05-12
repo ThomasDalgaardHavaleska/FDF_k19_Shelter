@@ -36,17 +36,34 @@ namespace ClassLib_Shelter.Model
 		public int Id
 		{
 			get { return _id; }
-			set { _id = value; }
+			set {
+				if( Id == Id ) 
+				{
+					throw new ArgumentException("That ID already exist");
+				}
+				
+					_id = value; }
 		}
 		public string Titel
 		{
 			get { return _titel; }
-			set { _titel= value; }
+			set {
+				if(string.IsNullOrEmpty(value) || value.Length == 0)
+				{
+					throw new ArgumentException("Titel can not be empty");
+				}
+			_titel= value; }
 		}
 		public string Content
 		{
 			get { return _content; }
-			set { _content  = value; }
+			set {
+				if (string.IsNullOrEmpty(value) || value.Length == 0)
+				{
+					throw new ArgumentException("Content can not be empty");
+				}
+			
+				_content  = value; }
 		}
 		public DateTime DatePublished
 		{
