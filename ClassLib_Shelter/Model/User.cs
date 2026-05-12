@@ -47,7 +47,8 @@ namespace ClassLib_Shelter.Model
             IsAdmin = isAdmin;
             DateOfCreation = DateTime.Now;
             DistrictAssociation = districtAssocation;
-                     
+            BlogPosts = new BlogPostRegister();
+
         }
         #endregion
 
