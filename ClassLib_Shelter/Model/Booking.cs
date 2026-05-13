@@ -26,14 +26,15 @@ namespace ClassLib_Shelter.Model
 
         public Booking()
 		{
+			DateTime now = DateTime.Now;
 			BookingId = 0;
 			NoOfCampers = 1;
 			IsReserved = false;
 			DistrictOfUser = "Placeholder";
-			ReservationDate = DateTime.Now;
-			CheckInDate = DateTime.Now;
-			CheckoutDate = DateTime.Now;
-			ShelterToBook = null;
+			ReservationDate = now;
+			CheckInDate = now;
+			CheckoutDate = now;
+			ShelterToBook = new Shelter();
         }
 		public Booking(int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
 		{
@@ -65,9 +66,11 @@ namespace ClassLib_Shelter.Model
 				{
 					throw new ArgumentException("Number of users cannot be negative.");
                 }
-				if (value > ShelterToBook.MaximumCapacity)
-				{ 
-					throw new ArgumentException("Number of campers cannot exceed shelter capacity.");
+
+                // Only check capacity when a shelter is assigned
+                if (ShelterToBook != null && value > ShelterToBook.MaximumCapacity)
+                {
+                    throw new ArgumentException("Number of campers cannot exceed shelter capacity.");
                 }
 
                 _noUsers = value; 
@@ -102,7 +105,7 @@ namespace ClassLib_Shelter.Model
 			get { return _reservationDate; }
 			set 
 			{
-                if (value < DateTime.Now)
+				if (value < DateTime.UtcNow.AddSeconds(-1))
                 {
                     throw new ArgumentException(
                         "Reservation date cannot be in the past.");
@@ -116,7 +119,7 @@ namespace ClassLib_Shelter.Model
 			get { return _checkInDate; }
 			set 
 			{
-                if (value < DateTime.Now)
+                if (value < DateTime.UtcNow.AddSeconds(-1))
                 {
                     throw new ArgumentException("Check-in date cannot be in the past.");
                 }
