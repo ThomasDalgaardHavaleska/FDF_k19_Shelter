@@ -128,16 +128,15 @@ namespace ClassLib_Shelter.Model
 			}
 		}
 
-		//public void CreateComment(string content, User author,DateTime datePublished)
-		//{
-		//	int existingComment = GetById();
+		public void CreateComment(string content, User author)
+		{
+			
+
+			Comment newComment = new Comment(0, content, author);
 
 
-		//	Comment newComment = new Comment(commentId, content, author,  datePublished);
-
-
-  //          _comments.Add(newComment);
-		//}
+			_comments.Add(newComment);
+		}
 		#endregion
 	}
 }
