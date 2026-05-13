@@ -143,14 +143,9 @@ namespace ClassLib_Shelter.Model
         {
             return
                 
-                "User with ID: " + UserId + 
-                ". \n Fullname: " + FullName + 
-                ". \n Email: " + Email +
-                ". \n Age: " + Age +
-                ". \n Role: " + Role +
-                ". \n Is an Admin?: " + IsAdmin +
-                ". \n District: " + DistrictAssociation +
-                ". \n User was created: " + DateOfCreation;
+                "User with ID: " + UserId + ", Fullname: " + FullName + ", Email: " + Email + ", Age: " + Age +
+               ", Role: " + Role + ", Is an Admin?: " + IsAdmin + ", District: " + DistrictAssociation +
+                ", User was created: " + DateOfCreation;
         }
 
         public void CreateBlogPost(string title, string content, DateTime datePublished, bool hasVisited)
