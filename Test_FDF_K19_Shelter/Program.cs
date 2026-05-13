@@ -1,9 +1,9 @@
 ﻿
 
 
-using System;
-using ClassLib_Shelter.Registers;
 using ClassLib_Shelter.Model;
+using ClassLib_Shelter.Registers;
+using System;
 
 // Simple test harness that exercises library classes and registers.
 DateTime now = DateTime.Now;
@@ -32,22 +32,16 @@ Console.WriteLine("UserRegister contents:");
 foreach (var u in userRegister.GetAll()) Console.WriteLine(u);
 Console.WriteLine();
 
-// Blog posts via User.CreateBlogPost
+// Work with BlogPostRegister Directly
 user1.CreateBlogPost("Trip to Shelter", "We had a great trip.", now.AddDays(-1), true);
 user1.CreateBlogPost("Maintenance", "Shelter needs repair.", now, false);
 Console.WriteLine("User1 blog posts (via User.CreateBlogPost):");
 Console.WriteLine(user1.BlogPosts);
 Console.WriteLine();
 
-// Work with BlogPostRegister directly
-var blogRegister = new BlogPostRegister();
-user1.CreateBlogPost("Announcement", "Welcome everyone", now, false);
-user1.CreateBlogPost("Event", "Camp event details", now.AddDays(10), false);
-blogRegister.Add(user1.BlogPosts.GetById(1));
-blogRegister.Add(user1.BlogPosts.GetById(2));
-Console.WriteLine("BlogPostRegister contents:");
-foreach (var bp in blogRegister.GetAll()) Console.WriteLine(bp);
-Console.WriteLine();
+
+
+
 
 // Add comments to a blog post using Comment and CommentRegister
 var commentRegister = new CommentRegister();
@@ -62,9 +56,10 @@ Console.WriteLine();
 
 // BlogPostImage
 var imgPost = new BlogPostImage(3, "Photo", "Shelter photo", now, true, "/images/shelter.jpg", "jpg");
-blogRegister.Add(imgPost);
+user1.BlogPosts.Add(imgPost);
+
 Console.WriteLine("Added BlogPostImage to BlogPostRegister:");
-foreach (var bp in blogRegister.GetAll()) Console.WriteLine(bp);
+foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);
 Console.WriteLine();
 
 // Shelters and Bookings
@@ -89,12 +84,13 @@ Console.WriteLine();
 // Demonstrate update and remove operations
 Console.WriteLine("Blog post update and remove demo:");
 
+
 Console.WriteLine("Updated post:");
 
 Console.WriteLine("Removing first post (bp1)...");
 
 Console.WriteLine("Remaining posts:");
-foreach (var bp in blogRegister.GetAll()) Console.WriteLine(bp);
+foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);
 Console.WriteLine();
 
 // UserRegister update
