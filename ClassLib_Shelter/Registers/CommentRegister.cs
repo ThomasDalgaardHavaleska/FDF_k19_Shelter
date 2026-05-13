@@ -90,8 +90,17 @@ namespace ClassLib_Shelter.Registers
             return null;
 
         }
-          
-        
+
+        public override string ToString()
+        {
+            string res = "[";
+            foreach (Comment comment in _comments)
+            {
+                res += comment + " ";
+            }
+            return res + " ]";
+        }
+
         #endregion
 
     }

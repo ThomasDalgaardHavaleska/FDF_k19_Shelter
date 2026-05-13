@@ -101,10 +101,33 @@ namespace ClassLib_Shelter.Model
 
 		public void Add(Comment newComment)
 		{
-			_comments.Add(newComment);
-		}
+            if (newComment == null) throw new ArgumentException("Item");
+            if (newComment.CommentId == 0)
+            {
+                newComment.CommentId = GenId();
+            }
+            else
+            {
+                if (GetById(newComment.CommentId) != null)
+                    throw new ArgumentException("A blogpost with this Id already exists.");
+            }
+            _comments.Add(newComment);
+        }
 
-		public Comment GetById(int id)
+        private int GenId()
+        {
+            int nextId = 0;
+            foreach (Comment comment in _comments)
+            {
+                if (nextId < comment.CommentId)
+                {
+                    nextId = comment.CommentId;
+                }
+            }
+            return nextId + 1;
+        }
+
+        public Comment GetById(int id)
 		{
 
 			foreach (Comment comment in _comments)
