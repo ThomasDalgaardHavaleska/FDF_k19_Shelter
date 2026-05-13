@@ -46,7 +46,7 @@ Console.WriteLine();
 // Add comments to a blog post using Comment and CommentRegister
 
 user1.BlogPosts.GetById(1).CreateComment("Nice work!", user2);
-
+user1.BlogPosts.GetById(1).CreateComment("Does this even work?!", user2);
 
 
 Console.WriteLine("Comments on first blog post:");
