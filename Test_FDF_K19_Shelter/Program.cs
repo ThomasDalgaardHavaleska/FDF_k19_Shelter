@@ -108,11 +108,11 @@ Console.WriteLine();
 Console.WriteLine("Test harness finished.");
 Console.WriteLine();
 
-Console.WriteLine("Testing edge case: Attempting to set NoOfCampers to 6 (exceeds shelter capacity)...");
+Console.WriteLine("Testing edge case: Attempting to set Maximum capacity to 10 (exceeds shelter capacity)...");
 
 try
 {
-     booking.NoOfCampers = 6; // This should throw an exception due to capacity
+     shelter1.MaximumCapacity = 100;
 }
 catch (ArgumentException ex)
 {
