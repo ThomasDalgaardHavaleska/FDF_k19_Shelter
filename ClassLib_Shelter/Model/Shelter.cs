@@ -100,7 +100,7 @@ namespace ClassLib_Shelter.Model
 
 		public override string ToString()
 			{
-			return "ShelterId: " +_shelterId + "Name: " + _name + "Geolocation: " +_geolocation + "Place: " + _place + "MaximumCapacity: " + _maximumCapacity;
+			return "ShelterId: " +_shelterId + ", Name: " + _name + ", Geolocation: " +_geolocation + ", Place: " + _place + ", MaximumCapacity: " + _maximumCapacity;
 			}
 
 		#endregion
