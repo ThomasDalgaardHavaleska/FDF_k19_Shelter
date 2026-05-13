@@ -47,7 +47,7 @@ namespace ClassLib_Shelter.Model
             get {return _name; }
             set 
             {
-                if (_name == null) // if(string.IsNullOrWhiteSpace(value) || value.Length == 0)
+                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
 				{ 
                     throw new ArgumentNullException("Please enter valid name"); 
                 }
@@ -61,7 +61,7 @@ namespace ClassLib_Shelter.Model
             get { return _ageGroup;}
             set
             {
-                if (_ageGroup == null) //if(string.IsNullOrWhiteSpace(value) || value.Length == 0)
+                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
 				{
                     throw new ArgumentNullException("Please enter valid age group");
                 }
@@ -72,19 +72,40 @@ namespace ClassLib_Shelter.Model
         public string Location
         {
             get { return _location; }
-            set { _location = value; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
+                {
+                    throw new ArgumentNullException("Please enter valid location");
+                }
+                _location = value;
+            }
         }
 
         public string ContactEmail
         {
             get { return _contactEmail; }
-            set { _contactEmail = value; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
+                {
+                    throw new ArgumentNullException("Please enter valid Email");
+                }
+                _contactEmail = value;
+            }
         }
 
         public string ContactPhone
         {
             get { return _contactPhone; }
-            set { _contactPhone = value; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
+                {
+                    throw new ArgumentNullException("Please enter valid number");
+                }
+                _contactPhone = value;
+            }
         }
 		#endregion
 		#region Methods
