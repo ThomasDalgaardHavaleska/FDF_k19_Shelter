@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -126,24 +127,16 @@ namespace ClassLib_Shelter.Model
 			}
 		}
 
-		public void CreateComment(int commentId, string content, User author,DateTime datePublished)
-		{
-			Comment existingComment = GetById(commentId);
-
-			if (existingComment == null)
-			{
-				throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue");
-			}
-
-			Comment newComment = existingComment;
+		//public void CreateComment(string content, User author,DateTime datePublished)
+		//{
+		//	int existingComment = GetById();
 
 
-            _comments.Add(newComment);
-		}
+		//	Comment newComment = new Comment(commentId, content, author,  datePublished);
 
 
-
-
+  //          _comments.Add(newComment);
+		//}
 		#endregion
 	}
 }
