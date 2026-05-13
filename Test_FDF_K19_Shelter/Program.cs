@@ -44,15 +44,15 @@ Console.WriteLine();
 
 
 // Add comments to a blog post using Comment and CommentRegister
-var commentRegister = new CommentRegister();
-var comment1 = new Comment(1, "Looks great!", user2) { DatePublished = now };
-var comment2 = new Comment(2, "I can help with repairs.", user1) { DatePublished = now };
-commentRegister.Add(comment1);
-commentRegister.Add(comment2);
+
+user1.BlogPosts.GetById(1).CreateComment("Nice work!", user2);
+
+
 
 Console.WriteLine("Comments on first blog post:");
 
-Console.WriteLine();
+Console.WriteLine(user1.BlogPosts.GetById(1).Comments);
+
 
 // BlogPostImage
 

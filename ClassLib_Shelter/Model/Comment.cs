@@ -30,7 +30,8 @@ namespace ClassLib_Shelter.Model
 			_commentId = commentId;
 			_content = content;
 			_author = author;
-		}
+            _datePublished = DateTime.Now;
+        }
 		#endregion
 
 		#region properties

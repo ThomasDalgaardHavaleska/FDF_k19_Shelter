@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClassLib_Shelter;
+using ClassLib_Shelter.Registers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Security.Principal;
 using System.Text;
-using ClassLib_Shelter;
-using ClassLib_Shelter.Registers;
+using System.Xml.Linq;
 
 namespace ClassLib_Shelter.Model
 {
@@ -159,14 +160,23 @@ namespace ClassLib_Shelter.Model
         }
         public void CreateBlogPostImage(string title, string content, DateTime datePublished, bool hasVisited, string path, string type)
         {
-            //int newBlogPostId = _blogPosts.GenId();
-
-            BlogPostImage newBlogPost = new BlogPostImage(0, title, content, datePublished, hasVisited, path, type);
+           
+            BlogPost newBlogPost = new BlogPostImage(0, title, content, datePublished, hasVisited, path, type);
 
 
             _blogPosts.Add(newBlogPost);
         }
 
+        public void CreateBlogPostSound(string title, string content, DateTime datePublished, bool hasVisited, string soundPath, string soundType)
+        {
+            
+            BlogPost newBlogPost = new BlogPostSound(0, title, content, datePublished, hasVisited, soundPath, soundType);
+
+
+            _blogPosts.Add(newBlogPost);
+        }
+
+     
 
         public void RemoveBlogPost(int blogPostId)
         {
