@@ -33,7 +33,7 @@ namespace ClassLib_Shelter.Model
 			Content = content;
 			DatePublished = datePublished;
 			HasVisited = hasVisited;
-			_comments = Comments;
+			Comments = new List<Comment>();
 		}
 		#endregion
 		#region Properties
@@ -42,7 +42,7 @@ namespace ClassLib_Shelter.Model
 			get { return _id; }
 			set
 			{
-				if (Id == Id)
+				if (value == Id)
 				{
 					throw new ArgumentException("That ID already exist");
 				}
@@ -135,9 +135,10 @@ namespace ClassLib_Shelter.Model
 				throw new ArgumentException("A blogpost with an identical Id already exists. Update Id to continue");
 			}
 
-			Comment newComment = new Comment(commentId);
+			Comment newComment = existingComment;
 
-			_comments.Add(newComment);
+
+            _comments.Add(newComment);
 		}
 
 

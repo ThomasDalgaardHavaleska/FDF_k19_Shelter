@@ -56,7 +56,7 @@ namespace ClassLib_Shelter.Registers
 		{
 			if (newBlogPost == null)
 				throw new ArgumentException("Item");
-			newBlogPost.Id = GenId();
+			//newBlogPost.Id = GenId();
 			_blogPosts.Add(newBlogPost);
 		}
 
@@ -89,7 +89,19 @@ namespace ClassLib_Shelter.Registers
 			}
 			throw new ArgumentException("Blogpost not found.");
 		}
-	}
-		#endregion
+        public override string ToString()
+        {
+            string res = "[";
+            foreach (BlogPost blogpost in _blogPosts)
+            {
+                res += blogpost + " ";
+            }
+            return res + " ]";
+        }
+
+        #endregion
+    }
+
+
 }
 

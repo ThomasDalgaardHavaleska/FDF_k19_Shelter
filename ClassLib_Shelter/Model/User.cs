@@ -33,7 +33,7 @@ namespace ClassLib_Shelter.Model
             _isAdmin = false;
             _dateOfCreation = DateTime.Now;
             _districtAssociation = null;
-            _blogPosts = null;
+            _blogPosts = new BlogPostRegister();
 
         }
 
@@ -41,7 +41,7 @@ namespace ClassLib_Shelter.Model
         {
             UserId = userId;
             FullName = fullName;
-            Age = _age;
+            Age = age;
             Email = email;
             Role = role;
             IsAdmin = isAdmin;
