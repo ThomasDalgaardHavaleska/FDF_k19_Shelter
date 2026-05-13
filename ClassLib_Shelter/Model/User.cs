@@ -161,12 +161,21 @@ namespace ClassLib_Shelter.Model
         {
             //int newBlogPostId = _blogPosts.GenId();
 
-            BlogPostImage newBlogPost = new BlogPostImage(0, title, content, datePublished, hasVisited, path, type);
+            BlogPost newBlogPost = new BlogPostImage(0, title, content, datePublished, hasVisited, path, type);
 
 
             _blogPosts.Add(newBlogPost);
         }
 
+        public void CreateBlogPostSound(string title, string content, DateTime datePublished, bool hasVisited, string soundPath, string soundType)
+        {
+            //int newBlogPostId = _blogPosts.GenId();
+
+            BlogPost newBlogPost = new BlogPostSound(0, title, content, datePublished, hasVisited, soundPath, soundType);
+
+
+            _blogPosts.Add(newBlogPost);
+        }
 
         public void RemoveBlogPost(int blogPostId)
         {

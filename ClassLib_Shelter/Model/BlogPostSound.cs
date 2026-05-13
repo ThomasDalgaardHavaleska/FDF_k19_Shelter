@@ -17,7 +17,7 @@ namespace ClassLib_Shelter.Model
 			_soundPath = " ";
 			_soundPath = " ";
 		}
-		public BlogPostSound(string soundPath, string soundType, int id, string titel, string content, DateTime datePublished, bool hasVisited) : base(id, titel, content, datePublished, hasVisited)
+		public BlogPostSound(int id, string titel, string content, DateTime datePublished, bool hasVisited, string soundPath, string soundType) : base(id, titel, content, datePublished, hasVisited)
 		{
 			SoundPath = soundPath;
 			SoundType = soundType;
