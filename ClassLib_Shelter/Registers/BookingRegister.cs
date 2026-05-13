@@ -105,7 +105,7 @@ namespace ClassLib_Shelter.Registers
 
         public override string ToString()
         {
-            string res = "[";
+            string res = "[ ";
             foreach (Booking booking in _bookings)
 			{
 				res += booking + " ";

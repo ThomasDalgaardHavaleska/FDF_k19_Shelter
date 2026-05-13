@@ -93,7 +93,7 @@ namespace ClassLib_Shelter.Registers
 
         public override string ToString()
         {
-            string res = "[";
+            string res = "[ ";
             foreach (Comment comment in _comments)
             {
                 res += comment + " ";

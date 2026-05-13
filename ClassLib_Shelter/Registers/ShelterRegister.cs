@@ -77,7 +77,7 @@ public class ShelterRegister : IRegister<Shelter>
 
     public override string ToString()
     {
-        string res = "[";
+        string res = "[ ";
         foreach (Shelter shelter in _shelters)
         {
             res += shelter + " ";

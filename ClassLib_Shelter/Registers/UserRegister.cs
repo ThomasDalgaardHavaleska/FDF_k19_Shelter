@@ -67,7 +67,7 @@ namespace ClassLib_Shelter.Registers
 
         public override string ToString()
         {
-            string res = " [";
+            string res = "[ ";
             foreach (User user in _users)
             {
                 res += user + " ]";

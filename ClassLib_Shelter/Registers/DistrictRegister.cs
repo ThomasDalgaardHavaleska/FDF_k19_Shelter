@@ -78,7 +78,7 @@ namespace ClassLib_Shelter.Registers
 
         public override string ToString()
         {
-            string res = "[";
+            string res = "[ ";
             foreach (District district in _districts)
             {
                 res += district + " ";
