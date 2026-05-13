@@ -87,7 +87,7 @@ namespace ClassLib_Shelter.Model
 
         public override string ToString()
         {
-            return "DistrictId: " + _districtId + "Name: " + _name + "Agegroup: " + _ageGroup + "Location: " + _location + "ContactEmail: "  + _contactEmail + "ContactPhone: " + _contactPhone;
+            return "DistrictId: " + _districtId + ", Name: " + _name + ", Agegroup: " + _ageGroup + ", Location: " + _location + ", ContactEmail: "  + _contactEmail + ", ContactPhone: " + _contactPhone;
         }
     }
 }
