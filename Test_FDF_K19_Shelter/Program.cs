@@ -112,7 +112,7 @@ Console.WriteLine("Testing edge case: Attempting to set NoOfCampers to 6 (exceed
 
 try
 {
-    
+     booking.NoOfCampers = 6; // This should throw an exception due to capacity
 }
 catch (ArgumentException ex)
 {
