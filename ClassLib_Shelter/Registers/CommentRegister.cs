@@ -34,8 +34,33 @@ namespace ClassLib_Shelter.Registers
         }
         public void Add(Comment newComment)
         {
+            if (newComment == null) throw new ArgumentException("Item");
+            if (newComment.CommentId == 0)
+            {
+                newComment.CommentId = GenId();
+            }
+            else
+            {
+                if (GetById(newComment.CommentId) != null)
+                    throw new ArgumentException("A comment with this Id already exists.");
+            }
             _comments.Add(newComment);
         }
+
+        private int GenId()
+        {
+            int nextId = 0;
+            foreach (Comment comment in _comments)
+            {
+                if (nextId < comment.CommentId)
+                {
+                    nextId = comment.CommentId;
+                }
+            }
+            return nextId + 1;
+        }
+
+
         public Comment GetById(int commentId) 
         {
             foreach (Comment comment in _comments)
