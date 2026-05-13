@@ -36,7 +36,7 @@ Console.WriteLine();
 user1.CreateBlogPost("Trip to Shelter", "We had a great trip.", now.AddDays(-1), true);
 user1.CreateBlogPost("Maintenance", "Shelter needs repair.", now, false);
 Console.WriteLine("User1 blog posts (via User.CreateBlogPost):");
-Console.WriteLine(user1.BlogPosts);
+foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
 Console.WriteLine();
 
 
@@ -51,7 +51,8 @@ user1.BlogPosts.GetById(1).CreateComment("Does this even work?!", user2);
 
 Console.WriteLine("Comments on first blog post:");
 
-Console.WriteLine(user1.BlogPosts.GetById(1).Comments);
+foreach (Comment c in user1.BlogPosts.GetById(1).Comments.GetAll()) Console.WriteLine(c + "\n");
+
 
 
 // BlogPostImage
@@ -59,7 +60,7 @@ Console.WriteLine(user1.BlogPosts.GetById(1).Comments);
 user1.CreateBlogPostImage("Photo", "Shelter photo", now, true, "/images/shelter.jpg", "jpg");
 
 Console.WriteLine("Added BlogPostImage to BlogPostRegister:");
-foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);
+foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
 Console.WriteLine();
 
 // Shelters and Bookings
@@ -84,20 +85,26 @@ Console.WriteLine();
 // Demonstrate update and remove operations
 Console.WriteLine("Blog post update and remove demo:");
 
+user1.BlogPosts.Update(1, new BlogPost(1, "Updated Trip to Shelter", "We had an even better trip!", now.AddDays(-1), true));
 
 Console.WriteLine("Updated post:");
+foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
 
 Console.WriteLine("Removing first post (bp1)...");
+user1.BlogPosts.Remove(1);
 
 Console.WriteLine("Remaining posts:");
-foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);
+foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
 Console.WriteLine();
 
 // UserRegister update
-var changedUser = new User(user2.UserId, "Jane Doe", user2.Age, "jane.doe@example.com", "Member", false, user2.DistrictAssociation);
-userRegister.Update(user2.UserId, changedUser);
+var changedUser = new User(user1.UserId, "Jane Doe", user2.Age, "jane.doe@example.com", "Member", false, user2.DistrictAssociation);
+userRegister.Update(user1.UserId, changedUser);
 Console.WriteLine("UserRegister after update:");
 foreach (var u in userRegister.GetAll()) Console.WriteLine(u);
+Console.WriteLine();
+Console.WriteLine("Checking blogposts for user1");
+foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);
 
 Console.WriteLine();
 Console.WriteLine("Test harness finished.");
