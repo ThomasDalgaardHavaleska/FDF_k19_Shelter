@@ -5,10 +5,11 @@ using System.Text;
 namespace ClassLib_Shelter.Model
 {
 
-#region Instance Fields
+
 	public class BlogPostImage : BlogPost
-	{
-		private string _path;
+    #region Instance Fields
+    {
+        private string _path;
 		private string _type;
 #endregion
 

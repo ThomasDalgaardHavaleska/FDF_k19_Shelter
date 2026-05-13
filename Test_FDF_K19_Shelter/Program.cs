@@ -55,8 +55,8 @@ Console.WriteLine("Comments on first blog post:");
 Console.WriteLine();
 
 // BlogPostImage
-var imgPost = new BlogPostImage(3, "Photo", "Shelter photo", now, true, "/images/shelter.jpg", "jpg");
-user1.BlogPosts.Add(imgPost);
+
+user1.CreateBlogPostImage("Photo", "Shelter photo", now, true, "/images/shelter.jpg", "jpg");
 
 Console.WriteLine("Added BlogPostImage to BlogPostRegister:");
 foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);

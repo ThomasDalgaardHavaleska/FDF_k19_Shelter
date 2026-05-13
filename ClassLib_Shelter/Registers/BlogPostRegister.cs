@@ -62,7 +62,7 @@ namespace ClassLib_Shelter.Registers
 			else
 			{
 				if (GetById(newBlogPost.Id) != null)
-					newBlogPost.Id = GenId();
+					throw new ArgumentException("A blogpost with this Id already exists.");
 			}
 			_blogPosts.Add(newBlogPost);
         }
