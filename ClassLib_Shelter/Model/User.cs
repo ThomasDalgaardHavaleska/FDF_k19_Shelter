@@ -159,8 +159,7 @@ namespace ClassLib_Shelter.Model
         }
         public void CreateBlogPostImage(string title, string content, DateTime datePublished, bool hasVisited, string path, string type)
         {
-            //int newBlogPostId = _blogPosts.GenId();
-
+           
             BlogPost newBlogPost = new BlogPostImage(0, title, content, datePublished, hasVisited, path, type);
 
 
@@ -169,8 +168,7 @@ namespace ClassLib_Shelter.Model
 
         public void CreateBlogPostSound(string title, string content, DateTime datePublished, bool hasVisited, string soundPath, string soundType)
         {
-            //int newBlogPostId = _blogPosts.GenId();
-
+            
             BlogPost newBlogPost = new BlogPostSound(0, title, content, datePublished, hasVisited, soundPath, soundType);
 
 
