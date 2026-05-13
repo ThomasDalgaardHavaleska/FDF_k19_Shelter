@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLib_Shelter.Registers;
+using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
@@ -16,7 +17,7 @@ namespace ClassLib_Shelter.Model
 		private string _content;
 		private DateTime _datePublished;
 		private bool _hasVisited;
-		public List<Comment> _comments;
+		private CommentRegister _comments;
 	#endregion
 		#region Constrctor
 		public BlogPost()
@@ -26,7 +27,7 @@ namespace ClassLib_Shelter.Model
 			_content = " ";
 			_datePublished = DateTime.Now;
 			_hasVisited = false;
-			_comments = new List<Comment>();
+			_comments = new CommentRegister();
 		}
 		public BlogPost(int id, string titel, string content, DateTime datePublished, bool hasVisited)
 		{
@@ -35,7 +36,7 @@ namespace ClassLib_Shelter.Model
 			Content = content;
 			DatePublished = datePublished;
 			HasVisited = hasVisited;
-			Comments = new List<Comment>();
+			Comments = new CommentRegister();
 		}
 		#endregion
 		#region Properties
@@ -87,52 +88,54 @@ namespace ClassLib_Shelter.Model
 			get { return _hasVisited; }
 			set { _hasVisited = value; }
 		}
-		public List<Comment> Comments
+		public CommentRegister Comments
 		{
 			get { return _comments; }
 			set { _comments = value; }
 		}
-		#endregion
-		#region Methods
-		public override string ToString()
+        #endregion
+        #region Methods
+
+        public void CreateComment(string content, User author)
+        {
+
+            Comment newComment = new Comment(0, content, author);
+
+            Comments.Add(newComment);
+        }
+
+        public override string ToString()
 		{
 			return "Id: " + Id + ", Title: " + Titel + ", Content: " + Content + ", Date published: " + DatePublished + ", Has visited: " + HasVisited;
 		}
 
 		
 
-        public Comment GetById(int id)
-		{
+  //      public Comment GetById(int id)
+		//{
 
-			foreach (Comment comment in _comments)
-			{ 
-				if (comment.CommentId == id) 
-						return comment; 
-			}
-			return null;
-		}
-
-
-		public void Remove(int id)
-		{
-			Comment commentFound = GetById(Id);
-			foreach (Comment comment in _comments)
-			{
-				if (comment.CommentId == id)
-				{
-					_comments.Remove(comment);
-				}
-			}
-		}
-
-		public void CreateComment(string content, User author)
-		{
-			
-			Comment newComment = new Comment(0, content, author);
+		//	foreach (Comment comment in _comments)
+		//	{ 
+		//		if (comment.CommentId == id) 
+		//				return comment; 
+		//	}
+		//	return null;
+		//}
 
 
-			_comments.Add(newComment);
-		}
+		//public void Remove(int id)
+		//{
+		//	Comment commentFound = GetById(Id);
+		//	foreach (Comment comment in _comments)
+		//	{
+		//		if (comment.CommentId == id)
+		//		{
+		//			_comments.Remove(comment);
+		//		}
+		//	}
+		//}
+
+
 		#endregion
 	}
 }

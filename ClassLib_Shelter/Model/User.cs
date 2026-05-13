@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClassLib_Shelter;
+using ClassLib_Shelter.Registers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Security.Principal;
 using System.Text;
-using ClassLib_Shelter;
-using ClassLib_Shelter.Registers;
+using System.Xml.Linq;
 
 namespace ClassLib_Shelter.Model
 {
@@ -174,6 +175,8 @@ namespace ClassLib_Shelter.Model
 
             _blogPosts.Add(newBlogPost);
         }
+
+     
 
         public void RemoveBlogPost(int blogPostId)
         {
