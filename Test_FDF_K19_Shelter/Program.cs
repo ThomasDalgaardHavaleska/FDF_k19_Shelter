@@ -51,7 +51,7 @@ user1.BlogPosts.GetById(1).CreateComment("Nice work!", user2);
 
 Console.WriteLine("Comments on first blog post:");
 
-foreach (Comment u in user1.BlogPosts.GetById(1).Comments) Console.WriteLine(u);
+Console.WriteLine(user1.BlogPosts.GetById(1).Comments);
 
 
 // BlogPostImage

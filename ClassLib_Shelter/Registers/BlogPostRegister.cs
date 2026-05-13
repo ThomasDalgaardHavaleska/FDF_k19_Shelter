@@ -10,6 +10,7 @@ namespace ClassLib_Shelter.Registers
 	public class BlogPostRegister : IRegister<BlogPost>
 	{
 		private List<BlogPost> _blogPosts;
+	
 	#endregion
 		#region Constructor
 		public BlogPostRegister()
@@ -27,6 +28,7 @@ namespace ClassLib_Shelter.Registers
 			get { return _blogPosts; }
 			set { _blogPosts = value; }
 		}
+
 		#endregion
 		#region Methods
 
@@ -96,6 +98,9 @@ namespace ClassLib_Shelter.Registers
 			}
 			throw new ArgumentException("Blogpost not found.");
 		}
+
+
+
         public override string ToString()
         {
             string res = "[";
