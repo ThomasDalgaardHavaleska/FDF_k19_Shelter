@@ -57,8 +57,20 @@ namespace ClassLib_Shelter.Model
 		public User Author
 		{
 			get { return _author; }
-
+			set { _author = value; }
 		}
-		#endregion
-	}
+
+		
+
+		public DateTime DatePublished { get { return _datePublished; }  set { _datePublished = value; } }
+        #endregion
+        #region Methods
+
+
+        public override string ToString()
+        {
+				return "Comment ID: " + CommentId + ", Author: " + Author + ", Date Published: " + DatePublished + ", Content: " + Content;
+        }
+        #endregion
+    }
 }
