@@ -95,7 +95,7 @@ namespace ClassLib_Shelter.Model
 		#region Methods
 		public override string ToString()
 		{
-			return "Id= " + Id + " Titel= " + Titel + " Content= " + Content + " Date published= " + DatePublished + " Has visited= " + HasVisited;
+			return "Id: " + Id + ", Title: " + Titel + ", Content: " + Content + ", Date published: " + DatePublished + ", Has visited: " + HasVisited;
 		}
 
 		public void Add(Comment newComment)
