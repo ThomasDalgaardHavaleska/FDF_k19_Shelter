@@ -4,12 +4,15 @@ using System.Text;
 
 namespace ClassLib_Shelter.Model
 {
+	#region Instance Fields
 	public class BlogPostSound : BlogPost
 	{
 		private string _soundPath;
 		private string _soundType;
+	#endregion
 
-		public BlogPostSound () : base ()
+		#region Constructor
+		public BlogPostSound() : base()
 		{
 			_soundPath = " ";
 			_soundPath = " ";
@@ -19,20 +22,26 @@ namespace ClassLib_Shelter.Model
 			SoundPath = soundPath;
 			SoundType = soundType;
 		}
+	#endregion
+
+	#region Properties
 		public string SoundPath
 		{
 			get { return _soundPath; }
-			set { _soundPath  = value; }
+			set { _soundPath = value; }
 		}
 		public string SoundType
 		{
-			get{ return _soundType; }
-			set{ _soundType = value; }
+			get { return _soundType; }
+			set { _soundType = value; }
 		}
+	#endregion
+	#region Mehods
 
 		public override string ToString()
 		{
 			return base.ToString() + "Sound Path: " + SoundPath + ", Sound Type: " + SoundType;
 		}
+	#endregion
 	}
 }

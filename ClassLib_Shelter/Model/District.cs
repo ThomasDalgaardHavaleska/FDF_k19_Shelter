@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ClassLib_Shelter.Model
 {
-    public class District
+	#region Instance Fields
+	public class District
     {
         private int _districtId;
         private string _name;
@@ -12,8 +13,9 @@ namespace ClassLib_Shelter.Model
         private string _location;
         private string _contactEmail;
         private string _contactPhone;
-
-        public District() 
+	#endregion
+		#region Constructor
+		public District() 
         { 
             _districtId = 0;
             _name = "";
@@ -32,8 +34,9 @@ namespace ClassLib_Shelter.Model
             _contactEmail = contactEmail;
             _contactPhone = contactPhone;
         }
-
-        public int DistrictId
+		#endregion
+		#region Properties
+		public int DistrictId
         {
             get { return _districtId; }
             set { _districtId = value; }
@@ -83,11 +86,13 @@ namespace ClassLib_Shelter.Model
             get { return _contactPhone; }
             set { _contactPhone = value; }
         }
+		#endregion
+		#region Methods
 
-
-        public override string ToString()
+		public override string ToString()
         {
             return "DistrictId: " + _districtId + ", Name: " + _name + ", Agegroup: " + _ageGroup + ", Location: " + _location + ", ContactEmail: "  + _contactEmail + ", ContactPhone: " + _contactPhone;
         }
-    }
+		#endregion
+	}
 }
