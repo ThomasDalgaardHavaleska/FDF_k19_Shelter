@@ -32,7 +32,7 @@ namespace ClassLib_Shelter.Model
 
 		public override string ToString()
 		{
-			return base.ToString() + "Sound Path= " + SoundPath + " Sound Type= " + SoundType;
+			return base.ToString() + "Sound Path: " + SoundPath + ", Sound Type: " + SoundType;
 		}
 	}
 }

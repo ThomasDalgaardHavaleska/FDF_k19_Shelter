@@ -31,7 +31,7 @@ namespace ClassLib_Shelter.Model
 		}
 		public override string ToString()
 		{
-			return base.ToString() + "Path= " + Path + " Type= " + Type;
+			return base.ToString() + "Path: " + Path + ", Type: " + Type;
 		}
 	}
 }
