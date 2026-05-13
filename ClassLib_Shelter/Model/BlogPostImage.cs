@@ -4,11 +4,16 @@ using System.Text;
 
 namespace ClassLib_Shelter.Model
 {
+
+#region Instance Fields
 	public class BlogPostImage : BlogPost
 	{
 		private string _path;
 		private string _type;
+#endregion
 
+
+#region Constructor
 		public BlogPostImage() : base ()
 		{
 			_path = " ";
@@ -19,6 +24,9 @@ namespace ClassLib_Shelter.Model
 			_path = path;
 			_type=type;
 		}
+#endregion
+
+#region Properties
 		public string Path
 		{
 			get { return _path; }
@@ -29,9 +37,13 @@ namespace ClassLib_Shelter.Model
 			get { return _type; }
 			set { _type = value; }
 		}
+#endregion
+
+#region Mehods
 		public override string ToString()
 		{
 			return base.ToString() + "Path: " + Path + ", Type: " + Type;
 		}
+#endregion
 	}
 }
