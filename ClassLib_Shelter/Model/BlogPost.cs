@@ -99,33 +99,7 @@ namespace ClassLib_Shelter.Model
 			return "Id: " + Id + ", Title: " + Titel + ", Content: " + Content + ", Date published: " + DatePublished + ", Has visited: " + HasVisited;
 		}
 
-		public void Add(Comment newComment)
-		{
-            if (newComment == null) throw new ArgumentException("Item");
-            if (newComment.CommentId == 0)
-            {
-                newComment.CommentId = GenId();
-            }
-            else
-            {
-                if (GetById(newComment.CommentId) != null)
-                    throw new ArgumentException("A blogpost with this Id already exists.");
-            }
-            _comments.Add(newComment);
-        }
-
-        private int GenId()
-        {
-            int nextId = 0;
-            foreach (Comment comment in _comments)
-            {
-                if (nextId < comment.CommentId)
-                {
-                    nextId = comment.CommentId;
-                }
-            }
-            return nextId + 1;
-        }
+		
 
         public Comment GetById(int id)
 		{
@@ -154,7 +128,6 @@ namespace ClassLib_Shelter.Model
 		public void CreateComment(string content, User author)
 		{
 			
-
 			Comment newComment = new Comment(0, content, author);
 
 
