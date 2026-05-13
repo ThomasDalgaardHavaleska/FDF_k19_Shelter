@@ -106,3 +106,23 @@ foreach (var u in userRegister.GetAll()) Console.WriteLine(u);
 
 Console.WriteLine();
 Console.WriteLine("Test harness finished.");
+Console.WriteLine();
+
+Console.WriteLine("Testing edge case: Attempting to set NoOfCampers to 6 (exceeds shelter capacity)...");
+
+try
+{
+    
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine("Caught expected exception: " + ex.Message);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Caught unexpected exception: " + ex.Message);
+}
+finally
+{
+    Console.WriteLine("Edge case test completed.");
+}
