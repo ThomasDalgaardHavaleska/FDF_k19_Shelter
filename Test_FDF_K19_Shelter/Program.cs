@@ -21,6 +21,7 @@ var user1 = new User(1, "John Doe", 25, "john@example.com", "District Leader", f
 var user2 = new User(2, "Jane Smith", 30, "jane@example.com", "Member", false, district2);
 Console.WriteLine("Users:");
 Console.WriteLine(user1);
+Console.WriteLine();
 Console.WriteLine(user2);
 Console.WriteLine();
 
@@ -29,8 +30,11 @@ var userRegister = new UserRegister();
 userRegister.Add(user1);
 userRegister.Add(user2);
 Console.WriteLine("UserRegister contents:");
-foreach (var u in userRegister.GetAll()) Console.WriteLine(u);
-Console.WriteLine();
+foreach (var u in userRegister.GetAll()) 
+{
+    Console.WriteLine(u);
+    Console.WriteLine();
+}
 
 // Work with BlogPostRegister Directly
 user1.CreateBlogPost("Trip to Shelter", "We had a great trip.", now.AddDays(-1), true);
@@ -52,7 +56,7 @@ user1.BlogPosts.GetById(1).CreateComment("Does this even work?!", user2);
 Console.WriteLine("Comments on first blog post:");
 
 foreach (Comment c in user1.BlogPosts.GetById(1).Comments.GetAll()) Console.WriteLine(c + "\n");
-
+Console.WriteLine();
 
 
 // BlogPostImage
@@ -89,6 +93,7 @@ user1.BlogPosts.Update(1, new BlogPost(1, "Updated Trip to Shelter", "We had an 
 
 Console.WriteLine("Updated post:");
 foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
+Console.WriteLine();
 
 Console.WriteLine("Removing first post (bp1)...");
 user1.BlogPosts.Remove(1);
@@ -102,7 +107,9 @@ var changedUser = new User(user1.UserId, "Jane Doe", user2.Age, "jane.doe@exampl
 userRegister.Update(user1.UserId, changedUser);
 Console.WriteLine("UserRegister after update:");
 foreach (var u in userRegister.GetAll()) Console.WriteLine(u);
+
 Console.WriteLine();
+
 Console.WriteLine("Checking blogposts for user1");
 foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);
 
