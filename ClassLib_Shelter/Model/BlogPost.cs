@@ -127,9 +127,7 @@ namespace ClassLib_Shelter.Model
 
 		public void CreateComment(string content, User author)
 		{
-			
 			Comment newComment = new Comment(0, content, author);
-
 
 			_comments.Add(newComment);
 		}
