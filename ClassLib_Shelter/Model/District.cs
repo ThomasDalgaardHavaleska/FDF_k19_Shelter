@@ -44,8 +44,8 @@ namespace ClassLib_Shelter.Model
             get {return _name; }
             set 
             {
-                if (_name == null) 
-                { 
+                if (_name == null) // if(string.IsNullOrWhiteSpace(value) || value.Length == 0)
+				{ 
                     throw new ArgumentNullException("Please enter valid name"); 
                 }
                 _name = value;
@@ -58,8 +58,8 @@ namespace ClassLib_Shelter.Model
             get { return _ageGroup;}
             set
             {
-                if (_ageGroup == null)
-                {
+                if (_ageGroup == null) //if(string.IsNullOrWhiteSpace(value) || value.Length == 0)
+				{
                     throw new ArgumentNullException("Please enter valid age group");
                 }
                 _ageGroup = value;
