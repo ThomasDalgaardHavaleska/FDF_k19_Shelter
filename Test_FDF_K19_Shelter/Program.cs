@@ -41,10 +41,10 @@ Console.WriteLine();
 
 // Work with BlogPostRegister directly
 var blogRegister = new BlogPostRegister();
-var bp1 = new BlogPost(blogRegister.GenId(), "Announcement", "Welcome everyone", now, false);
-var bp2 = new BlogPost(blogRegister.GenId(), "Event", "Camp event details", now.AddDays(10), false);
-blogRegister.Add(bp1);
-blogRegister.Add(bp2);
+user1.CreateBlogPost("Announcement", "Welcome everyone", now, false);
+user1.CreateBlogPost("Event", "Camp event details", now.AddDays(10), false);
+blogRegister.Add(user1.BlogPosts.GetById(1));
+blogRegister.Add(user1.BlogPosts.GetById(2));
 Console.WriteLine("BlogPostRegister contents:");
 foreach (var bp in blogRegister.GetAll()) Console.WriteLine(bp);
 Console.WriteLine();
@@ -55,14 +55,13 @@ var comment1 = new Comment(1, "Looks great!", user2) { DatePublished = now };
 var comment2 = new Comment(2, "I can help with repairs.", user1) { DatePublished = now };
 commentRegister.Add(comment1);
 commentRegister.Add(comment2);
-bp1.Add(comment1);
-bp1.Add(comment2);
+
 Console.WriteLine("Comments on first blog post:");
-foreach (var c in bp1.Comments) Console.WriteLine(c);
+
 Console.WriteLine();
 
 // BlogPostImage
-var imgPost = new BlogPostImage(blogRegister.GenId(), "Photo", "Shelter photo", now, true, "/images/shelter.jpg", "jpg");
+var imgPost = new BlogPostImage(3, "Photo", "Shelter photo", now, true, "/images/shelter.jpg", "jpg");
 blogRegister.Add(imgPost);
 Console.WriteLine("Added BlogPostImage to BlogPostRegister:");
 foreach (var bp in blogRegister.GetAll()) Console.WriteLine(bp);
@@ -89,11 +88,11 @@ Console.WriteLine();
 
 // Demonstrate update and remove operations
 Console.WriteLine("Blog post update and remove demo:");
-var updated = blogRegister.Update(bp2.Id, new BlogPost(bp2.Id, "Event - Updated", "Updated details", bp2.DatePublished, bp2.HasVisited));
+
 Console.WriteLine("Updated post:");
-Console.WriteLine(updated);
+
 Console.WriteLine("Removing first post (bp1)...");
-blogRegister.Remove(bp1.Id);
+
 Console.WriteLine("Remaining posts:");
 foreach (var bp in blogRegister.GetAll()) Console.WriteLine(bp);
 Console.WriteLine();

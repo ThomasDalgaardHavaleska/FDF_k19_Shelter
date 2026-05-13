@@ -52,15 +52,22 @@ namespace ClassLib_Shelter.Registers
 			_blogPosts.Remove(blogPostToRemove);
 		}
 
-		public void Add(BlogPost newBlogPost)
-		{
-			if (newBlogPost == null)
-				throw new ArgumentException("Item");
-			//newBlogPost.Id = GenId();
+        public void Add(BlogPost newBlogPost)
+        {
+            if (newBlogPost == null) throw new ArgumentException("Item");
+            if (newBlogPost.Id == 0)
+            {
+                newBlogPost.Id = GenId();
+            }
+			else
+			{
+				if (GetById(newBlogPost.Id) != null)
+					newBlogPost.Id = GenId();
+			}
 			_blogPosts.Add(newBlogPost);
-		}
+        }
 
-		public int GenId()
+        private int GenId()
 		{
 			int nextId = 0;
 			foreach (BlogPost blogPost in _blogPosts)

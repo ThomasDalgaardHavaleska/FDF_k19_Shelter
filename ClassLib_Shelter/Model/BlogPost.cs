@@ -7,10 +7,11 @@ using System.Text;
 
 namespace ClassLib_Shelter.Model
 {
-	#region Instance fields
+
 	public class BlogPost
 	{
-		private int _id;
+        #region Instance fields
+        private int _id;
 		private string _titel;
 		private string _content;
 		private DateTime _datePublished;
@@ -43,10 +44,10 @@ namespace ClassLib_Shelter.Model
 			get { return _id; }
 			set
 			{
-				if (value == Id)
-				{
-					throw new ArgumentException("That ID already exist");
-				}
+				//if (value == Id)
+				//{
+				//	throw new ArgumentException("That ID already exist");
+				//}
 
 				_id = value;
 			}

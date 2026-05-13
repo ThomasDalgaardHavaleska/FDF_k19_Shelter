@@ -150,9 +150,9 @@ namespace ClassLib_Shelter.Model
 
         public void CreateBlogPost(string title, string content, DateTime datePublished, bool hasVisited)
         {
-            int newBlogPostId = _blogPosts.GenId();
+            //int newBlogPostId = _blogPosts.GenId();
 
-            BlogPost newBlogPost = new BlogPost(newBlogPostId, title, content, datePublished, hasVisited);
+            BlogPost newBlogPost = new BlogPost(0, title, content, datePublished, hasVisited);
 
             
             _blogPosts.Add(newBlogPost);
