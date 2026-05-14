@@ -19,7 +19,7 @@ namespace ClassLib_Shelter.Model
 		private bool _hasVisited;
 		private CommentRegister _comments;
 	#endregion
-		#region Constrctor
+		#region Constructor
 		public BlogPost()
 		{
 			_id = 0;
