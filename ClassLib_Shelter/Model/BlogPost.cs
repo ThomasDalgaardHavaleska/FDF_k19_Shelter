@@ -106,7 +106,7 @@ namespace ClassLib_Shelter.Model
 
         public override string ToString()
 		{
-			return "Id: " + Id + ", Title: " + Titel + ", Content: " + Content + ", Date published: " + DatePublished + ", Has visited: " + HasVisited;
+			return "Blogpost Id: " + Id + ", Title: " + Titel + ", Content: " + Content + ", Date published: " + DatePublished + ", Has visited: " + HasVisited;
 		}
 
 		
