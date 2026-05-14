@@ -13,6 +13,7 @@ var district1 = new District(1, "Syd", "Væbner", "København S", "email@example
 var district2 = new District(2, "Nord", "Ulve", "København N", "nord@example.com", "+45 87 65 43 21");
 Console.WriteLine("Districts:");
 Console.WriteLine(district1);
+Console.WriteLine();
 Console.WriteLine(district2);
 Console.WriteLine();
 
@@ -55,17 +56,22 @@ user1.BlogPosts.GetById(1).CreateComment("Does this even work?!", user2);
 
 Console.WriteLine("Comments on first blog post:");
 
-foreach (Comment c in user1.BlogPosts.GetById(1).Comments.GetAll()) Console.WriteLine(c + "\n");
-Console.WriteLine();
-
+foreach (Comment c in user1.BlogPosts.GetById(1).Comments.GetAll())
+{
+    Console.WriteLine(c + "\n");
+    Console.WriteLine();
+}
 
 // BlogPostImage
 
 user1.CreateBlogPostImage("Photo", "Shelter photo", now, true, "/images/shelter.jpg", "jpg");
 
 Console.WriteLine("Added BlogPostImage to BlogPostRegister:");
-foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
-Console.WriteLine();
+foreach (var bp in user1.BlogPosts.GetAll())
+{
+    Console.WriteLine(bp + "\n");
+    Console.WriteLine();
+}
 
 // Shelters and Bookings
 var shelter1 = new Shelter(1, "SkovShelter", "55.6761,12.5683", "Dyrehaven", 5);
@@ -82,6 +88,7 @@ booking.IsReserved = true;
 booking.DistrictOfUser = district1.Name;
 booking.CheckInDate = now.AddDays(7);
 booking.CheckoutDate = now.AddDays(10);
+
 Console.WriteLine("Booking:");
 Console.WriteLine(booking);
 Console.WriteLine();
@@ -92,28 +99,37 @@ Console.WriteLine("Blog post update and remove demo:");
 user1.BlogPosts.Update(1, new BlogPost(1, "Updated Trip to Shelter", "We had an even better trip!", now.AddDays(-1), true));
 
 Console.WriteLine("Updated post:");
-foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
-Console.WriteLine();
-
+foreach (var bp in user1.BlogPosts.GetAll())
+{
+    Console.WriteLine(bp + "\n");
+    Console.WriteLine();
+}
 Console.WriteLine("Removing first post (bp1)...");
 user1.BlogPosts.Remove(1);
 
 Console.WriteLine("Remaining posts:");
-foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp + "\n");
-Console.WriteLine();
-
+foreach (var bp in user1.BlogPosts.GetAll())
+{
+    Console.WriteLine(bp);
+    Console.WriteLine();
+}
 // UserRegister update
 var changedUser = new User(user1.UserId, "Jane Doe", user2.Age, "jane.doe@example.com", "Member", false, user2.DistrictAssociation);
 userRegister.Update(user1.UserId, changedUser);
-Console.WriteLine("UserRegister after update:");
-foreach (var u in userRegister.GetAll()) Console.WriteLine(u);
 
-Console.WriteLine();
+Console.WriteLine("UserRegister after update:");
+foreach (var u in userRegister.GetAll())
+{
+    Console.WriteLine(u);
+    Console.WriteLine();
+}
 
 Console.WriteLine("Checking blogposts for user1");
-foreach (var bp in user1.BlogPosts.GetAll()) Console.WriteLine(bp);
-
-Console.WriteLine();
+foreach (var bp in user1.BlogPosts.GetAll())
+{
+    Console.WriteLine(bp);
+    Console.WriteLine();
+}
 Console.WriteLine("Test harness finished.");
 Console.WriteLine();
 
