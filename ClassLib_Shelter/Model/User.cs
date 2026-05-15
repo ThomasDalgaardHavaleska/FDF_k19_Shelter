@@ -65,7 +65,7 @@ namespace ClassLib_Shelter.Model
         {
             get { return _fullName; }
             set 
-                { if(value == null)
+                { if(string.IsNullOrWhiteSpace(value) || value.Length == 0)
                     throw new ArgumentNullException("Fullname cannot be empty. Type in your fullname."); 
                 
                 _fullName = value; }
@@ -90,7 +90,7 @@ namespace ClassLib_Shelter.Model
             set
             {
 
-                if (value == null)
+                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
                     throw new ArgumentNullException("Mail cannot be empty. Type in a valid mail adress.");
 
                 _email = value;
