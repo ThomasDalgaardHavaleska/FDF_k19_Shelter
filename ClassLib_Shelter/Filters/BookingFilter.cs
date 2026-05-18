@@ -18,7 +18,7 @@ namespace ClassLib_Shelter.Filters
         private DateTime? _checkInDate;
         private DateTime? _checkOutDate;
         private Shelter? _shelterToBook;
-        private BookingRegister _bookings;
+
 
         #endregion
 
@@ -33,7 +33,7 @@ namespace ClassLib_Shelter.Filters
             _checkInDate = null;
             _checkOutDate = null;
             _shelterToBook = null;
-            _bookings = new BookingRegister();
+          
 
         }
 
@@ -97,133 +97,15 @@ namespace ClassLib_Shelter.Filters
 
         }
 
-        public BookingRegister Bookings
-        {
-            get { return _bookings; }
-            set { _bookings = value; }
-        }
+
 
         #endregion
 
         #region Methods
 
-        public override string ToString()
-        {
-            return "Booking Id: " + _bookingId + ", Number of users: " + _noUsers + ", Is reserved: " + _isReserved +
-                ", District of user: " + _districtOfUser + ", Reservation date: " + _reservationDate +
-                ", Check-in Date: " + _checkInDate + ", Check-out Date: " + _checkOutDate + ", Shelter to book" + _shelterToBook;
-        }
-
-
-        public List<Booking> BookingsWithFilter(BookingFilter filter)
-        {
-            List<Booking> resultBooking = _bookings.GetAll();
-
-            List<Booking> allBookingsWithFilter = new List<Booking>();
-
-            if (filter.BookingId != null)
-            {
-                foreach (var booking in resultBooking)
-                {
-
-                    if (booking.BookingId == filter.BookingId)
-                    {
-                        allBookingsWithFilter.Add(booking);
-                    }
-                }
-
-                resultBooking = allBookingsWithFilter;
-                allBookingsWithFilter = new List<Booking>();
-
-            }
-
-            if (filter.NoUsers != null)
-            {
-                foreach (var booking in resultBooking)
-                {
-                    if (booking.NoOfCampers == filter.NoUsers)
-                    {
-                        allBookingsWithFilter.Add(booking);
-                    }
-                }
-
-                resultBooking = allBookingsWithFilter;
-                allBookingsWithFilter = new List<Booking>();
-            }
-
-            if (filter.IsReserved != null)
-            {
-                foreach (var booking in resultBooking)
-                {
-                    if (booking.IsReserved == filter.IsReserved)
-                    {
-                        allBookingsWithFilter.Add(booking);
-                    }
-                }
-
-                resultBooking = allBookingsWithFilter;
-                allBookingsWithFilter = new List<Booking>();
-
-            }
-            if (filter.DistrictOfUser != null)
-            {
-                foreach (var booking in resultBooking)
-                {
-                    if (booking.DistrictOfUser == filter.DistrictOfUser)
-                    {
-                        allBookingsWithFilter.Add(booking);
-                    }
-                }
-
-                resultBooking = allBookingsWithFilter;
-                allBookingsWithFilter = new List<Booking>();
-            }
-
-            if (filter.ReservationDate != null)
-            {
-                foreach (var booking in resultBooking)
-                {
-                    if (booking.ReservationDate == filter.ReservationDate)
-                    {
-                        allBookingsWithFilter.Add(booking);
-                    }
-                }
-
-                resultBooking = allBookingsWithFilter;
-                allBookingsWithFilter = new List<Booking>();
-            }
-
-            if (filter.CheckInDate != null)
-            {
-                foreach (var booking in resultBooking)
-                {
-                    if (booking.CheckInDate == filter.CheckInDate)
-                    {
-                        allBookingsWithFilter.Add(booking);
-                    }
-                }
-
-                resultBooking = allBookingsWithFilter;
-                allBookingsWithFilter = new List<Booking>();
-            }
-
-            if (filter.CheckOutDate != null)
-            {
-                foreach (var booking in resultBooking)
-                {
-                    if (booking.CheckoutDate == filter.CheckOutDate)
-                    {
-                        allBookingsWithFilter.Add(booking);
-                    }
-                }
-
-                resultBooking = allBookingsWithFilter;
-                allBookingsWithFilter = new List<Booking>();
-            }
-
-            return resultBooking;
-
-        }
+   
+        
+       
     }
 }
 #endregion

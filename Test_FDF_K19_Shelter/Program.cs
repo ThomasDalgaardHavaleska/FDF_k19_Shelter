@@ -1,6 +1,7 @@
 ﻿
 
 
+using ClassLib_Shelter.Filters;
 using ClassLib_Shelter.Model;
 using ClassLib_Shelter.Registers;
 using System;
@@ -130,6 +131,49 @@ foreach (var bp in user1.BlogPosts.GetAll())
     Console.WriteLine(bp);
     Console.WriteLine();
 }
+
+Console.WriteLine("Testing filters on booking...");
+
+// Creating bookings to filter 
+Booking booking2 = new Booking(2,4, true,district1.Name,now.AddDays(4),now,shelter1);
+Booking booking3 = new Booking(3, 5, false, district2.Name, now.AddDays(4), now,shelter1);
+Booking booking4 = new Booking(4, 5, true, district2.Name, now, now, shelter1);
+
+
+// Creating bookingfilter 
+BookingFilter bookingFilter = new BookingFilter();
+bookingFilter.NoUsers = null; // 4 NoUsers should be booking 1 and 2
+bookingFilter.IsReserved = true;
+bookingFilter.ShelterToBook = null;
+
+
+// Using filter on a BookingRegister
+BookingRegister bookingsToFilter = new BookingRegister(new List<Booking> { booking, booking2, booking3, booking4 }, "Test of filter");
+
+
+var filteredBookings = bookingsToFilter.BookingsWithFilter(bookingFilter);
+
+Console.WriteLine("All bookings after filter: Should be 1 and 2");
+foreach (Booking b in filteredBookings)
+{
+    Console.WriteLine(b);
+    Console.WriteLine();
+}
+
+
+Console.WriteLine("Testing filters on districts...");
+
+DistrictFilter districtFilter = new DistrictFilter();
+
+var filteredDistricts = districtFilter.FilterLocation(new List<District> { district1, district2 }, "København S");
+
+Console.WriteLine("All districts after filter:");
+foreach (District d in filteredDistricts)
+{
+    Console.WriteLine(d);
+    Console.WriteLine();
+}
+
 Console.WriteLine("Test harness finished.");
 Console.WriteLine();
 
