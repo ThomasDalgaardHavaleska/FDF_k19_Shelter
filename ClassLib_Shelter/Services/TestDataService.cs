@@ -58,7 +58,7 @@ namespace ClassLib_Shelter.Services
 
         public void DataShelters(ShelterRegister shelters)
         {
-            Shelter shelter1 = new Shelter(0, "Shelter 1", "55.64.15, 12.08.09", "Ganløse-skoven", 5);
+            Shelter shelter1 = new Shelter(0, "Shelter 1", "55.813524, 12.302504", "Ganløse-skoven", 5);
             shelters.Add(shelter1);
         
         }
