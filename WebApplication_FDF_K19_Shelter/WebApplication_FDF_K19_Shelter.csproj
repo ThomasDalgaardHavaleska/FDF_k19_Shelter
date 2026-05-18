@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLib_Shelter\ClassLib_Shelter.csproj" />
+  </ItemGroup>
+
 </Project>

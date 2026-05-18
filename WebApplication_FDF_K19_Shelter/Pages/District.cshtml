@@ -1,11 +1,45 @@
 ﻿@page
+@using ClassLib_Shelter.Registers;
+@using ClassLib_Shelter.Model;
+@using ClassLib_Shelter.Filters;
 @model WebApplication_FDF_K19_Shelter.Pages.DistrictModel
 @{
     ViewData["Title"] = "District";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<h1>SPRINT BACKLOG</h1>
+<div class="row">
+
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>ID</th>
+				<th></th>
+
+			</tr>
+		</thead>
+
+	<tbody>
+		<form method="post">
+
+			@foreach (District u in Model.Districts.GetAll())
+			{
+
+			<tr>
+				<td> <a class="nav-link text-dark" asp-area="" asp-page="/Userstory"> @u.Name </a></td>
+				<td> <a class="nav-link text-dark" asp-area="" asp-page="/Userstory"> @u.DistrictId </a></td>
+
+	
+
+
+			</tr>
+
+		}
+		</form>
+	</tbody>
+
 </div>
 

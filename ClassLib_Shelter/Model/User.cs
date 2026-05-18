@@ -22,6 +22,8 @@ namespace ClassLib_Shelter.Model
         private DateTime _dateOfCreation;
         private District _districtAssociation;
         private BlogPostRegister _blogPosts;
+     
+
         #endregion
         #region Constructors
         public User()

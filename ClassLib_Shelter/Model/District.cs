@@ -13,6 +13,7 @@ namespace ClassLib_Shelter.Model
         private string _location;
         private string _contactEmail;
         private string _contactPhone;
+        private Shelter _shelter;
 	#endregion
 		#region Constructor
 		public District() 
@@ -23,6 +24,7 @@ namespace ClassLib_Shelter.Model
             _location = "";
             _contactEmail = "";
             _contactPhone = "";
+            _shelter = null;
         }
 
         public District(int districtId, string name, string ageGroup, string location, string contactEmail, string contactPhone)
@@ -33,6 +35,7 @@ namespace ClassLib_Shelter.Model
             _location = location;
             _contactEmail = contactEmail;
             _contactPhone = contactPhone;
+            _shelter = null;
         }
 		#endregion
 		#region Properties
@@ -107,13 +110,30 @@ namespace ClassLib_Shelter.Model
                 _contactPhone = value;
             }
         }
-		#endregion
-		#region Methods
 
-		public override string ToString()
+        public Shelter Shelter
+        {
+            get { return _shelter; }
+            set { _shelter = value; }
+        }   
+        #endregion
+        #region Methods
+
+        public override string ToString()
         {
             return "DistrictId: " + _districtId + ", Name: " + _name + ", Agegroup: " + _ageGroup + ", Location: " + _location + ", ContactEmail: "  + _contactEmail + ", ContactPhone: " + _contactPhone;
         }
 		#endregion
-	}
+
+        public void AssignShelter(Shelter shelter)
+        {
+            Shelter = shelter;
+        }
+
+        public void CreateShelter(string name, string geolocation, string place, int maximumCapacity)
+        {
+            Shelter shelter = new Shelter(0, name, geolocation, place, maximumCapacity);
+            AssignShelter(shelter);
+        }
+    }
 }

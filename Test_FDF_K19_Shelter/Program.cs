@@ -135,8 +135,8 @@ foreach (var bp in user1.BlogPosts.GetAll())
 Console.WriteLine("Testing filters on booking...");
 
 // Creating bookings to filter 
-Booking booking2 = new Booking(2,4, true,district1.Name,now.AddDays(4),now,shelter1);
-Booking booking3 = new Booking(3, 5, false, district2.Name, now.AddDays(4), now,shelter1);
+Booking booking2 = new Booking(2,4, true,district1.Name,now.AddDays(4),now.AddDays(6),shelter1);
+Booking booking3 = new Booking(3, 5, false, district2.Name, now.AddDays(4), now.AddDays(7),shelter1);
 Booking booking4 = new Booking(4, 5, true, district2.Name, now, now, shelter1);
 
 
