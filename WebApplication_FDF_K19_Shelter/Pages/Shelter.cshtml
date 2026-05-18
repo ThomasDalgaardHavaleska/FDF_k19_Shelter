@@ -1,4 +1,47 @@
 ﻿@page
+@using ClassLib_Shelter.Registers;
+@using ClassLib_Shelter.Model;
+@using ClassLib_Shelter.Filters;
+@using ClassLib_Shelter.Services;
 @model WebApplication_FDF_K19_Shelter.Pages.ShelterModel
 @{
 }
+<h1>
+	Shelter
+</h1>
+<div class="row">
+
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Geolocation</th>
+				<th>Place</th>
+				<th>Maximum Capacity</th>
+
+			</tr>
+		</thead>
+
+		<tbody>
+			<form method="post">
+
+				@foreach (Shelter u in Model.Shelters.GetAll())
+					{
+
+					<tr>
+						<td> <a class="nav-link text-dark" asp-area="" asp-page="/"> @u.Name </a></td>
+				
+						<td> <a class="nav-link text-dark" asp-area="" asp-page="/"> @u.Geolocation </a></td>
+						<td> <a class="nav-link text-dark" asp-area="" asp-page="/"> @u.Place </a></td>
+						<td> <a class="nav-link text-dark" asp-area="" asp-page="/"> @u.MaximumCapacity </a></td>
+
+
+
+					</tr>
+
+				}
+			</form>
+		</tbody>
+
+	</div>
