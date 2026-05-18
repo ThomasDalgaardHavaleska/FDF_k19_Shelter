@@ -84,9 +84,9 @@ Console.WriteLine();
 var booking = new Booking();
 booking.ShelterToBook = shelter1;
 booking.NoOfCampers = 4; // within capacity
-booking.BookingId = 1;
+booking.BookingId = 0;
 booking.IsReserved = true;
-booking.DistrictOfUser = district1.Name;
+booking.DistrictOfUser = district1;
 booking.CheckInDate = now.AddDays(7);
 booking.CheckoutDate = now.AddDays(10);
 
@@ -135,9 +135,9 @@ foreach (var bp in user1.BlogPosts.GetAll())
 Console.WriteLine("Testing filters on booking...");
 
 // Creating bookings to filter 
-Booking booking2 = new Booking(2,4, true,district1.Name,now.AddDays(4),now.AddDays(6),shelter1);
-Booking booking3 = new Booking(3, 5, false, district2.Name, now.AddDays(4), now.AddDays(7),shelter1);
-Booking booking4 = new Booking(4, 5, true, district2.Name, now, now, shelter1);
+Booking booking2 = new Booking(0,4, true,district1,now.AddDays(4),now.AddDays(6),shelter1);
+Booking booking3 = new Booking(0, 5, false, district2, now.AddDays(4), now.AddDays(7),shelter1);
+Booking booking4 = new Booking(0, 5, true, district2, now, now, shelter1);
 
 
 // Creating bookingfilter 
@@ -148,8 +148,11 @@ bookingFilter.ShelterToBook = null;
 
 
 // Using filter on a BookingRegister
-BookingRegister bookingsToFilter = new BookingRegister(new List<Booking> { booking, booking2, booking3, booking4 }, "Test of filter");
-
+BookingRegister bookingsToFilter = new BookingRegister();
+bookingsToFilter.Add(booking);
+bookingsToFilter.Add(booking2);
+bookingsToFilter.Add(booking3);
+bookingsToFilter.Add(booking4);
 
 var filteredBookings = bookingsToFilter.BookingsWithFilter(bookingFilter);
 

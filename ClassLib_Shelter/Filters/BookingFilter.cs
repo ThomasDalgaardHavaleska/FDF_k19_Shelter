@@ -13,7 +13,7 @@ namespace ClassLib_Shelter.Filters
         private int? _bookingId;
         private int? _noUsers;
         private bool? _isReserved;
-        private string? _districtOfUser;
+        private District? _districtOfUser;
         private DateTime? _reservationDate;
         private DateTime? _checkInDate;
         private DateTime? _checkOutDate;
@@ -61,7 +61,7 @@ namespace ClassLib_Shelter.Filters
 
         }
 
-        public string? DistrictOfUser
+        public District? DistrictOfUser
         {
             get { return _districtOfUser; }
             set { _districtOfUser = value; }

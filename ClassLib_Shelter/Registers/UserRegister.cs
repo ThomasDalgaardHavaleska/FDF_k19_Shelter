@@ -31,8 +31,38 @@ namespace ClassLib_Shelter.Registers
 
 		public void Add(User newUser)
 		{
-		_users.Add(newUser);
+			if (newUser == null) throw new ArgumentException("Item");
+			if (newUser.UserId == 0)
+			{
+				newUser.UserId = GenId();
+			}
+			else
+			{
+				if (GetById(newUser.UserId) != null)
+					throw new ArgumentException("A user with this Id already exists.");
+			}
+			_users.Add(newUser);
 		}
+	
+		
+		
+		private int GenId()
+		{
+			int nextId = 0;
+			foreach (User user in _users)
+			{
+				if (nextId < user.UserId)
+				{
+					nextId = user.UserId;
+				}
+			}
+			return nextId + 1;
+		}
+
+
+
+
+
 
 		public User GetById(int userId)
 		{

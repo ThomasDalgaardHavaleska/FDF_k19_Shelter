@@ -13,7 +13,7 @@ namespace ClassLib_Shelter.Model
 		private int _bookingId;
 		private int _noUsers;
 		private bool _isReserved;
-		private string _districtOfUser;
+		private District _districtOfUser;
 		private DateTime _reservationDate;
 		private DateTime _checkInDate;
 		private DateTime _checkOutDate;
@@ -30,13 +30,13 @@ namespace ClassLib_Shelter.Model
 			BookingId = 0;
 			NoOfCampers = 1;
 			IsReserved = false;
-			DistrictOfUser = "Placeholder";
+			DistrictOfUser = new District();
 			ReservationDate = now;
 			CheckInDate = now;
 			CheckoutDate = now;
 			ShelterToBook = new Shelter();
         }
-		public Booking(int bookingId, int noUsers, bool isReserved, string districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
+		public Booking(int bookingId, int noUsers, bool isReserved, District districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
 		{
 			BookingId = bookingId;
 			NoOfCampers = noUsers;
@@ -86,12 +86,12 @@ namespace ClassLib_Shelter.Model
 			}
 		}
 
-	public string DistrictOfUser
+	public District DistrictOfUser
 		{
 			get { return _districtOfUser; }
 			set 
-			{ 
-				if(string.IsNullOrWhiteSpace(value) || value.Length == 0)
+			{
+				if (value == null)
 				{
 					throw new ArgumentException("District of user cannot be empty.");
 				}
@@ -162,7 +162,7 @@ namespace ClassLib_Shelter.Model
 
         public override string ToString()
 		{
-			return "Booking Id: " + _bookingId + ", Number of users: " + _noUsers +  ", Is reserved: " + _isReserved + ", District of user: " + _districtOfUser +  
+			return "Booking Id: " + _bookingId + ", Number of users: " + _noUsers +  ", Is reserved: " + _isReserved + ", District of user: " + _districtOfUser.Name +  
 					", Reservation date: " + _reservationDate + ", Check-in Date: " + _checkInDate + ", Check-out Date: " + _checkOutDate;
 		}
 #endregion

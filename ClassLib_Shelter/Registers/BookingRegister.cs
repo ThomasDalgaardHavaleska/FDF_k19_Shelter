@@ -50,19 +50,34 @@ namespace ClassLib_Shelter.Registers
         {
             if (newBooking == null)
                 throw new ArgumentNullException("item");
-
-            foreach (Booking booking in _bookings)
+            if(newBooking.BookingId == 0)
             {
-                if (booking.BookingId == booking.BookingId)
-                {
-                    throw new Exception("Booking with this ID already exists.");
-                }
+                newBooking.BookingId = GenId();
             }
-            _bookings.Add(newBooking);
+            else
+            { if(GetById(newBooking.BookingId) != null)
+                {
+                    throw new Exception("Booking with the same ID already exists.");
+                }
+			}
+			_bookings.Add(newBooking);
         }
 
+		private int GenId()
+		{
+			int nextId = 0;
+			foreach (Booking booking in _bookings)
+			{
+				if (nextId < booking.BookingId)
+				{
+					nextId = booking.BookingId;
+				}
+			}
+			return nextId + 1;
+		}
 
-        public void Remove(int bookingId)
+
+		public void Remove(int bookingId)
         {
             Booking bookingToDelete = GetById(bookingId);
             if (bookingToDelete == null)

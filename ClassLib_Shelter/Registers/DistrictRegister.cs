@@ -39,11 +39,32 @@ namespace ClassLib_Shelter.Registers
 
         public void Add(District newDistrict)
         {
-            _districts.Add(newDistrict);
+			if (newDistrict == null) throw new ArgumentException("Item");
+			if (newDistrict.DistrictId == 0)
+			{
+				newDistrict.DistrictId = GenId();
+			}
+			else
+			{
+				if (GetById(newDistrict.DistrictId) != null)
+					throw new ArgumentException("A district with this Id already exists.");
+			}
+			_districts.Add(newDistrict);
         }
+		private int GenId()
+		{
+			int nextId = 0;
+			foreach (District district in _districts)
+			{
+				if (nextId < district.DistrictId)
+				{
+					nextId = district.DistrictId;
+				}
+			}
+			return nextId + 1;
+		}
 
-
-        public void Remove(int districtId)
+		public void Remove(int districtId)
         {
 
             _districts.Remove(GetById(districtId));
