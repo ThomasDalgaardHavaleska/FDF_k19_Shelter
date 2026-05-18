@@ -27,5 +27,21 @@ namespace ClassLib_Shelter.Services
             //DistrictRegister districtRegister = new DistrictRegister();
             //districtRegister.Add(new District(1, "District 1", "Adults", "Location 1", "
         }
+
+        public void DataUser(UserRegister users)
+        {
+            District districtUser = new District(1, "Syd", "Puslinge", "København S", "mail@mail.dk", "+45 1234567");
+            User user1 = new User(1, "John Doe", 24, "john.doe@example.com", "+45 12345678", true, districtUser);
+
+            users.Add(user1);
+        }
+
+        public void DataBooking(BookingRegister bookings, UserRegister users, DistrictRegister districts)
+        {
+            User user = users.GetById(1);
+            District district = districts.GetById(1);
+            Booking booking1 = new Booking(1, user, district, DateTime.Now, DateTime.Now.AddHours(2));
+            bookings.Add(booking1);
+        }
     }
 }
