@@ -21,6 +21,7 @@ BookingRegister bookings = new BookingRegister();
 #if DEBUG 
 TestDataService testData = new TestDataService();
 testData.DataDistricts(districts);
+testData.Data
 #endif
 
 builder.Services.AddSingleton<DistrictRegister>(districts);
