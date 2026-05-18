@@ -14,10 +14,12 @@ public class ShelterRegister : IRegister<Shelter>
  public ShelterRegister() 
         { 
             _name = "";
+            _shelters = new List<Shelter>();
         } 
 	public ShelterRegister(string name)
 		{
 			_name = name;
+			_shelters = new List<Shelter>();
 		}
 #endregion
 

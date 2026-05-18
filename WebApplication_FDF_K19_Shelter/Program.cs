@@ -15,20 +15,19 @@ DistrictRegister districts = new DistrictRegister();
 ShelterRegister shelters = new ShelterRegister();
 UserRegister users = new UserRegister();
 BlogPostRegister blogs = new BlogPostRegister();
-CommentRegister comments = new CommentRegister();
+
 BookingRegister bookings = new BookingRegister();
 
 #if DEBUG 
 TestDataService testData = new TestDataService();
 testData.DataDistricts(districts);
-testData.Data
+testData.DataShelters(shelters);
 #endif
 
 builder.Services.AddSingleton<DistrictRegister>(districts);
 builder.Services.AddSingleton<ShelterRegister>(shelters);
 builder.Services.AddSingleton<UserRegister>(users);
 builder.Services.AddSingleton<BlogPostRegister>(blogs);
-builder.Services.AddSingleton<CommentRegister>(comments);
 builder.Services.AddSingleton<BookingRegister>(bookings);
 
 
