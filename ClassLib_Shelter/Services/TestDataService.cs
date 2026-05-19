@@ -54,12 +54,13 @@ namespace ClassLib_Shelter.Services
             bookings.Add(booking1);
             bookings.Add(booking2);
             bookings.Add(booking3);
+            bookings.Add(booking4);
         }
 
-        public void DataShelters(ShelterRegister shelters)
+        public void DataShelter(Shelter shelter)
         {
-            Shelter shelter1 = new Shelter(0, "Shelter 1", "55.813524, 12.302504", "Ganløse-skoven", 5);
-            shelters.Add(shelter1);
+            shelter = new Shelter(1, "Shelter 1", "55.813524, 12.302504", "Ganløse-skoven", 5);
+          
         
         }
     }

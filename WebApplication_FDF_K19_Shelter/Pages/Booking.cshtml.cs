@@ -9,13 +9,18 @@ namespace WebApplication_FDF_K19_Shelter.Pages
     {
 
         
-            private BookingRegister _bookings;
-            private Booking _newbooking;
-            public BookingModel(BookingRegister bookings)
-            {
-                _bookings = bookings;
-            }
-            public BookingRegister Bookings { get { return _bookings; } set { _bookings = value; } }
+        private BookingRegister _bookings;
+        private Booking _newbooking;
+        private Shelter _shelter;
+
+        public BookingModel(BookingRegister bookings, Shelter shelter)
+        {
+            _bookings = bookings;
+            _shelter = shelter;
+        }
+        public BookingRegister Bookings { get { return _bookings; } set { _bookings = value; } }
+        public Shelter Shelter { get { return _shelter; } set { _shelter = value; } }
+
         [BindProperty]
         public Booking NewBooking { get { return _newbooking; } set { _newbooking = value; } }
 
@@ -26,7 +31,8 @@ namespace WebApplication_FDF_K19_Shelter.Pages
 
         public IActionResult OnPost()
         {
-            Shelter shelterToBook = Bookings.GetById(1).ShelterToBook;
+            Shelter shelterToBook = new Shelter();
+            shelterToBook = _shelter;
             District districtOfBooking = new District(0, "Syd", "Puslinge", "København S", "m@m.m", "123");
             Booking newBooking = new Booking();
             newBooking.NoOfCampers = NewBooking.NoOfCampers;

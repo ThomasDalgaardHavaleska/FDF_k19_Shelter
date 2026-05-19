@@ -173,7 +173,7 @@ namespace ClassLib_Shelter.Model
 		public string FullName	
 		{ 
 			get { return _fullName; } 
-			set { value = _fullName; } 
+			set { _fullName = value; } 
 		} 
         #endregion
 
@@ -185,7 +185,7 @@ namespace ClassLib_Shelter.Model
 		{
 			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + ", age group: " + AgeGroup +
 				", Is reserved: " + IsReserved + ", District of user: " + DistrictOfUser.Name +  
-					", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate;
+					", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate + ", Shelter: " + ShelterToBook.Name;
 		}
 #endregion
 	}
