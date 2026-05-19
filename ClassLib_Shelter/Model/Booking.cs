@@ -183,9 +183,9 @@ namespace ClassLib_Shelter.Model
 
         public override string ToString()
 		{
-			return "Booking Id: " + _bookingId + ", fullname: " + _fullName + ", Number of users: " + _noUsers + ", age group: " + _ageGroup +
-				", Is reserved: " + _isReserved + ", District of user: " + _districtOfUser.Name +  
-					", Reservation date: " + _reservationDate + ", Check-in Date: " + _checkInDate + ", Check-out Date: " + _checkOutDate;
+			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + ", age group: " + AgeGroup +
+				", Is reserved: " + IsReserved + ", District of user: " + DistrictOfUser.Name +  
+					", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate;
 		}
 #endregion
 	}

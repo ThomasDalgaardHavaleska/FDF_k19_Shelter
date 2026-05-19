@@ -7,14 +7,18 @@ namespace WebApplication_FDF_K19_Shelter.Pages
 {
     public class BookingModel : PageModel
     {
-        private static BookingRegister _bookings = new BookingRegister();
-        private static ShelterRegister _shelters = new ShelterRegister();
 
+        
+            private BookingRegister _bookings;
+            private Booking _newbooking;
+            public BookingModel(BookingRegister bookings)
+            {
+                _bookings = bookings;
+            }
+            public BookingRegister Bookings { get { return _bookings; } set { _bookings = value; } }
         [BindProperty]
-        public Booking newBooking { get; set; }
+        public Booking NewBooking { get { return _newbooking; } set { _newbooking = value; } }
 
-		public BookingRegister Bookings => _bookings;
-        public ShelterRegister Shelters => _shelters;
         public void OnGet()
         {
           
@@ -22,14 +26,23 @@ namespace WebApplication_FDF_K19_Shelter.Pages
 
         public IActionResult OnPost()
         {
-        newBooking.ShelterToBook = _shelters.GetById(1);
-        newBooking.IsReserved = true;
-        newBooking.DistrictOfUser = new District(0, "Syd", "Puslinge", "København S", "m@m.m", "123"); 
-			if (!ModelState.IsValid)
-            {
+            Shelter shelterToBook = Bookings.GetById(1).ShelterToBook;
+            District districtOfBooking = new District(0, "Syd", "Puslinge", "København S", "m@m.m", "123");
+            Booking newBooking = new Booking();
+            newBooking.NoOfCampers = NewBooking.NoOfCampers;
+            newBooking.IsReserved = true;
+            newBooking.AgeGroup = NewBooking.AgeGroup;
+            newBooking.DistrictOfUser = districtOfBooking;
+            newBooking.CheckInDate = NewBooking.CheckInDate;
+            newBooking.CheckoutDate = NewBooking.CheckoutDate;
+            newBooking.ShelterToBook = shelterToBook;
+            newBooking.FullName = NewBooking.FullName;
+ 
+			//if (!ModelState.IsValid)
+   //         {
             
-                return Page();
-            }
+   //             return Page();
+   //         }
             _bookings.Add(newBooking);
 
             return RedirectToPage("BookingConfirmation");

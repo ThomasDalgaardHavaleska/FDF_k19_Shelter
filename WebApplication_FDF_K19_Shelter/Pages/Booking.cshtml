@@ -1,5 +1,10 @@
 ﻿@page
+@using ClassLib_Shelter.Registers;
+@using ClassLib_Shelter.Model;
+@using ClassLib_Shelter.Filters;
+@using ClassLib_Shelter.Services;
 @model WebApplication_FDF_K19_Shelter.Pages.BookingModel
+
 @{
     ViewData["Title"] = "Book et besøg";
 }
@@ -22,19 +27,18 @@
 
         <form method="post">
             <label>Navn Og Efternavn:</label>
-            <input type="text" asp-for="newBooking.FullName" required />
+            <input type="text" asp-for="@Model.NewBooking.FullName" required />
 
             <label>Check ind:</label>
-            <input type="datetime-local" asp-for="newBooking.CheckInDate" required />
+            <input type="datetime-local" asp-for="@Model.NewBooking.CheckInDate" required />
             <label>Check ud:</label>
-            <input type="datetime-local" asp-for="newBooking.CheckoutDate" required />
+            <input type="datetime-local" asp-for="@Model.NewBooking.CheckoutDate" required />
             <label>Antal deltagere:</label>
-            <input type="number" asp-for="newBooking.NoOfCampers" required />
+            <input type="number" asp-for="@Model.NewBooking.NoOfCampers" required />
             <label>Patrulje:</label>
-            <input type="text" asp-for="newBooking.AgeGroup" required />
-            <label>Kreds:</label>
-            <input type="text" asp-for="newBooking.DistrictOfUser" required />
-          
+            <input type="text" asp-for="@Model.NewBooking.AgeGroup" required />
+      
+
              
             <button type="submit">Book Tid</button>
         </form>
@@ -46,12 +50,14 @@
         </div>
 
         <h3>Eksisterende Bookinger</h3>
+        
         <ul>
-            @foreach (var booking in Model.Bookings.GetAll())
+            @foreach (Booking booking in Model.Bookings.GetAll())
             {
                 <li>@booking.ToString()</li>
             }
         </ul>
+   
     </div>
 
     <div class="booking-right">
