@@ -37,5 +37,18 @@ namespace ClassLib_Shelter.Filters
 			return result;
 		}
 
-	}
+		public List<District> FilterName(List<District> districts, string name)
+		{
+			List<District> result = new List<District>();
+			foreach (District district in districts)
+			{
+				if (district.Name == name)
+				{
+					result.Add(district);
+				}
+			}
+			return result;
+        }
+
+    }
 }
