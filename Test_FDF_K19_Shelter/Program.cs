@@ -200,19 +200,25 @@ try
 }
 catch (ArgumentException ex)
 {
-    Console.WriteLine("Caught expected exception: " + ex.Message);
+
+    GreenColourMessage("Caught expected exception: " + ex.Message);
+
 }
 catch (Exception ex)
 {
-    Console.WriteLine("Caught unexpected exception: " + ex.Message);
+
+    RedColourMessage("Caught unexpected exception: " + ex.Message);
+
 }
 finally
 {
     Console.WriteLine("Edge case test completed.");
+    Console.WriteLine("");
 }
 
 
-Console.WriteLine("Testing edge case: A booking is already made for the shelter to book");
+
+Console.WriteLine("Testing edge case: Attempting to add a booking when a booking is already made for the shelter to book");
 try
 {
     Booking booking5 = new Booking(0, 4, true, "Væbner", district1, now.AddDays(4), now.AddDays(10), shelter1, "Name");
@@ -220,9 +226,33 @@ try
 }
 catch (Exception ex)
 {
-    Console.WriteLine("Caught expected exception: " + ex.Message);
+
+    GreenColourMessage("Caught expected exception: " + ex.Message);
+   
 }
 finally
 {
     Console.WriteLine("Edge case test completed.");
+    Console.WriteLine();
+}
+
+
+
+
+
+void GreenColourMessage(string message)
+{
+ 
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine(message);
+  
+    Console.ForegroundColor = ConsoleColor.White;
+}
+void RedColourMessage(string message)
+{
+
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine(message);
+  
+    Console.ForegroundColor = ConsoleColor.White;
 }
