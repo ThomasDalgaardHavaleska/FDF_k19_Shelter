@@ -107,10 +107,12 @@ namespace ClassLib_Shelter.Registers
                 booking.BookingId = updatedBooking.BookingId;
                 booking.NoOfCampers = updatedBooking.NoOfCampers;
                 booking.IsReserved = updatedBooking.IsReserved;
+                booking.AgeGroup = updatedBooking.AgeGroup;
                 booking.DistrictOfUser = updatedBooking.DistrictOfUser;
                 booking.ReservationDate = updatedBooking.ReservationDate;
                 booking.CheckoutDate = updatedBooking.CheckoutDate;
                 booking.CheckInDate = updatedBooking.CheckInDate;
+                booking.FullName = updatedBooking.FullName;
                 return booking;
             }
             throw new Exception("Booking not found.");
@@ -232,6 +234,20 @@ namespace ClassLib_Shelter.Registers
                 foreach (var booking in resultBooking)
                 {
                     if (booking.CheckoutDate == filter.CheckOutDate)
+                    {
+                        allBookingsWithFilter.Add(booking);
+                    }
+                }
+
+                resultBooking = allBookingsWithFilter;
+                allBookingsWithFilter = new List<Booking>();
+            }
+
+            if (filter.FullName != null)
+            {
+                foreach (var booking in resultBooking)
+                {
+                    if (booking.FullName == filter.FullName)
                     {
                         allBookingsWithFilter.Add(booking);
                     }
