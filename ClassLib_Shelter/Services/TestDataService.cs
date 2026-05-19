@@ -46,10 +46,10 @@ namespace ClassLib_Shelter.Services
             Shelter shelter3 = new Shelter(3, "Shelter 3", "Geolocation 3", "Place 3", 10);
             Shelter shelter4 = new Shelter(4, "Shelter 4", "Geolocation 4", "Place 4", 1);
 
-            Booking booking1 = new Booking(0, 5, true, district, DateTime.Now, DateTime.Now.AddDays(2), shelter1);
-            Booking booking2 = new Booking(0, 3, false, district, DateTime.Now, DateTime.Now.AddDays(1), shelter2);
-            Booking booking3 = new Booking(0, 4, true, district, DateTime.Now, DateTime.Now.AddDays(3), shelter3);
-            Booking booking4 = new Booking(0, 1, false, district, DateTime.Now, DateTime.Now.AddDays(4), shelter4);
+            Booking booking1 = new Booking(0, 5, true, "Tumlinge",district, DateTime.Now, DateTime.Now.AddDays(2), shelter1, "Lars Larsen");
+            Booking booking2 = new Booking(0, 3, false, "Væbnere", district, DateTime.Now, DateTime.Now.AddDays(1), shelter2, "Hans Hansen");
+            Booking booking3 = new Booking(0, 4, true, "Puslinge", district, DateTime.Now, DateTime.Now.AddDays(3), shelter3, "Troels Troelsen");
+            Booking booking4 = new Booking(0, 1, false, "SeniorVæbnere",district, DateTime.Now, DateTime.Now.AddDays(4), shelter4, "Anders Christiansen");
 
             bookings.Add(booking1);
             bookings.Add(booking2);

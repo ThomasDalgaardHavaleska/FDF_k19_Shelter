@@ -30,7 +30,7 @@ namespace WebApplication_FDF_K19_Shelter.Pages
             newBooking.BookingId = nyId;
             _bookings.Add(newBooking);
 
-            return RedirectToPage("BookingBekraeftelse");
+            return RedirectToPage("BookingConfirmation");
         }
     }
 }

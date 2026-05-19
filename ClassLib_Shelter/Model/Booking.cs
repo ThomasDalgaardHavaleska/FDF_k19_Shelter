@@ -19,7 +19,7 @@ namespace ClassLib_Shelter.Model
 		private DateTime _checkInDate;
 		private DateTime _checkOutDate;
 		private Shelter _shelterToBook;
-
+		private string _fullName;
 
         #endregion
 
@@ -37,8 +37,9 @@ namespace ClassLib_Shelter.Model
 			CheckInDate = now;
 			CheckoutDate = now;
 			ShelterToBook = new Shelter();
-        }
-		public Booking(int bookingId, int noUsers, bool isReserved, string ageGroup, District districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
+			FullName = "";
+		}
+		public Booking(int bookingId, int noUsers, bool isReserved, string ageGroup, District districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook, string fullName)
 		{
 			BookingId = bookingId;
 			NoOfCampers = noUsers;
@@ -49,6 +50,7 @@ namespace ClassLib_Shelter.Model
 			CheckInDate = chekinDate;
 			CheckoutDate = checkoutDate;
 			ShelterToBook = shelterToBook;
+			FullName = fullName;
         }
 #endregion
 
@@ -163,6 +165,8 @@ namespace ClassLib_Shelter.Model
 				_shelterToBook = value; 
 			}
         }
+
+		public string FullName { get { return _fullName; } set { value = _fullName; } } 
         #endregion
 
         #region Methods

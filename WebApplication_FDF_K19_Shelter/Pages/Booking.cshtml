@@ -22,7 +22,7 @@
 
         <form method="post">
             <label>Navn Og Efternavn:</label>
-            <input type="text" asp-for="newBooking.CustomerName" required />
+            <input type="text" asp-for="newBooking.FullName" required />
 
             <label>Dato Og Tid:</label>
             <input type="datetime-local" asp-for="newBooking.CheckInDate" required />
@@ -38,7 +38,7 @@
 
         <h3>Eksisterende Bookinger</h3>
         <ul>
-            @foreach (var booking in Model.Books)
+            @foreach (var booking in Model.Bookings)
             {
                 <li>@booking.ToString()</li>
             }
