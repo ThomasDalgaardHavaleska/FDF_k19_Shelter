@@ -59,7 +59,12 @@ namespace ClassLib_Shelter.Services
 
         public void DataShelter(Shelter shelter)
         {
-            shelter = new Shelter(1, "Shelter 1", "55.813524, 12.302504", "Ganløse-skoven", 5);
+            shelter.ShelterId = 1;
+            shelter.Name = "Ganløse Shelter";
+            shelter.Geolocation = "55.813524, 12.302504";
+            shelter.Place = "Ganløse-skoven";
+            shelter.MaximumCapacity = 5;
+         
           
         
         }

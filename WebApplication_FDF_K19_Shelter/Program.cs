@@ -18,12 +18,13 @@ BlogPostRegister blogs = new BlogPostRegister();
 
 BookingRegister bookings = new BookingRegister();
 
-Shelter shelter = new Shelter(1, "Shelter 1", "55.813524, 12.302504", "Ganløse-skoven", 5);
+Shelter shelter = new Shelter();
 
 #if DEBUG 
 TestDataService testData = new TestDataService();
 testData.DataDistricts(districts);
 testData.DataUser(users);
+testData.DataShelter(shelter);
 testData.DataBooking(bookings, users, districts);
 
 #endif
