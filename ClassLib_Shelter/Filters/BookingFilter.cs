@@ -13,6 +13,7 @@ namespace ClassLib_Shelter.Filters
         private int? _bookingId;
         private int? _noUsers;
         private bool? _isReserved;
+        private string? _ageGroup;
         private District? _districtOfUser;
         private DateTime? _reservationDate;
         private DateTime? _checkInDate;
@@ -28,6 +29,7 @@ namespace ClassLib_Shelter.Filters
             _bookingId = null;
             _noUsers = null;
             _isReserved = null;
+            _ageGroup = null;
             _districtOfUser = null;
             _reservationDate = null;
             _checkInDate = null;
@@ -59,6 +61,12 @@ namespace ClassLib_Shelter.Filters
             get { return _isReserved; }
             set { _isReserved = value; }
 
+        }
+
+        public string? AgeGroup
+        {
+            get { return _ageGroup; }
+            set { _ageGroup = value; }
         }
 
         public District? DistrictOfUser

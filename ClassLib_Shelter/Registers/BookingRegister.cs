@@ -157,6 +157,20 @@ namespace ClassLib_Shelter.Registers
                 allBookingsWithFilter = new List<Booking>();
             }
 
+            if(filter.AgeGroup != null)
+            {
+                foreach (var booking in resultBooking)
+                {
+                    if(booking.AgeGroup ==filter.AgeGroup)
+                    {
+                        allBookingsWithFilter.Add(booking);
+                    }
+                }
+
+                resultBooking = allBookingsWithFilter;
+                allBookingsWithFilter = new List<Booking>();
+            }
+
             if (filter.IsReserved != null)
             {
                 foreach (var booking in resultBooking)

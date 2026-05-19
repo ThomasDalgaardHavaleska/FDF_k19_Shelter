@@ -13,6 +13,7 @@ namespace ClassLib_Shelter.Model
 		private int _bookingId;
 		private int _noUsers;
 		private bool _isReserved;
+		private string _ageGroup;
 		private District _districtOfUser;
 		private DateTime _reservationDate;
 		private DateTime _checkInDate;
@@ -30,17 +31,19 @@ namespace ClassLib_Shelter.Model
 			BookingId = 0;
 			NoOfCampers = 1;
 			IsReserved = false;
+			_ageGroup = "";
 			DistrictOfUser = new District();
 			ReservationDate = now;
 			CheckInDate = now;
 			CheckoutDate = now;
 			ShelterToBook = new Shelter();
         }
-		public Booking(int bookingId, int noUsers, bool isReserved, District districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
+		public Booking(int bookingId, int noUsers, bool isReserved, string ageGroup, District districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook)
 		{
 			BookingId = bookingId;
 			NoOfCampers = noUsers;
 			IsReserved = isReserved;
+			AgeGroup = ageGroup;
 			DistrictOfUser = districtOfUser;
 			ReservationDate = DateTime.Now;
 			CheckInDate = chekinDate;
@@ -84,6 +87,12 @@ namespace ClassLib_Shelter.Model
 			{
 				_isReserved = value; 
 			}
+		}
+
+		public string AgeGroup
+		{
+			get { return _ageGroup; }
+			set { _ageGroup = value; }
 		}
 
 	public District DistrictOfUser
