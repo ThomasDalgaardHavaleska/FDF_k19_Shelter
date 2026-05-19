@@ -15,7 +15,7 @@ DistrictRegister districts = new DistrictRegister();
 
 UserRegister users = new UserRegister();
 BlogPostRegister blogs = new BlogPostRegister();
-
+ShelterRegister shelters = new ShelterRegister();
 BookingRegister bookings = new BookingRegister();
 
 Shelter shelter = new Shelter();
@@ -25,6 +25,7 @@ TestDataService testData = new TestDataService();
 testData.DataDistricts(districts);
 testData.DataUser(users);
 testData.DataShelter(shelter);
+testData.DataShelterRegister(shelters);
 testData.DataBooking(bookings, users, districts);
 
 #endif
@@ -35,6 +36,7 @@ builder.Services.AddSingleton<UserRegister>(users);
 builder.Services.AddSingleton<BlogPostRegister>(blogs);
 builder.Services.AddSingleton<BookingRegister>(bookings);
 builder.Services.AddSingleton<Shelter>(shelter);
+builder.Services.AddSingleton<ShelterRegister>(shelters);
 
 
 var app = builder.Build();

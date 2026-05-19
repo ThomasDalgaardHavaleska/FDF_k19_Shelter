@@ -7,6 +7,7 @@ namespace WebApplication_FDF_K19_Shelter.Pages
     public class ShelterModel : PageModel
     {
     private ShelterRegister _shelters;
+
         public ShelterModel(ShelterRegister shelters)
         {
             _shelters = shelters;
