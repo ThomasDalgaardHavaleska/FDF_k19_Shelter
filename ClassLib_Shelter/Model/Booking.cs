@@ -166,7 +166,11 @@ namespace ClassLib_Shelter.Model
 			}
         }
 
-		public string FullName { get { return _fullName; } set { value = _fullName; } } 
+		public string FullName	
+		{ 
+			get { return _fullName; } 
+			set { value = _fullName; } 
+		} 
         #endregion
 
         #region Methods
