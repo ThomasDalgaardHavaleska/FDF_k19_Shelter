@@ -241,6 +241,20 @@ namespace ClassLib_Shelter.Registers
                 allBookingsWithFilter = new List<Booking>();
             }
 
+            if (filter.FullName != null)
+            {
+                foreach (var booking in resultBooking)
+                {
+                    if (booking.FullName == filter.FullName)
+                    {
+                        allBookingsWithFilter.Add(booking);
+                    }
+                }
+
+                resultBooking = allBookingsWithFilter;
+                allBookingsWithFilter = new List<Booking>();
+            }
+
             return resultBooking;
 
         }

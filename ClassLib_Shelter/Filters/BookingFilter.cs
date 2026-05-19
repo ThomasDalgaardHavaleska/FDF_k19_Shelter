@@ -19,6 +19,7 @@ namespace ClassLib_Shelter.Filters
         private DateTime? _checkInDate;
         private DateTime? _checkOutDate;
         private Shelter? _shelterToBook;
+        private string? _fullName;
 
 
         #endregion
@@ -35,6 +36,7 @@ namespace ClassLib_Shelter.Filters
             _checkInDate = null;
             _checkOutDate = null;
             _shelterToBook = null;
+            _fullName = null;
           
 
         }
@@ -105,15 +107,20 @@ namespace ClassLib_Shelter.Filters
 
         }
 
+        public string? FullName
+        { 
+            get { return _fullName; }
+            set { _fullName = value; }
 
+        }
 
         #endregion
 
         #region Methods
 
-   
-        
-       
+
+
+
     }
 }
 #endregion
