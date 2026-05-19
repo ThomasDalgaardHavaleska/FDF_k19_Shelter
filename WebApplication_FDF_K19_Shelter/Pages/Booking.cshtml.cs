@@ -33,7 +33,8 @@ namespace WebApplication_FDF_K19_Shelter.Pages
         {
             Shelter shelterToBook = new Shelter();
             shelterToBook = _shelter;
-            District districtOfBooking = new District(0, "Syd", "Puslinge", "København S", "m@m.m", "123");
+            List<string> ageGroup = new List<string> { "Puslinge", "Tumlinge" };
+            District districtOfBooking = new District(0, "Syd", ageGroup, "København S", "m@m.m", "123",20);
             Booking newBooking = new Booking();
             newBooking.NoOfCampers = NewBooking.NoOfCampers;
             newBooking.IsReserved = true;

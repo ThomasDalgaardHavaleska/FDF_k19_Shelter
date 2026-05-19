@@ -29,10 +29,13 @@ namespace ClassLib_Shelter.Filters
 			List<District> result = new List<District>();
 			foreach (District district in districts)
 			{
-				if (district.AgeGroup == ageGroup)
-				{
-					result.Add(district);
-				}
+				foreach (string age in district.AgeGroup)
+                {
+                    if (age == ageGroup)
+					{
+						result.Add(district);
+					}
+                }
 			}
 			return result;
 		}

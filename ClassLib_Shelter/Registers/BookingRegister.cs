@@ -60,10 +60,33 @@ namespace ClassLib_Shelter.Registers
                     throw new Exception("Booking with the same ID already exists.");
                 }
 			}
+
+            if (IsShelterBooked(_bookings, newBooking.ShelterToBook.ShelterId, newBooking.CheckInDate, newBooking.CheckoutDate) == true)
+            {
+                throw new Exception("Shelter is already booked for the requested dates.");
+            }
+
+
 			_bookings.Add(newBooking);
         }
 
-		private int GenId()
+        public bool IsShelterBooked(List<Booking> bookings, int shelterId,DateTime requestedCheckIn, DateTime requestedCheckOut)
+        {
+            foreach (Booking b in bookings)
+            {
+                // Check if it is the same shelter
+                if (b.ShelterToBook.ShelterId == shelterId)
+                {
+                    // Check if dates overlap
+                    if (requestedCheckIn < b.CheckoutDate && requestedCheckOut > b.CheckInDate)
+                    {
+                        return true;
+                    }                                   
+                }
+            }
+            return false;
+        }
+        private int GenId()
 		{
 			int nextId = 0;
 			foreach (Booking booking in _bookings)
@@ -260,6 +283,8 @@ namespace ClassLib_Shelter.Registers
             return resultBooking;
 
         }
+
+       
 
         public override string ToString()
         {
