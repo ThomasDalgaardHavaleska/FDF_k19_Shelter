@@ -45,10 +45,41 @@ public class ShelterRegister : IRegister<Shelter>
             return new List<Shelter>(_shelters); 
         }
         public void Add(Shelter newShelter)
-        {
-            _shelters.Add(newShelter);
+        { 
+           if (newShelter == null)
+                throw new ArgumentNullException("item");
+            if(newShelter.ShelterId == 0)
+            {
+                newShelter.ShelterId = GenId();
+}
+            else
+            { if(GetById(newShelter.ShelterId) != null)
+                {
+                    throw new Exception("Shelter with the same ID already exists.");
+                }
+			}
+			_shelters.Add(newShelter);
         }
-        public void Remove(int shelterId)
+
+
+	private int GenId()
+	{
+		int nextId = 0;
+		foreach (Shelter shelter in _shelters)
+		{
+			if (nextId < shelter.ShelterId)
+			{
+				nextId = shelter.ShelterId;
+			}
+		}
+		return nextId + 1;
+	}
+
+
+
+
+
+	public void Remove(int shelterId)
         {
             _shelters.Remove(GetById(shelterId));
         }

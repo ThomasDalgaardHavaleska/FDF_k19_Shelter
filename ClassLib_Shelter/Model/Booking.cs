@@ -62,7 +62,22 @@ namespace ClassLib_Shelter.Model
 			set { _bookingId = value; }
 		}
 
-	public int NoOfCampers
+		public Shelter ShelterToBook
+		{
+			get { return _shelterToBook; }
+			set
+			{
+				if (value == null)
+				{
+					throw new ArgumentException("Shelter cannot be null.");
+				}
+				_shelterToBook = value;
+			}
+		}
+
+
+
+		public int NoOfCampers
 		{
 			get { return _noUsers; }
 			set 
@@ -72,11 +87,11 @@ namespace ClassLib_Shelter.Model
 					throw new ArgumentException("Number of users cannot be negative.");
                 }
 
-                // Only check capacity when a shelter is assigned
-                if (ShelterToBook != null && value > ShelterToBook.MaximumCapacity)
-                {
-                    throw new ArgumentException("Number of campers cannot exceed shelter capacity.");
-                }
+                //// Only check capacity when a shelter is assigned
+                //if (ShelterToBook != null || value >= ShelterToBook.MaximumCapacity)
+                //{
+                //    throw new ArgumentException("Number of campers cannot exceed shelter capacity.");
+                //}
 
                 _noUsers = value; 
 			}
@@ -153,18 +168,7 @@ namespace ClassLib_Shelter.Model
 
 		}
 
-		public Shelter ShelterToBook
-		{
-			get { return _shelterToBook; }
-			set 
-			{
-				if (value == null)
-				{
-					throw new ArgumentException("Shelter cannot be null.");
-				}
-				_shelterToBook = value; 
-			}
-        }
+		
 
 		public string FullName { get { return _fullName; } set { value = _fullName; } } 
         #endregion

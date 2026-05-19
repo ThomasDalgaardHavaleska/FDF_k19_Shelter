@@ -8,29 +8,33 @@ namespace WebApplication_FDF_K19_Shelter.Pages
     public class BookingModel : PageModel
     {
         private static BookingRegister _bookings = new BookingRegister();
+        private static ShelterRegister _shelters = new ShelterRegister();
 
         [BindProperty]
         public Booking newBooking { get; set; }
 
-        public List<Booking> Bookings { get; set; }
+		public BookingRegister Bookings => _bookings;
+        public ShelterRegister Shelters => _shelters;
         public void OnGet()
         {
-            Bookings = _bookings.GetAll();
+          
         }
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+        newBooking.ShelterToBook = _shelters.GetById(1);
+        newBooking.IsReserved = true;
+        newBooking.DistrictOfUser = new District(0, "Syd", "Puslinge", "København S", "m@m.m", "123"); 
+			if (!ModelState.IsValid)
             {
-                Bookings = _bookings.GetAll();
+            
                 return Page();
             }
-
-            int nyId = _bookings.GetAll().Count + 1;
-            newBooking.BookingId = nyId;
             _bookings.Add(newBooking);
 
             return RedirectToPage("BookingConfirmation");
         }
+
+        
     }
 }

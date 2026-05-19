@@ -24,9 +24,18 @@
             <label>Navn Og Efternavn:</label>
             <input type="text" asp-for="newBooking.FullName" required />
 
-            <label>Dato Og Tid:</label>
+            <label>Check ind:</label>
             <input type="datetime-local" asp-for="newBooking.CheckInDate" required />
-
+            <label>Check ud:</label>
+            <input type="datetime-local" asp-for="newBooking.CheckoutDate" required />
+            <label>Antal deltagere:</label>
+            <input type="number" asp-for="newBooking.NoOfCampers" required />
+            <label>Patrulje:</label>
+            <input type="text" asp-for="newBooking.AgeGroup" required />
+            <label>Kreds:</label>
+            <input type="text" asp-for="newBooking.DistrictOfUser" required />
+          
+             
             <button type="submit">Book Tid</button>
         </form>
 
@@ -38,7 +47,7 @@
 
         <h3>Eksisterende Bookinger</h3>
         <ul>
-            @foreach (var booking in Model.Bookings)
+            @foreach (var booking in Model.Bookings.GetAll())
             {
                 <li>@booking.ToString()</li>
             }

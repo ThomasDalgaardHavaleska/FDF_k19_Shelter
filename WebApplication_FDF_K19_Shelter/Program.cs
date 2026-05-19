@@ -22,6 +22,7 @@ BookingRegister bookings = new BookingRegister();
 TestDataService testData = new TestDataService();
 testData.DataDistricts(districts);
 testData.DataShelters(shelters);
+testData.DataBooking(bookings, users, districts);
 #endif
 
 builder.Services.AddSingleton<DistrictRegister>(districts);
