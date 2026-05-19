@@ -57,7 +57,7 @@ user1.BlogPosts.GetById(1).CreateComment("Does this even work?!", user2);
 
 Console.WriteLine("Comments on first blog post:");
 
-foreach (Comment c in user1.BlogPosts.GetById(1).Comments.GetAll())
+foreach (Comment c in user1.BlogPosts.GetById(1).GetAll())
 {
     Console.WriteLine(c + "\n");
     Console.WriteLine();
@@ -135,9 +135,9 @@ foreach (var bp in user1.BlogPosts.GetAll())
 Console.WriteLine("Testing filters on booking...");
 
 // Creating bookings to filter 
-Booking booking2 = new Booking(0,4, true,district1,now.AddDays(4),now.AddDays(6),shelter1);
-Booking booking3 = new Booking(0, 5, false, district2, now.AddDays(4), now.AddDays(7),shelter1);
-Booking booking4 = new Booking(0, 5, true, district2, now, now, shelter1);
+Booking booking2 = new Booking(0,4, true,"Væbner",district1,now.AddDays(4),now.AddDays(6),shelter1,"Name");
+Booking booking3 = new Booking(0, 5, false, "Væbner", district2, now.AddDays(4), now.AddDays(7), shelter1, "Name");
+Booking booking4 = new Booking(0, 5, true, "Væbner", district2, now, now, shelter1, "Name");
 
 
 // Creating bookingfilter 
