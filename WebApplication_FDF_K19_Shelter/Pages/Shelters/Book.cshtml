@@ -25,9 +25,50 @@
         <span asp-validation-for="Booking.CheckoutDate" class="field-validation"></span>
     </div>
 
+    <div>
+        <label>District</label>
+        <select asp-for="SelectedDistrictId" id="districtSelect">
+            <option value="">-- Select district --</option>
+            @if (Model.AllDistricts != null)
+            {
+                foreach (var d in Model.AllDistricts)
+                {
+                    var ag = string.Join(',', d.AgeGroup ?? new List<string>());
+                    <option value="@d.DistrictId" data-agegroups="@ag">@d.Name</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Age group</label>
+        <select asp-for="SelectedAgeGroup" id="ageGroupSelect">
+            <option value="">-- Select age group --</option>
+        </select>
+    </div>
+
+
     <button type="submit">Book</button>
 </form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    $(function () {
+        $('#districtSelect').on('change', function () {
+            var selected = $(this).find('option:selected');
+            var raw = selected.data('agegroups') || '';
+            var ageGroups = raw === '' ? [] : String(raw).split(',');
+            var $age = $('#ageGroupSelect');
+            $age.empty();
+            $age.append($('<option>').val('').text('-- Select age group --'));
+            ageGroups.forEach(function (g) {
+                if (g && g.trim().length > 0) {
+                    $age.append($('<option>').val(g).text(g));
+                }
+            });
+        });
+    });
+</script>

@@ -5,6 +5,6 @@
 <ul>
 @foreach(var b in Model.Bookings)
 {
-    <li>Id: @b.BookingId - @b.FullName - Shelter: @b.ShelterToBook.Name - @b.CheckInDate.ToShortDateString() to @b.CheckoutDate.ToShortDateString()</li>
+    <li>Id: @b.BookingId - @b.FullName - Shelter: @b.ShelterToBook.Name - @b.CheckInDate.ToShortDateString() to @b.CheckoutDate.ToShortDateString() - Age Group: @b.AgeGroup - District: @b.DistrictOfUser.Name</li>
 }
 </ul>
