@@ -9,41 +9,41 @@ namespace ClassLib_Shelter.Model
 	public class BlogPostImage : BlogPost
     #region Instance Fields
     {
-        private string _path;
-		private string _type;
+        private string _imagePath;
+		private string _imageType;
 #endregion
 
 
 #region Constructor
 		public BlogPostImage() : base ()
 		{
-			_path = " ";
-			_type = " ";
+			_imagePath = " ";
+			_imageType = " ";
 		}
-		public BlogPostImage(int id, string titel, string content, DateTime datePublished, bool hasVisited, string path, string type) : base(id,titel,content,datePublished,hasVisited)
+		public BlogPostImage(int id, string titel, string content, DateTime datePublished, bool hasVisited, string imagePath, string imageType) : base(id,titel,content,datePublished,hasVisited)
 		{
-			_path = path;
-			_type=type;
+			_imagePath = imagePath;
+			_imageType = imageType;
 		}
 #endregion
 
 #region Properties
-		public string Path
+		public string ImagePath
 		{
-			get { return _path; }
-			set { _path = value; }
+			get { return _imagePath; }
+			set { _imagePath = value; }
 		}
-		public string Type
+		public string ImageType
 		{
-			get { return _type; }
-			set { _type = value; }
+			get { return _imageType; }
+			set { _imageType = value; }
 		}
 #endregion
 
 #region Mehods
 		public override string ToString()
 		{
-			return base.ToString() + "Path: " + Path + ", Type: " + Type;
+			return base.ToString() + ", Path: " + ImagePath + ", Type: " + ImageType;
 		}
 #endregion
 	}
