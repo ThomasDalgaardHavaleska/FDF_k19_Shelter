@@ -1,0 +1,15 @@
+@page "{id:int}"
+@model DistrictDetailsModel
+
+<h2>@Model.District.Name</h2>
+<p>Location: @Model.District.Location</p>
+<p>Contact Email: @Model.District.ContactEmail</p>
+<p>Contact Phone: @Model.District.ContactPhone</p>
+<p>Age groups:</p>
+<ul>
+@foreach(var a in Model.District.AgeGroup)
+{
+    <li>@a</li>
+}
+</ul>
+<p><a asp-page="/Districts/Index">Back to list</a></p>

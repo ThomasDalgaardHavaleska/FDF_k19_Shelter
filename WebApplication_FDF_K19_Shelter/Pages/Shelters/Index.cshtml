@@ -1,0 +1,10 @@
+@page
+@model ShelterListModel
+
+<h2>Shelters</h2>
+<ul>
+@foreach(var s in Model.Shelters)
+{
+    <li><a asp-page="Details" asp-route-id="@s.ShelterId">@s.Name - @s.Place (Capacity: @s.MaximumCapacity)</a></li>
+}
+</ul>

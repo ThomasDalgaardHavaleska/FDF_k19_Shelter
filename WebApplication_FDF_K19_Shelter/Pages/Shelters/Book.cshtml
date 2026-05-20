@@ -1,0 +1,33 @@
+@page "{id:int}"
+@model ShelterBookModel
+
+<h2>Book @Model.Shelter.Name</h2>
+<form method="post">
+    <input type="hidden" asp-for="Shelter.ShelterId" />
+    <div>
+        <label asp-for="Booking.FullName">Full name</label>
+        <input asp-for="Booking.FullName" />
+        <span asp-validation-for="Booking.FullName" class="field-validation"></span>
+    </div>
+    <div>
+        <label asp-for="Booking.NoOfCampers">Number of campers</label>
+        <input asp-for="Booking.NoOfCampers" type="number" />
+        <span asp-validation-for="Booking.NoOfCampers" class="field-validation"></span>
+    </div>
+    <div>
+        <label asp-for="Booking.CheckInDate">Check-in</label>
+        <input asp-for="Booking.CheckInDate" type="datetime-local" />
+        <span asp-validation-for="Booking.CheckInDate" class="field-validation"></span>
+    </div>
+    <div>
+        <label asp-for="Booking.CheckoutDate">Check-out</label>
+        <input asp-for="Booking.CheckoutDate" type="datetime-local" />
+        <span asp-validation-for="Booking.CheckoutDate" class="field-validation"></span>
+    </div>
+
+    <button type="submit">Book</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>

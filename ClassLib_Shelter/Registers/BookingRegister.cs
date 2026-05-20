@@ -78,10 +78,13 @@ namespace ClassLib_Shelter.Registers
                 if (b.ShelterToBook.ShelterId == shelterId)
                 {
                     // Check if dates overlap
-                    if (requestedCheckIn < b.CheckoutDate && requestedCheckOut > b.CheckInDate)
+                    if (requestedCheckIn < b.CheckoutDate)
                     {
-                        return true;
-                    }                                   
+                        if (requestedCheckOut > b.CheckInDate)
+                        {
+                            return true;
+                        }                    
+                    }
                 }
             }
             return false;
