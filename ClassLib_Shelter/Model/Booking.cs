@@ -9,9 +9,9 @@ namespace ClassLib_Shelter.Model
 	public class Booking
 		
 	{
-# region Instancefields
+# region Instance fields
 		private int _bookingId;
-		private int _noUsers;
+		private int _noOfCampers;
 		private bool _isReserved;
 		private string _ageGroup;
 		private District _districtOfUser;
@@ -79,7 +79,7 @@ namespace ClassLib_Shelter.Model
 
 		public int NoOfCampers
 		{
-			get { return _noUsers; }
+			get { return _noOfCampers; }
 			set 
 			{ 
 				if (value < 0)
@@ -93,7 +93,7 @@ namespace ClassLib_Shelter.Model
                 //    throw new ArgumentException("Number of campers cannot exceed shelter capacity.");
                 //}
 
-                _noUsers = value; 
+                _noOfCampers = value; 
 			}
 		}
 

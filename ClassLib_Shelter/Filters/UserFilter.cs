@@ -8,13 +8,13 @@ namespace ClassLib_Shelter.Filters
 	public class UserFilter
 	
 	{
-		public List<User> FilterDistrictAss(List<User> users, District districtAssocation)
+		public List<User> FilterDistrictAss(List<User> users, District districtAssociation)
 		{
 			List<User> result = new List<User>();
 
 			foreach (User user in users)
 			{
-				if (user.DistrictAssociation == districtAssocation)
+				if (user.DistrictAssociation == districtAssociation)
 				{
 					result.Add(user);
 				}
