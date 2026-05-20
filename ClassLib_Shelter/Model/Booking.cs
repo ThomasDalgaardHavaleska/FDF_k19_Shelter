@@ -37,7 +37,7 @@ namespace ClassLib_Shelter.Model
 			CheckInDate = now;
 			CheckoutDate = now;
 			ShelterToBook = new Shelter();
-			FullName = "";
+			FullName = "Indsæt Navn";
 		}
 		public Booking(int bookingId, int noUsers, bool isReserved, string ageGroup, District districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook, string fullName)
 		{
@@ -172,8 +172,17 @@ namespace ClassLib_Shelter.Model
 
 		public string FullName	
 		{ 
-			get { return _fullName; } 
-			set { _fullName = value; } 
+			get { return _fullName; }
+			set
+			{
+				if (string.IsNullOrEmpty(value) || value.Length == 0)
+				{
+					throw new ArgumentException("Name can not be empty");
+				}
+
+
+				{ _fullName = value; }
+			}
 		} 
         #endregion
 

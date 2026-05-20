@@ -4,6 +4,9 @@
 <h2>Book @Model.Shelter.Name</h2>
 <form method="post">
     <input type="hidden" asp-for="Shelter.ShelterId" />
+
+    <div asp-validation-summary="All" class="validation-summary"></div>
+
     <div>
         <label asp-for="Booking.FullName">Full name</label>
         <input asp-for="Booking.FullName" />
@@ -38,6 +41,7 @@
                 }
             }
         </select>
+        <span asp-validation-for="SelectedDistrictId" class="field-validation"></span>
     </div>
 
     <div>
@@ -45,6 +49,7 @@
         <select asp-for="SelectedAgeGroup" id="ageGroupSelect">
             <option value="">-- Select age group --</option>
         </select>
+        <span asp-validation-for="SelectedAgeGroup" class="field-validation"></span>
     </div>
 
 

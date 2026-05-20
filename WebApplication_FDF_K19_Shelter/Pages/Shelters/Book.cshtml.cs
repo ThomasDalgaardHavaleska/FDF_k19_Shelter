@@ -64,5 +64,5 @@ public class ShelterBookModel : PageModel
             ModelState.AddModelError(string.Empty, ex.Message);
             return Page();
         }
-    }
+	}
 }
