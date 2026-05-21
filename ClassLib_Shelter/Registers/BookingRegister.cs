@@ -57,13 +57,13 @@ namespace ClassLib_Shelter.Registers
             else
             { if(GetById(newBooking.BookingId) != null)
                 {
-                    throw new Exception("Booking with the same ID already exists.");
+                    throw new ArgumentException("Booking with the same ID already exists.");
                 }
 			}
 
             if (IsShelterBooked(_bookings, newBooking.ShelterToBook.ShelterId, newBooking.CheckInDate, newBooking.CheckoutDate) == true)
             {
-                throw new Exception("Shelter is already booked for the requested dates.");
+                throw new ArgumentException("Shelter is already booked for the requested dates.");
             }
 
 

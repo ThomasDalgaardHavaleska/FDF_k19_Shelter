@@ -179,9 +179,7 @@ namespace ClassLib_Shelter.Model
 				{
 					throw new ArgumentException("Name can not be empty");
 				}
-
-
-				{ _fullName = value; }
+				 _fullName = value; 
 			}
 		} 
         #endregion

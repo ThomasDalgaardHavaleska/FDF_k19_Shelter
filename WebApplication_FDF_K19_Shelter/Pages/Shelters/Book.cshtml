@@ -2,30 +2,38 @@
 @model ShelterBookModel
 
 <h2>Book @Model.Shelter.Name</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+
 <form method="post">
     <input type="hidden" asp-for="Shelter.ShelterId" />
 
     <div asp-validation-summary="All" class="validation-summary"></div>
 
     <div>
-        <label asp-for="Booking.FullName">Full name</label>
-        <input asp-for="Booking.FullName" />
-        <span asp-validation-for="Booking.FullName" class="field-validation"></span>
+        <label asp-for="FullName">Full name</label>
+        <input asp-for="FullName" />
+        <span asp-validation-for="FullName" class="field-validation"> </span>
     </div>
     <div>
-        <label asp-for="Booking.NoOfCampers">Number of campers</label>
-        <input asp-for="Booking.NoOfCampers" type="number" />
-        <span asp-validation-for="Booking.NoOfCampers" class="field-validation"></span>
+        <label asp-for="NoOfCampers">Number of campers</label>
+        <input asp-for="NoOfCampers" type="number" required/>
+        <span asp-validation-for="NoOfCampers" class="field-validation"></span>
     </div>
     <div>
-        <label asp-for="Booking.CheckInDate">Check-in</label>
-        <input asp-for="Booking.CheckInDate" type="datetime-local" />
-        <span asp-validation-for="Booking.CheckInDate" class="field-validation"></span>
+        <label asp-for="CheckInDate">Check-in</label>
+        <input asp-for="CheckInDate" type="datetime-local" required />
+        <span asp-validation-for="CheckInDate" class="field-validation"></span>
     </div>
     <div>
-        <label asp-for="Booking.CheckoutDate">Check-out</label>
-        <input asp-for="Booking.CheckoutDate" type="datetime-local" />
-        <span asp-validation-for="Booking.CheckoutDate" class="field-validation"></span>
+        <label asp-for="CheckOutDate">Check-out</label>
+        <input asp-for="CheckOutDate" type="datetime-local" required />
+        <span asp-validation-for="CheckOutDate" class="field-validation"></span>
     </div>
 
     <div>
