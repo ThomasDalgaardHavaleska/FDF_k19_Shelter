@@ -10,8 +10,10 @@ using System;
 DateTime now = DateTime.Now;
 
 // Districts
-var district1 = new District(1, "Syd", "Væbner", "København S", "email@example.com", "+45 12 34 56 78");
-var district2 = new District(2, "Nord", "Ulve", "København N", "nord@example.com", "+45 87 65 43 21");
+List<string> ageGroup1 = new List<string> { "Væbner", "Ulve" };
+List<string> ageGroup2 = new List<string> { "Puslinge", "Tumlinge" };
+var district1 = new District(1, "Syd", ageGroup1, "København S", "email@example.com", "+45 12 34 56 78", 65); 
+var district2 = new District(2, "Nord", ageGroup2, "København N", "nord@example.com", "+45 87 65 43 21", 15);
 Console.WriteLine("Districts:");
 Console.WriteLine(district1);
 Console.WriteLine();
@@ -57,7 +59,7 @@ user1.BlogPosts.GetById(1).CreateComment("Does this even work?!", user2);
 
 Console.WriteLine("Comments on first blog post:");
 
-foreach (Comment c in user1.BlogPosts.GetById(1).Comments.GetAll())
+foreach (Comment c in user1.BlogPosts.GetById(1).GetAll())
 {
     Console.WriteLine(c + "\n");
     Console.WriteLine();
@@ -76,8 +78,10 @@ foreach (var bp in user1.BlogPosts.GetAll())
 
 // Shelters and Bookings
 var shelter1 = new Shelter(1, "SkovShelter", "55.6761,12.5683", "Dyrehaven", 5);
+var shelter2 = new Shelter(2, "StrandShelter", "55.6761,12.5683", "Amager Strandpark", 8);
 Console.WriteLine("Shelter:");
 Console.WriteLine(shelter1);
+Console.WriteLine(shelter2);
 Console.WriteLine();
 
 // Create booking using default constructor then set ShelterToBook before NoOfCampers
@@ -87,8 +91,8 @@ booking.NoOfCampers = 4; // within capacity
 booking.BookingId = 0;
 booking.IsReserved = true;
 booking.DistrictOfUser = district1;
-booking.CheckInDate = now.AddDays(7);
-booking.CheckoutDate = now.AddDays(10);
+booking.CheckInDate = now.AddDays(1);
+booking.CheckoutDate = now.AddDays(3);
 
 Console.WriteLine("Booking:");
 Console.WriteLine(booking);
@@ -135,9 +139,9 @@ foreach (var bp in user1.BlogPosts.GetAll())
 Console.WriteLine("Testing filters on booking...");
 
 // Creating bookings to filter 
-Booking booking2 = new Booking(0,4, true,district1,now.AddDays(4),now.AddDays(6),shelter1);
-Booking booking3 = new Booking(0, 5, false, district2, now.AddDays(4), now.AddDays(7),shelter1);
-Booking booking4 = new Booking(0, 5, true, district2, now, now, shelter1);
+Booking booking2 = new Booking(0, 4, true,"Væbner",district1,now.AddDays(4),now.AddDays(6),shelter1,"Name");
+Booking booking3 = new Booking(0, 5, false, "Væbner", district2, now.AddDays(7), now.AddDays(8), shelter1, "Name");
+Booking booking4 = new Booking(0, 5, true, "Væbner", district2, now, now, shelter1, "Name");
 
 
 // Creating bookingfilter 
@@ -169,9 +173,17 @@ Console.WriteLine("Testing filters on districts...");
 DistrictFilter districtFilter = new DistrictFilter();
 
 var filteredDistricts = districtFilter.FilterLocation(new List<District> { district1, district2 }, "København S");
+var filteredDistricts2 = districtFilter.FilterAgeGroup(new List<District> { district1, district2 }, "Væbner");
 
-Console.WriteLine("All districts after filter:");
+Console.WriteLine("All districts with same location filter:");
 foreach (District d in filteredDistricts)
+{
+    Console.WriteLine(d);
+    Console.WriteLine();
+}
+
+Console.WriteLine("All districts with same age group filter:");
+foreach (District d in filteredDistricts2)
 {
     Console.WriteLine(d);
     Console.WriteLine();
@@ -188,13 +200,59 @@ try
 }
 catch (ArgumentException ex)
 {
-    Console.WriteLine("Caught expected exception: " + ex.Message);
+
+    GreenColourMessage("Caught expected exception: " + ex.Message);
+
 }
 catch (Exception ex)
 {
-    Console.WriteLine("Caught unexpected exception: " + ex.Message);
+
+    RedColourMessage("Caught unexpected exception: " + ex.Message);
+
 }
 finally
 {
     Console.WriteLine("Edge case test completed.");
+    Console.WriteLine("");
+}
+
+
+
+Console.WriteLine("Testing edge case: Attempting to add a booking when a booking is already made for the shelter to book");
+try
+{
+    Booking booking5 = new Booking(0, 4, true, "Væbner", district1, now.AddDays(4), now.AddDays(10), shelter1, "Name");
+    bookingsToFilter.Add(booking5);
+}
+catch (Exception ex)
+{
+
+    GreenColourMessage("Caught expected exception: " + ex.Message);
+   
+}
+finally
+{
+    Console.WriteLine("Edge case test completed.");
+    Console.WriteLine();
+}
+
+
+
+
+
+void GreenColourMessage(string message)
+{
+ 
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine(message);
+  
+    Console.ForegroundColor = ConsoleColor.White;
+}
+void RedColourMessage(string message)
+{
+
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine(message);
+  
+    Console.ForegroundColor = ConsoleColor.White;
 }

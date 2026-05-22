@@ -3,17 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication_FDF_K19_Shelter</title>
+    <title>@ViewData["Title"] - FDFK19.web</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApplication_FDF_K19_Shelter.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FDF K19 Shelter.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">WebApplication_FDF_K19_Shelter</a>
+				<a asp-area="" asp-page="/Index">
+					<img class="logo"<img src="~/pictures/screenshot 2026-05-22 095858.png" width="50" height="25"/>
+				</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,16 +23,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Startside</a>
                         </li>                  
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/DistrictRegister">Kreds Register</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Districts/Index">Kreds Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Shelter">Se shelter</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Shelters/Index">Se shelter</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking">Book nu</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Bookings/Index">Se bookings</a>
                         </li>
                     </ul>
                 </div>
@@ -43,11 +45,12 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - WebApplication_FDF_K19_Shelter - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+
+
+
+
+
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

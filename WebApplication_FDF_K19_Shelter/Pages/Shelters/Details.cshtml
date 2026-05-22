@@ -1,0 +1,8 @@
+@page "{id:int}"
+@model ShelterDetailsModel
+
+<h2>@Model.Shelter.Name</h2>
+<p>Location: @Model.Shelter.Place</p>
+<p>Geolocation: @Model.Shelter.Geolocation</p>
+<p>Capacity: @Model.Shelter.MaximumCapacity</p>
+<p><a asp-page="/Shelters/Book" asp-route-id="@Model.Shelter.ShelterId">Book this shelter</a></p>

@@ -1,0 +1,10 @@
+@page
+@model DistrictListModel
+
+<h2>Districts</h2>
+<ul>
+@foreach(var d in Model.Districts)
+{
+    <li><a asp-page="Details" asp-route-id="@d.DistrictId">@d.Name - @d.Location (Members: @d.NumberOfMembers)</a></li>
+}
+</ul>

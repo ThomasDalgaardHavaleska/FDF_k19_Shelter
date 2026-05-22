@@ -12,25 +12,31 @@ builder.Services.AddRazorPages();
 
 // Initialize the DistrictRegister with some sample data
 DistrictRegister districts = new DistrictRegister();
-ShelterRegister shelters = new ShelterRegister();
+
 UserRegister users = new UserRegister();
 BlogPostRegister blogs = new BlogPostRegister();
-
+ShelterRegister shelters = new ShelterRegister();
 BookingRegister bookings = new BookingRegister();
+
+Shelter shelter = new Shelter();
 
 #if DEBUG 
 TestDataService testData = new TestDataService();
 testData.DataDistricts(districts);
-testData.DataShelters(shelters);
 testData.DataUser(users);
+testData.DataShelter(shelter);
+testData.DataShelterRegister(shelters);
 testData.DataBooking(bookings, users, districts);
+
 #endif
 
 builder.Services.AddSingleton<DistrictRegister>(districts);
-builder.Services.AddSingleton<ShelterRegister>(shelters);
+
 builder.Services.AddSingleton<UserRegister>(users);
 builder.Services.AddSingleton<BlogPostRegister>(blogs);
 builder.Services.AddSingleton<BookingRegister>(bookings);
+builder.Services.AddSingleton<Shelter>(shelter);
+builder.Services.AddSingleton<ShelterRegister>(shelters);
 
 
 var app = builder.Build();

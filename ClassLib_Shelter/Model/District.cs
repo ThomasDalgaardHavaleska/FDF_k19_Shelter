@@ -9,33 +9,36 @@ namespace ClassLib_Shelter.Model
     {
         private int _districtId;
         private string _name;
-        private string _ageGroup;
+        private List<string> _ageGroup;
         private string _location;
         private string _contactEmail;
         private string _contactPhone;
         private Shelter _shelter;
-	#endregion
-		#region Constructor
-		public District() 
+        private int _numberOfMembers;
+        #endregion
+        #region Constructor
+        public District() 
         { 
             _districtId = 0;
             _name = "";
-            _ageGroup = "";
+            _ageGroup = new List<string>();
             _location = "";
             _contactEmail = "";
             _contactPhone = "";
             _shelter = null;
+            _numberOfMembers = 0;
         }
 
-        public District(int districtId, string name, string ageGroup, string location, string contactEmail, string contactPhone)
+        public District(int districtId, string name, List<string> ageGroup, string location, string contactEmail, string contactPhone, int noOfMembers)
         {
-            _districtId = districtId;
-            _name = name;
-            _ageGroup = ageGroup;
-            _location = location;
-            _contactEmail = contactEmail;
-            _contactPhone = contactPhone;
-            _shelter = null;
+            DistrictId = districtId;
+            Name = name;
+            AgeGroup = ageGroup;
+            Location = location;
+            ContactEmail = contactEmail;
+            ContactPhone = contactPhone;
+            Shelter = null;
+            NumberOfMembers = noOfMembers;
         }
 		#endregion
 		#region Properties
@@ -59,15 +62,19 @@ namespace ClassLib_Shelter.Model
            
         }
 
-        public string AgeGroup
+        public List<string> AgeGroup
         {
             get { return _ageGroup;}
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
-				{
-                    throw new ArgumentNullException("Please enter valid age group");
+                foreach (string age in value)
+                 {
+                    if (string.IsNullOrWhiteSpace(age) || age.Length == 0)
+                    {
+                        throw new ArgumentNullException("Please enter valid age group");
+                    }
                 }
+              
                 _ageGroup = value;
             }
         }
@@ -116,12 +123,27 @@ namespace ClassLib_Shelter.Model
             get { return _shelter; }
             set { _shelter = value; }
         }   
+
+        public int NumberOfMembers
+        {
+            get { return _numberOfMembers; }
+            set { _numberOfMembers = value; }
+        }
         #endregion
         #region Methods
 
+
         public override string ToString()
         {
-            return "DistrictId: " + _districtId + ", Name: " + _name + ", Agegroup: " + _ageGroup + ", Location: " + _location + ", ContactEmail: "  + _contactEmail + ", ContactPhone: " + _contactPhone;
+            string res = "[ ";
+            foreach (string s in AgeGroup)
+            {
+                res += s + ", ";
+            }
+            res += " ]";
+
+            return "DistrictId: " + _districtId + ", Name: " + _name + ", Agegroup: " + res + ", Location: " + _location + 
+                ", ContactEmail: "  + _contactEmail + ", ContactPhone: " + _contactPhone + ", Number of Members: " + NumberOfMembers;
         }
 		#endregion
 

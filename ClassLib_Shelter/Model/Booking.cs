@@ -9,9 +9,9 @@ namespace ClassLib_Shelter.Model
 	public class Booking
 		
 	{
-# region Instancefields
+# region Instance fields
 		private int _bookingId;
-		private int _noUsers;
+		private int _noOfCampers;
 		private bool _isReserved;
 		private string _ageGroup;
 		private District _districtOfUser;
@@ -37,7 +37,7 @@ namespace ClassLib_Shelter.Model
 			CheckInDate = now;
 			CheckoutDate = now;
 			ShelterToBook = new Shelter();
-			FullName = "";
+			FullName = "Indsæt Navn";
 		}
 		public Booking(int bookingId, int noUsers, bool isReserved, string ageGroup, District districtOfUser, 
 			DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook, string fullName)
@@ -80,7 +80,7 @@ namespace ClassLib_Shelter.Model
 
 		public int NoOfCampers
 		{
-			get { return _noUsers; }
+			get { return _noOfCampers; }
 			set 
 			{ 
 				if (value < 0)
@@ -94,7 +94,7 @@ namespace ClassLib_Shelter.Model
                 //    throw new ArgumentException("Number of campers cannot exceed shelter capacity.");
                 //}
 
-                _noUsers = value; 
+                _noOfCampers = value; 
 			}
 		}
 
@@ -173,15 +173,15 @@ namespace ClassLib_Shelter.Model
 
 		public string FullName	
 		{ 
-			get { return _fullName; } 
+			get { return _fullName; }
 			set
-            {
-                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
-                    throw new ArgumentNullException("Fullname cannot be empty. Type in your fullname.");
-
-                _fullName = value;
-            }
-         
+			{
+				if (string.IsNullOrEmpty(value) || value.Length == 0)
+				{
+					throw new ArgumentException("Name can not be empty");
+				}
+				 _fullName = value; 
+			}
 		} 
         #endregion
 
@@ -191,9 +191,9 @@ namespace ClassLib_Shelter.Model
 
         public override string ToString()
 		{
-			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + 
-				", age group: " + AgeGroup + ", Is reserved: " + IsReserved + ", District of user: " + DistrictOfUser.Name +  
-				", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate;
+			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + ", age group: " + AgeGroup +
+				", Is reserved: " + IsReserved + ", District of user: " + DistrictOfUser.Name +  
+					", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate + ", Shelter: " + ShelterToBook.Name;
 		}
 #endregion
 	}
