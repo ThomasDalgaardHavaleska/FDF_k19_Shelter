@@ -16,13 +16,22 @@
 
 <div style="display: flex; gap: 30px; align-items: flex-start;">
     <div style="flex: 1;">
-        <h2>Tak For Din Booking!</h2>
-        <p>Din tid er blevet registreret hos FDF.</p>
-        <p>Vi håber du nyder dit ophold</p>
-        
+        <h1>Tak For Din Booking!</h1>
+        <p>Din tid er blevet registreret hos FDF.<br />Vi håber du nyder dit ophold.</p>
+   
+        @if(Model.Booking != null)
+           { 
+			<li>Id: @Model.Booking.BookingId</li> 
+            <li>Navn: @Model.Booking.FullName</li>
+            <li> Shelter: @Model.Booking.ShelterToBook.Name</li> 
+            <li>Check ind / Check ud: @Model.Booking.CheckInDate.ToShortDateString() to @Model.Booking.CheckoutDate.ToShortDateString()</li>
+            <li>Aldersgruppe: @Model.Booking.AgeGroup</li>
+            <li>Kreds: @Model.Booking.DistrictOfUser.Name</li>
+           }
+
         <div>
             <a href="/Bookings">
-                <button>Se Bookings</button>
+                <button>Se Bookinger her</button>
             </a>
         </div>
     </div>
