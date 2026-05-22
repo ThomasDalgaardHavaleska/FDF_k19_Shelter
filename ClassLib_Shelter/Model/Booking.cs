@@ -171,18 +171,22 @@ namespace ClassLib_Shelter.Model
 
 		
 
-		public string FullName	
-		{ 
+		public string FullName
+		{
+
 			get { return _fullName; }
 			set
 			{
-				if (string.IsNullOrEmpty(value) || value.Length == 0)
+				if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
 				{
-					throw new ArgumentException("Name can not be empty");
+					throw new ArgumentNullException("Fullname cannot be empty. Type in your fullname.");
 				}
-				 _fullName = value; 
+
+				_fullName = value;
 			}
-		} 
+		}
+         
+		
         #endregion
 
         #region Methods
@@ -191,9 +195,11 @@ namespace ClassLib_Shelter.Model
 
         public override string ToString()
 		{
-			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + ", age group: " + AgeGroup +
-				", Is reserved: " + IsReserved + ", District of user: " + DistrictOfUser.Name +  
-					", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate + ", Shelter: " + ShelterToBook.Name;
+			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + 
+				", age group: " + AgeGroup + ", Is reserved: " + IsReserved + ", District of user: " 
+				+ DistrictOfUser.Name +  ", Reservation date: " + ReservationDate + 
+				", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate;
+
 		}
 #endregion
 	}
