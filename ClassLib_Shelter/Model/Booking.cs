@@ -39,7 +39,8 @@ namespace ClassLib_Shelter.Model
 			ShelterToBook = new Shelter();
 			FullName = "";
 		}
-		public Booking(int bookingId, int noUsers, bool isReserved, string ageGroup, District districtOfUser, DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook, string fullName)
+		public Booking(int bookingId, int noUsers, bool isReserved, string ageGroup, District districtOfUser, 
+			DateTime chekinDate, DateTime checkoutDate, Shelter shelterToBook, string fullName)
 		{
 			BookingId = bookingId;
 			NoOfCampers = noUsers;
@@ -173,7 +174,14 @@ namespace ClassLib_Shelter.Model
 		public string FullName	
 		{ 
 			get { return _fullName; } 
-			set { value = _fullName; } 
+			set
+            {
+                if (string.IsNullOrWhiteSpace(value) || value.Length == 0)
+                    throw new ArgumentNullException("Fullname cannot be empty. Type in your fullname.");
+
+                _fullName = value;
+            }
+         
 		} 
         #endregion
 
@@ -183,9 +191,9 @@ namespace ClassLib_Shelter.Model
 
         public override string ToString()
 		{
-			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + ", age group: " + AgeGroup +
-				", Is reserved: " + IsReserved + ", District of user: " + DistrictOfUser.Name +  
-					", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate;
+			return "Booking Id: " + BookingId + ", fullname: " + FullName + ", Number of users: " + NoOfCampers + 
+				", age group: " + AgeGroup + ", Is reserved: " + IsReserved + ", District of user: " + DistrictOfUser.Name +  
+				", Reservation date: " + ReservationDate + ", Check-in Date: " + CheckInDate + ", Check-out Date: " + CheckoutDate;
 		}
 #endregion
 	}
