@@ -40,7 +40,7 @@
 
     <div>
         <label>District</label>
-        <select asp-for="SelectedDistrictId" id="districtSelect">
+        <select asp-for="SelectedDistrictId" id="districtSelect" required>
             <option value="">-- Select district --</option>
             @if (Model.AllDistricts != null)
             {
@@ -56,7 +56,7 @@
 
     <div>
         <label>Age group</label>
-        <select asp-for="SelectedAgeGroup" id="ageGroupSelect">
+        <select asp-for="SelectedAgeGroup" id="ageGroupSelect" required>
             <option value="">-- Select age group --</option>
         </select>
         <span asp-validation-for="SelectedAgeGroup" class="field-validation"></span>
