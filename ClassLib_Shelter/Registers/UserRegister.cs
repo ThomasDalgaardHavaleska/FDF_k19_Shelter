@@ -77,6 +77,19 @@ namespace ClassLib_Shelter.Registers
 		return foundUser;
 		}
 
+		public User GetByName(string name)
+		{
+			User notFound = null;
+			foreach (User user in _users)
+			{
+				if (name == user.FullName)
+				{
+					return user;
+				}
+			}
+			return notFound;
+		}
+
 		public void Remove(int userid)
 		{
 			_users.Remove(GetById(userid));

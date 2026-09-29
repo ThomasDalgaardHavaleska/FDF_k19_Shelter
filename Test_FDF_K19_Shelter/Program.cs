@@ -33,6 +33,11 @@ Console.WriteLine();
 var userRegister = new UserRegister();
 userRegister.Add(user1);
 userRegister.Add(user2);
+
+Console.WriteLine("specific User");
+Console.WriteLine(userRegister.GetById(1));
+Console.WriteLine("^^^^^^^");
+
 Console.WriteLine("UserRegister contents:");
 foreach (var u in userRegister.GetAll()) 
 {
@@ -83,6 +88,21 @@ Console.WriteLine("Shelter:");
 Console.WriteLine(shelter1);
 Console.WriteLine(shelter2);
 Console.WriteLine();
+
+var updatedShelter = new Shelter(3, "karsten", "234234234", "køge", 4);
+
+ShelterRegister ShelterListe = new ShelterRegister();
+ShelterListe.Add(shelter1);
+ShelterListe.Add(shelter2);
+// finds shelter with id 2
+Console.WriteLine($"Get by id {ShelterListe.GetById(2)}");
+
+
+ShelterListe.Update(1, updatedShelter);
+Console.WriteLine("00000000000000000000000000000000");
+Console.WriteLine(updatedShelter);
+
+Console.WriteLine("gamle shelter" + shelter1);
 
 // Create booking using default constructor then set ShelterToBook before NoOfCampers
 var booking = new Booking();
@@ -168,6 +188,7 @@ foreach (Booking b in filteredBookings)
 }
 
 
+
 Console.WriteLine("Testing filters on districts...");
 
 DistrictFilter districtFilter = new DistrictFilter();
@@ -239,7 +260,6 @@ finally
 
 
 
-
 void GreenColourMessage(string message)
 {
  
@@ -256,3 +276,5 @@ void RedColourMessage(string message)
   
     Console.ForegroundColor = ConsoleColor.White;
 }
+
+Console.WriteLine(userRegister.GetByName("Jane Smith"));

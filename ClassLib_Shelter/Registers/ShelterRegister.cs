@@ -84,14 +84,27 @@ public class ShelterRegister : IRegister<Shelter>
             _shelters.Remove(GetById(shelterId));
         }
 
-        public Shelter GetById(int shelterId) 
+
+    public Shelter GetById(int shelterId)
+    {
+        for (int i = 0; i < _shelters.Count; i++)
         {
-            foreach (Shelter shelter in _shelters)
+            if (shelterId == _shelters[i].ShelterId)
             {
-                if (shelterId == shelter.ShelterId) { return shelter; }
+                return _shelters[i];
             }
-            return null;
         }
+        return null;
+    }
+
+        //public Shelter GetById(int shelterId) 
+        //{
+        //    foreach (Shelter shelter in _shelters)
+        //    {
+        //        if (shelterId == shelter.ShelterId) { return shelter; }
+        //    }
+        //    return null;
+        //}
 
         public Shelter Update(int shelterId, Shelter updatedShelter)
         {
